@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flex布局-筛子</title>
+	<link rel="stylesheet" href="flex.css">
+</head>
+<body>
+<!-- div元素（代表骰子的一个面）是Flex容器，span元素（代表一个点）是Flex项目。如果有多个项目，就要添加多个span元素，以此类推。 -->
+	<div class="first-face">
+		<span class="pip"></span>
+	</div>
+
+	<div class="second-face">
+		<span class="pip"></span>
+		<span class="pip"></span>
+	</div>
+
+	<div class="third-face">
+		<span class="pip"></span>
+		<span class="pip"></span>
+		<span class="pip"></span>
+	</div>
+
+	<div class="fourth-face">
+		<div class="column">
+			<span class="pip"></span>
+			<span class="pip"></span>
+		</div>
+		<div class="column">
+			<span class="pip"></span>
+			<span class="pip"></span>
+		</div>
+	</div>
+
+	<div class="fifth-face">
+		<div class="column">
+			<span class="pip"></span>
+			<span class="pip"></span>
+		</div>
+		<div class="column">
+			<span class="pip"></span>
+		</div>
+		<div class="column">
+			<span class="pip"></span>
+			<span class="pip"></span>
+		</div>
+	</div>
+
+	<div class="sixth-face">
+		<div class="column">
+			<span class="pip"></span>
+			<span class="pip"></span>
+			<span class="pip"></span>
+		</div>
+		<div class="column">
+			<span class="pip"></span>
+			<span class="pip"></span>
+			<span class="pip"></span>
+		</div>
+	</div>
+	<script>
+		var name = "The Window";
+	　　var object = {
+	　　　　name : "My Object",
+	　　　　getNameFunc : function(){
+	　　　　　　return function(){
+	　　　　　　　　return this.name;
+	　　　　　　};
+	　　　　}
+	　　};
+	　　//alert(object.getNameFunc()());//The Window
+
+
+		var name = "The Window";
+	　　var object = {
+	　　　　name : "My Object",
+	　　　　getNameFunc : function(){
+	　　　　　　var that = this;//在函数外部自然无法读取函数内的局部变量。函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量
+	　　　　　　return function(){
+	　　　　　　　　return that.name;
+	　　　　　　};
+	　　　　}
+	　　};
+	　　//alert(object.getNameFunc()());//My Object
+	</script>
+</body>
+</html>

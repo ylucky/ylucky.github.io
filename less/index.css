@@ -9,6 +9,12 @@ select {
   border: 0;
   outline: none;
 }
+body {
+  padding-top: 50px;
+}
+.navbar {
+  margin-bottom: 0px;
+}
 .main {
   padding: 0;
 }

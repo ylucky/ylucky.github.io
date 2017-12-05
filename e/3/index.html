@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>禁止用户输入</title>
+	<style>
+		.form{width: 500px;margin:50px auto;font-size: 14px;}
+		.form div{line-height: 50px;vertical-align: middle;margin:3px 0;overflow: hidden;}
+		span{float: left;text-align: right;width: 100px;display: inline-block;}
+		input{display: inline-block;border:solid 1px #ccc;width:250px;height: 30px;line-height: 30px;font-size: 12px;}
+		input[disabled]{cursor: not-allowed;background-color: #eee;}
+		small{width: 100px;float: right;}
+		.note{display: none;color:#f30;}
+		textarea{resize: none;float: left;font-size: 12px;}
+		button{clear: both;display: block;width: 100px;height: 35px;margin-left:100px;background: green;color: #fff;border:none;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="form">
+		<div><span>用户名:</span><input id="username" disabled value="" placeholder="用户名" type="text"><small class="note" id="note1">*用户名不能为空</small></div>
+		<div><span>密码:</span><input id="password" value="" placeholder="密码" type="password"><small class="note" id="note2">*密码不能为空</small></div>
+		<div><span>备注:</span><textarea name="" id="comment" placeholder="备注" cols="50" rows="10"></textarea></div>
+		<button id="btn">提交</button>
+	</div>
+		
+<script>
+	var btn = document.getElementById("btn");
+	var username = document.getElementById("username");
+	var password = document.getElementById("password");
+	var note1 = document.getElementById("note1");
+	var note2 = document.getElementById("note2");
+	
+	username.onchange = function(){
+		console.log("username",username.value);
+	}
+	//username.onchange = change(username,note1);
+	password.onchange = change(password,note2);
+	
+	btn.onclick = function(){
+		toogle(password,note2);
+	}
+
+	function toogle(element,note){
+		if(element.value.length<1){
+			note.style.display = 'block';
+		}else{
+			note.style.display = 'none';
+		}
+	}
+
+	function change(element,note){
+		if(element.value.length>1){
+			note.style.display = 'none';
+		}
+	}
+</script>
+
+
+</body>
+</html>

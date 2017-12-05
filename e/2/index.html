@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证用户是否输入</title>
+	<style>
+		.form{width: 500px;margin:50px auto;}
+		.form div{line-height: 50px;vertical-align: middle;margin:3px 0;overflow: hidden;}
+		span{float: left;text-align: right;width: 100px;display: inline-block;}
+		input{display: inline-block;width:250px;height: 30px;line-height: 30px;}
+		small{width: 100px;float: right;}
+		.note{display: none;color:#f30;}
+		textarea{resize: none;float: left;}
+		button{clear: both;display: block;width: 100px;height: 35px;margin-left:100px;background: green;color: #fff;border:none;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="form">
+		<div><span>用户名:</span><input id="username" value="" type="text"><small class="note" id="note1">*用户名不能为空</small></div>
+		<div><span>密码:</span><input id="password" value="" type="password"><small class="note" id="note2">*密码不能为空</small></div>
+		<div><span>备注:</span><textarea name="" id="comment" cols="50" rows="10"></textarea></div>
+		<button id="btn">提交</button>
+	</div>
+		
+<script>
+	var btn = document.getElementById("btn");
+	var username = document.getElementById("username");
+	var password = document.getElementById("password");
+	var note1 = document.getElementById("note1");
+	var note2 = document.getElementById("note2");
+	
+	username.onkeydown=function(){
+		change(username,note1);
+	};
+	password.onkeydown=function(){
+		change(password,note2);
+	};
+
+	btn.onclick = function(){
+		toogle(username,note1);
+		toogle(password,note2);
+	}
+
+	function toogle(element,note){
+		if(element.value.length<1){
+			note.style.display = 'block';
+		}else{
+			note.style.display = 'none';
+		}
+	}
+
+	function change(element,note){
+		if(element.value.length>=0){
+			note.style.display = 'none';
+		}
+	}
+</script>
+
+
+</body>
+</html>

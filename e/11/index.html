@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery点击小图查看大图</title>
+	<style>
+		#container{
+			width: 420px;
+			height: 320px;
+			margin:0 auto;
+			border:solid 1px #000;
+			position: relative;
+		}
+		#big{
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+		#small{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -120px;
+		}
+		#small img{
+			cursor: pointer;
+			display: inline-block;
+			width: 84px;
+			height: 64px;
+			border:solid 1px blue;
+		}
+		#small .cur{
+			border:solid 1px #f30;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img id="big" src="../../img/01.jpg" alt="banner1">
+		<div id="small">
+			<img class="cur" src="../../img/01.jpg" alt="banner1">
+			<img src="../../img/02.jpg" alt="banner2">
+			<img src="../../img/03.jpg" alt="banner3">
+		</div>
+	</div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('#small img').click(function(){
+				$("#big").attr('src',this.src);
+				$(this).addClass('cur').siblings().removeClass('cur'); 
+			})
+		})
+	</script>
+</body>
+</html>

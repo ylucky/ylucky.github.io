@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>去除字符串左右的空格</title>
+<style>
+	*{margin:0;padding: 0;}
+	.filter{width: 300px;margin:50px auto;height: 50px;line-height: 50px;}
+	input{width: 200px;height: 38px;line-height: 38px;border:solid 1px #ccc;outline:none;}
+	button{width: 80px;height: 40px;background: green;color:#fff;line-height: 40px;border:0;outline:none;cursor: pointer;}
+</style>
+</head>
+<body>
+	<div class="filter">
+		<input id="text" type="text" value="【  需要过滤空格的文本  】" >
+		<button id="btn">过滤</button>
+	</div>
+	<script>
+/*
+	\s 空白字符：[ \t\n\x0B\f\r] //这个市重点！
+	\t 制表符 ('\u0009') 
+	\n 新行（换行）符 ('\u000A') 
+	\r 回车符 ('\u000D') 
+	\f 换页符 ('\u000C') 
+	\a 报警 (bell) 符 ('\u0007') 
+	\e 转义符 ('\u001B') 
+	\cx 对应于 x 的控制符 
+*/
+		var text = document.getElementById("text");
+		var btn = document.getElementById("btn");
+		btn.onclick = function() {
+			text.value = text.value.replace(/\s/g,"");
+		}
+	</script>
+</body>
+</html>

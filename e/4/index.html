@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关闭用户中文输入法</title>
+	<style>
+		.form{width: 500px;margin:50px auto;font-size: 14px;}
+		.form div{line-height: 50px;vertical-align: middle;margin:3px 0;overflow: hidden;}
+		span{float: left;text-align: right;width: 100px;display: inline-block;}
+		input{display: inline-block;border:solid 1px #ccc;width:250px;height: 30px;line-height: 30px;font-size: 12px;}
+		input[disabled]{cursor: not-allowed;background-color: #eee;}
+		button{clear: both;display: block;width: 100px;height: 35px;margin-left:100px;background: green;color: #fff;border:none;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="form">
+		<div><span>用户名:</span><input id="username" value="" placeholder="用户名" type="text"></div>
+		<div><span>密码:</span><input id="password" value="" placeholder="密码" type="password"></div>
+		<button id="btn">提交</button>
+	</div>
+		
+<script>
+/*
+匹配中文字符的正则表达式： [\u4e00-\u9fa5]
+匹配双字节字符(包括汉字在内)：[^\x00-\xff]
+*/
+	var btn = document.getElementById("btn");
+	var inputs = document.getElementsByTagName("input");
+
+	for (var i = 0; i < inputs.length; i++) {
+		inputs[i].index = i;
+		inputs[i].onkeyup = function(){
+			clear(inputs[this.index]);
+		}
+	}	
+
+	function clear(o){
+	   o.value = o.value.replace(/[\u4e00-\u9fa5]/g, '');
+	}
+</script>
+
+
+</body>
+</html>

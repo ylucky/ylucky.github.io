@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js左右切换</title>
+	<style>
+		#container{
+			width: 420px;
+			height: 320px;
+			margin:0 auto;
+			border:solid 1px #000;
+			position: relative;
+		}
+		#big{
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+		#small{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -120px;
+		}
+		#small img{
+			cursor: pointer;
+			display: inline-block;
+			width: 84px;
+			height: 64px;
+			border:solid 1px blue;
+		}
+		#small .cur{
+			border:solid 1px #f30;
+		}
+		#btns{
+			text-align: right;
+		}
+		#btns button{
+			display: inline-block;
+			padding: 10px;
+			font-size: 14px;
+			border:none;
+			outline: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img id="big" src="../../img/01.jpg" alt="banner1">
+		<div id="small">
+			<img class="cur" src="../../img/01.jpg" alt="banner1">
+			<img src="../../img/02.jpg" alt="banner2">
+			<img src="../../img/03.jpg" alt="banner3">
+		</div>
+		<div id="btns">
+			<button id="btnl">&lt;</button>
+			<button id="btnr">&gt;</button>
+		</div>
+	</div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			var len = $('#small img').length;
+			var index = 0;
+			var addr = ["../../img/01.jpg","../../img/02.jpg","../../img/03.jpg"];
+			$('#small img').click(function(){
+				$("#big").attr('src',this.src);
+				$(this).addClass('cur').siblings().removeClass('cur'); 
+				index = $(this).index();
+			})
+
+			$('#btnl').click(function(){
+				if(index==0){
+					index = len;
+				}
+				$("#big").attr('src',addr[--index]);
+				$('#small img:eq('+index+')').addClass('cur').siblings().removeClass('cur'); 
+			})
+
+			$('#btnr').click(function(){
+				if(index==len-1){
+					index = -1;
+				}
+				$("#big").attr('src',addr[++index]);
+				$('#small img:eq('+index+')').addClass('cur').siblings().removeClass('cur'); 
+			})
+		})
+	</script>
+</body>
+</html>

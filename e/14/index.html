@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js左右切换带定时器</title>
+	<style>
+		#container{
+			width: 420px;
+			height: 320px;
+			margin:0 auto;
+			border:solid 1px #000;
+			position: relative;
+		}
+		#big{
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+		#small{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -120px;
+		}
+		#small img{
+			cursor: pointer;
+			display: inline-block;
+			width: 84px;
+			height: 64px;
+			border:solid 1px blue;
+		}
+		#small .cur{
+			border:solid 1px #f30;
+		}
+		#btns{
+			text-align: right;
+		}
+		#btns button{
+			display: inline-block;
+			padding: 10px;
+			font-size: 14px;
+			border:none;
+			outline: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img id="big" src="../../img/01.jpg" alt="banner1">
+		<div id="small">
+			<img class="cur" src="../../img/01.jpg" alt="banner1">
+			<img src="../../img/02.jpg" alt="banner2">
+			<img src="../../img/03.jpg" alt="banner3">
+		</div>
+		<div id="btns">
+			<button id="btnl">&lt;</button>
+			<button id="btnr">&gt;</button>
+		</div>
+	</div>
+	<script>
+		window.onload = function() {
+			var container = document.getElementById('container');
+			var big = document.getElementById('big');
+			var smalls = document.getElementById('small').getElementsByTagName('img');
+			var btnl = document.getElementById("btnl");
+			var btnr = document.getElementById('btnr');
+			var num = 0;
+			var timer = null;
+			var addr = ["../../img/01.jpg","../../img/02.jpg","../../img/03.jpg"];
+
+			function init(){
+				for (var i = 0; i < smalls.length; i++) {
+					smalls[i].className = '';
+				}
+			}
+			for (var i = 0; i < smalls.length; i++) {
+				smalls[i].index = i;
+				smalls[i].onclick = function(){
+					init();
+					big.setAttribute("src",addr[this.index]);
+					this.className = "cur";
+					num = this.index;
+				}
+			}
+
+			var timer = setInterval(function(){
+				if(num == smalls.length-1){
+					num = -1;
+				}
+				++num;
+				init();
+				big.setAttribute("src",addr[num]);
+				smalls[num].className = "cur";
+			},2000);
+
+			btnl.onclick = function(){
+				if(num==0){
+					num = smalls.length;
+				}
+				init();
+				big.setAttribute("src",addr[--num]);
+				smalls[num].className = "cur";
+				
+			}
+			btnr.onclick = function(){
+				if(num == smalls.length-1){
+					num = -1;
+				}
+				init();
+				big.setAttribute("src",addr[++num]);
+				smalls[num].className = "cur";				
+			}
+		}
+	</script>
+</body>
+</html>

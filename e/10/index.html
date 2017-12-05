@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js点击小图查看大图</title>
+	<style>
+		#container{
+			width: 420px;
+			height: 320px;
+			margin:0 auto;
+			border:solid 1px #000;
+			position: relative;
+		}
+		#big{
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+		#small{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -120px;
+		}
+		#small img{
+			cursor: pointer;
+			display: inline-block;
+			width: 84px;
+			height: 64px;
+			border:solid 1px blue;
+		}
+		#small .cur{
+			border:solid 1px #f30;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img id="big" src="../../img/01.jpg" alt="banner1">
+		<div id="small">
+			<img class="cur" src="../../img/01.jpg" alt="banner1">
+			<img src="../../img/02.jpg" alt="banner2">
+			<img src="../../img/03.jpg" alt="banner3">
+		</div>
+	</div>
+	<script>
+		window.onload = function() {
+			var container = document.getElementById('container');
+			var big = document.getElementById('big');
+			var smalls = document.getElementById('small').getElementsByTagName('img');
+			var addr = ["../../img/01.jpg","../../img/02.jpg","../../img/03.jpg"];
+			for (var i = 0; i < smalls.length; i++) {
+				smalls[i].index = i;
+				smalls[i].onclick = function(){
+					for (var i = 0; i < smalls.length; i++) {
+						smalls[i].className = '';
+					}
+					big.setAttribute("src",addr[this.index]);
+					this.className = "cur";
+				}
+			}
+		}
+	</script>
+</body>
+</html>
