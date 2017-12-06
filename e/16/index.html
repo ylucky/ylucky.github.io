@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    button {
+      border: none;
+      margin: 0 3px;
+    }
+    #content {
+      width: 700px;
+      height: 400px;
+      overflow: hidden;
+      background: #eee;
+      position: relative;
+    }
+
+    #content #bg {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      background: #000;
+      opacity: 0.2;
+      filter: alpha(opacity=20);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: none;
+    }
+
+    #content p {
+      text-align: left;
+      padding-left: 15px;
+      line-height: 50px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #content p button {
+      display: inline-block;
+      padding: 10px 30px;
+      background: red;
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    #container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 15px;
+    }
+
+    #content #_left {
+      align-self: flex-start;
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      border: solid 1px #000;
+    }
+
+    #content #_right {
+    	position: absolute;
+    	right: 10px;
+    	bottom: 10px;
+		padding: 15px;
+		background: #ccc;
+		z-index: 3;
+		display: none;
+    }
+
+    #container ul {
+      background: #fff;
+      overflow: hidden;
+      padding: 15px;
+      list-style-type: none;
+    }
+
+    #container ul li {
+      height: 40px;
+      line-height: 40px;
+    }
+
+    #container ul span {
+      display: inline-block;
+      width: 45px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background: #eee;
+      border: solid 1px #ccc;
+      font-size: 12px;
+    }
+
+    #container ul button {
+      display: inline-block;
+      padding: 10px 30px;
+      background: #252870;
+      color: #fff;
+    }
+    .effect{
+    	position: absolute;
+    	top: 0;
+    	left:900px;
+    }
+    img{
+    	width: 500px;
+    	height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <h2 id="bg"></h2>
+    <p><span>请为下面的DIV设置样式 </span><button id="show">点击设置</button></p>
+    <div id="container">
+      <div id="_left"></div>
+      <div id="_right">
+        <ul>
+          <li id="color">请选择背景色：
+            <span style="background:#f30;" value="#f30">红</span>
+            <span style="background:yellow;" value="yellow">黄</span>
+            <span style="background:blue;" value="blue">蓝</span>
+          </li>
+          <li id="width">请选择宽(px):
+            <span value="200">200</span>
+            <span value="300">300</span>
+            <span value="400">400</span>
+          </li>
+          <li id="height">请选择高(px):
+            <span value="200">200</span>
+            <span value="300">300</span>
+            <span value="400">400</span>
+          </li>
+          <li>
+            <button id="reset">恢复</button><button id="setting">设置</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="effect">
+  	<span>效果图：</span>
+  	<img src="预热作业.gif" alt="">
+  </div>
+  <script>
+window.onload = function(){
+  var show = document.getElementById('show');
+  var bg = document.getElementById('bg');
+  var _right = document.getElementById('_right');
+  var _left = document.getElementById('_left');
+  var reset = document.getElementById('reset');
+  var setting = document.getElementById('setting');
+  var color = document.getElementById('color');
+  var width = document.getElementById('width');
+  var height = document.getElementById('height');
+
+  for (var i = 0; i < color.children.length; i++) {
+  		color.children[i].index = i;
+  		color.children[i].onclick = function(){
+  			_left.style.backgroundColor = color.children[this.index].getAttribute('value');  			
+  		}
+  }
+  for (var i = 0; i < width.children.length; i++) {
+  		width.children[i].index = i;
+  		width.children[i].onclick = function(){
+  			_left.style.width = width.children[this.index].getAttribute('value')+'px';  			
+  		}
+  }
+  for (var i = 0; i < height.children.length; i++) {
+  		height.children[i].index = i;
+  		height.children[i].onclick = function(){
+  			_left.style.height = height.children[this.index].getAttribute('value')+'px';  			
+  		}
+  }
+
+  function setStyle(item,){
+  	for (var i = 0; i < item.children.length; i++) {
+  		item.children[i].index = i;
+  		item.children[i].onclick = function(){
+  			_left.style.name = item.children[this.index].getAttribute('value');
+  		}
+  	}
+  }
+
+
+  function toogle(value){
+  	if(value){
+		bg.style.display = 'block';
+	  	_right.style.display = "block";
+	}else{
+		bg.style.display = 'none';
+		_right.style.display = "none";
+	}
+  }
+
+   //设置显示
+  show.onclick = function(){
+    toogle('block');
+  }
+
+  //重置
+  reset.onclick = function(){
+      _left.style.width = '100px';
+      _left.style.height = '100px';
+      _left.style.backgroundColor = '#fff';
+  }
+
+  //设置
+
+  setting.onclick = function(){
+	toogle();
+  }
+
+
+}
+  </script>
+</body>
+</html>
