@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	#iphone{width:360px;height: 500px;background: url(img/iphone.jpg) no-repeat center center;background-size: 100% 100%;position: relative;}
+	.container{position: absolute;top:57px;left:86px;width: 200px;}
+	#content{
+		padding: 10px 0px;
+		height: 275px;
+		overflow-y: auto;
+	}
+	.bottom span{
+		display: inline-block;
+		width: 28px;
+		height: 28px;
+		float: left;
+		margin:0 5px;
+		cursor: pointer;
+		border:solid 1px #ccc;
+		border-radius: 15%;
+		text-align: center;
+		line-height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.container img{
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+	}
+ 	.bottom input{
+ 		display: inline-block;
+ 		width: 107px;
+ 		height: 28px;
+ 		padding-left: 5px;
+ 		line-height: 28px;
+ 		border:solid 1px #ccc;
+ 		border-radius: 5%;
+ 		outline: none;
+ 		font-size: 14px;
+ 	}
+	.bottom button{
+		display: inline-block;
+		height: 30px;
+		padding: 0px;
+		font-size: 14px;
+		border:none;
+		background: none;
+		cursor: pointer;
+	}
+	.word{
+		display: flex;
+		overflow: hidden;
+
+	}
+	.word p{
+		background-color: #eee;
+		font-size: 12px;
+		line-height: 30px;
+		margin-top:0px;
+		margin-bottom:3px;
+		padding: 0 5px;
+	}
+	.left{
+		align-items: center;
+	}
+	.right{
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.right p{
+		color:#fff;
+		background-color: #10CA41;
+	}
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:50px;
+	}
+	.effect img{
+		display: inline-block;
+		width: 200px;
+	}
+</style>
+</head>
+<body>
+	<div id="iphone">
+		<div class="container">
+			<div id="content"></div>
+			<hr style="border:none;height: 1px;background-color: #eee;">
+			<div class="bottom">
+				<span><img id="img" src="img/icon1.jpg" alt="1"></span>
+				<input id="text1" type="text" value="">
+				<button id="btn">发送</button>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="effect">
+		<span>效果图：</span>
+		<img src="模拟手机短信发送.gif" alt="">
+	</div>
+
+	  <script>
+	  	window.onload = function(){
+	  		var oContent = document.getElementById('content');
+	  		var word = oContent.getElementsByTagName('div');
+	  		var oImg = document.getElementById('img');
+	  		var oText = document.getElementById('text1');
+	  		var oBtn = document.getElementById('btn');
+	  		var imgs = ['img/icon1.jpg','img/icon2.jpg'];
+	  		var num = 0;
+	  		var off = true;
+	  		var content = null;
+
+	  		oBtn.onclick = function(){
+	  			let name = off?'right':'left';
+	  			if(oText.value==''){
+	  				alert('输入内容不能为空！');
+	  			}else{
+	  				content = oContent.innerHTML;
+	  				let str = '<p>'+oText.value+'</p><img src='+oImg.src+' alt="1">';	  				
+	  				let strl = '<img src='+oImg.src+' alt="1"><p>'+oText.value+'</p>';
+
+	  				//oContent.innerHTML+='<div class="word '+ name +'"><img src='+oImg.src+' alt="1"><span>'+oText.value+'</span></div>';
+
+	  				let newNode = document.createElement("div");
+	  				newNode.className = "word "+name;
+	  				newNode.innerHTML = off?str:strl;
+	  				//oContent.insertBefore(newNode,null);
+	  				oContent.insertBefore(newNode,oContent.firstChild);
+	  				oText.value = '';
+	  			}
+	  		}
+
+	  		oImg.onclick = function(){
+	  			if(num==imgs.length-1){
+	  				num = -1;
+	  				off=true;
+	  			}else{
+	  				off=false;
+	  			}
+	  			num++;
+	  			oImg.src = imgs[num];
+	  		}
+	  	}
+	  </script>
+</body>
+</html>
