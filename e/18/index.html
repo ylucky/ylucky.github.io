@@ -1,0 +1,140 @@
+<!DOConOff html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片切换</title>
+	<style>
+	#number{
+		position: absolute;
+		top: -16px;
+		left:0px;
+		background-color: rgba(0,0,0,0.4);
+		color:#fff;
+	}
+	#btns{
+		border-top: solid 1px #ccc;
+		max-width: 420px;
+		text-align: center;
+		padding: 10px 0;
+	}
+	#btns button{
+		margin:0px 3px;
+	}
+	.img{
+		position: relative;
+		width: 420px;
+	}
+	.img button{
+		position: absolute;
+		top:50%;
+	}
+	#left{
+		left:0px;
+	}
+	#right{
+		right:0px;
+	}
+	.img p{
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		position: absolute;
+		bottom: 0px;
+		left:0px;
+		text-align: center;
+		background-color: rgba(0,0,0,0.4);
+		color:#fff;
+	}
+
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:50px;
+	}
+	.effect img{
+		display: inline-block;
+		width: 200px;
+	}
+	</style>
+</head>
+<body>
+	<div id="btns">
+		<button>循环切换</button>
+		<button>顺序切换</button>
+		<p id="word">循环切换-图片可以从最后一张跳转到第一张</p>
+	</div>
+	<div class="img">
+		<p id="number">1/3</p>
+		<img id="img" src="../../img/01.jpg" alt="1">
+		<button id="left">&lt;</button>
+		<button id="right">&gt;</button>
+		<p id="text">01.jpg</p>
+	</div>
+	
+	<div class="effect">
+		<span>效果图：</span>
+		<img src="图片切换.gif" alt="">
+	</div>
+	<script>
+		window.onload = function(){
+			var aBtn = document.getElementById('btns').getElementsByTagName('button');
+			var word = document.getElementById('word');
+			var number = document.getElementById('number');
+			var img = document.getElementById('img');
+			var left = document.getElementById('left');
+			var right = document.getElementById('right');
+			var text = document.getElementById('text');
+
+			var arrUrl = ['../../img/01.jpg','../../img/02.jpg','../../img/03.jpg'];
+			var arrText = ['01.jpg','02.jpg','03.jpg',];
+			var arrIntr = ['循环切换-图片可以从最后一张跳转到第一张','顺序切换-图片只能到最后一张或只能到第一张切换',];
+
+			var num = 0;
+			var onOff = true;
+
+			// 初始化
+			function fnTab(){
+				number.innerHTML = num+1+'/'+arrUrl.length;
+				text.innerHTML = arrText[num];
+				img.src = arrUrl[num];
+			}
+
+			fnTab();
+
+			left.onclick = function(){
+				num--;
+				if(num == -1){
+					if(onOff){
+						num = arrUrl.length-1;
+					}else{
+						num = 0;
+						alert("已经是第一张");
+					}
+				}
+				fnTab();
+			}
+			right.onclick = function(){
+				num++;
+				if(num == arrUrl.length){
+					if(onOff){
+						num = 0;
+					}else{
+						num = arrUrl.length-1;
+						alert("已经是最后一张");
+					}
+				}				
+				fnTab();				
+			}
+
+			aBtn[0].onclick = function(){
+				onOff = true;
+				word.innerHTML = arrIntr[0];
+			}
+			aBtn[1].onclick = function(){
+				onOff = false;
+				word.innerHTML = arrIntr[1];
+			}
+		}
+	</script>
+</body>
+</html>
