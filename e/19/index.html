@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.content{
+			margin-top: 80px;
+			max-width: 35%;
+		}
+		figure{
+			width: 60px;
+			display: inline-block;
+			margin:3px;
+			position: relative;
+		}
+		.content figcaption{
+			width: 50px;
+			height: 50px;
+			border-radius: 15%;
+			background-color: #eee;
+			position: relative;
+			margin-bottom: 10px;
+		}
+		.content figcaption i{
+			position: absolute;
+			right: -7px;
+			bottom: -7px;
+			width: 14px;
+			height: 14px;
+			border-radius: 50%;
+			background-color: #FFDE00;
+			color:#fff;
+			border:solid 1px yellow;
+			font-size: 12px;
+		}
+		.content span,.content small{
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+		}
+
+		.show{
+			position: absolute;
+			bottom:90px;
+			left:20%;
+			border:solid 1px #ccc;
+			z-index: 10;
+			width: 240px;
+			font-size: 12px;
+			background-color:#fff;
+			display: none;
+		}
+		.show .title{
+			padding-left: 10px;
+			background-color: #8292E2;
+			color:#fff;
+			text-align: left;
+		}
+		.title h3{
+			font-size: 14px;
+			margin:0;
+			color:#000;
+		}
+		.title small{
+			display: block;
+			text-align: left;
+			color:#fff;
+		}
+		.title button{
+			float: right;
+			margin: 5px 3px;
+		}
+		.show p{
+			padding: 0px 5px;
+			font-size: 12px;
+			line-height: 30px;
+			background-color: #fff;
+			margin:0;
+		}
+		.show .bottom{
+			height: 30px;
+			line-height: 30px;
+		}
+		.show .bottom img{
+			display: inline-block;
+			width: 70%;
+		}
+		.show .bottom span{
+			color:#f30;
+			width: auto;
+		}
+		.bleft{
+			float: left;
+			width: 50%;
+		}
+		.bright{
+			float: right;
+			width: 50%;
+			text-align: right;
+		}
+		.arrow{
+			position: absolute;
+			bottom: -10px;
+			left: 5%;
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-top: 10px solid #f30;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+		}
+		.effect{
+			position: fixed;
+			left: 50%;
+			top:50px;
+		}
+		.effect img{
+			display: inline-block;
+			/* width: 200px; */
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<h2>最新上线</h2>
+		<hr>
+		<div class="lists">
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+				
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+			<figure>
+				<figcaption><i>√</i></figcaption>
+				<span>娱乐观</span>
+				<small>新闻类</small>
+			</figure>
+		</div>
+	</div>
+	<div class="effect">
+		<span>效果图：</span>
+		<img src="必须解决所有浏览器兼容性问题.gif" alt="">
+	</div>
+
+	<div id="show" class="show">
+		<div class="title">
+			<button><i>+</i>添加</button>
+			<h3>搜狐汽车图库<small>生活</small></h3>
+		</div>
+		<p>习近平:人人充分享有人权 是人类社会的梦想!人人充分享有人权 是人类社会的梦想!</p>
+		<div class="bottom">
+			<div class="bleft">
+				<img src="timg.jpg" alt=""><span>4.0</span>
+			</div>	
+			<div class="bright"><span>17000</span>人已添加</div>
+		</div>
+		<i class="arrow"></i>
+	</div>
+
+	<script>
+		window.onload = function(){
+			var arrFigure = document.getElementsByTagName('figure');
+			var node = document.createElement('div');
+			var show = document.getElementById("show");
+			node.className = 'show';
+			for (var i = 0; i < arrFigure.length; i++) {
+				arrFigure[i].index = i;
+				arrFigure[i].onmouseover = function(){
+					show.style.display = 'block';
+					arrFigure[this.index].appendChild(show);
+				}
+				arrFigure[i].onmouseout = function(){
+					show.style.display = 'none';
+					arrFigure[this.index].removeChild(show);
+				}
+			}
+			
+			console.log(arrFigure.length);
+		}
+
+	</script>
+</body>
+</html>
