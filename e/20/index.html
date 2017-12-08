@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul{
+		position: relative;
+		display: block;
+		min-height: 100px;
+	}
+	li{
+		display: inline-block;
+		width: 52px;
+		height: 52px;
+		border:solid 1px #000;
+		font-size: 20px;
+		text-align: center;
+		line-height: 52px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		position: absolute;
+	}
+		.effect{
+			position: fixed;
+			left: 50%;
+			top:50px;
+		}
+		.effect img{
+			display: inline-block;
+		}
+	</style>	
+</head>
+<body>
+	<div id="container">
+		<p>定位实现</p>
+		<button>自动生成10个li</button>
+		<ul id="content1"></ul>
+		<button>自动生成100个li</button>
+		<ul id="content2"></ul>
+	</div>
+	<div class="effect">
+		<span>效果图：</span>
+		自动生成10个LI-只能用定位实现（基础版）
+		<img src="1.gif" alt="1">
+		自动生成100个LI-只能用定位实现（提高版）
+		<img src="2.gif" alt="2">
+	</div>
+
+	<script>
+		window.onload = function(){
+			var oContainer = document.getElementById('container');
+			var aBtn = oContainer.getElementsByTagName('button');
+			var oContent1 = document.getElementById('content1');
+			var oContent2 = document.getElementById('content2');
+			var str = '';
+			var color = ['red','yellow','blue','green'];
+			var cssText = null;
+
+
+			function setColor(i){
+				if(i%4==0){
+					cssText = 'background:'+color[0]+';left:'+((i%10)*62)+'px;top:'+(parseInt(i/10))*62+'px;';
+				}else if(i%4==1){
+					cssText = 'background:'+ color[1]+';left:'+((i%10)*62)+'px;top:'+(parseInt(i/10))*62+'px;';
+				}else if(i%4==2){
+					cssText = 'background:'+ color[2]+';left:'+((i%10)*62)+'px;top:'+(parseInt(i/10))*62+'px;';
+				}else if(i%4==3){
+					cssText = 'background:'+ color[3]+';left:'+((i%10)*62)+'px;top:'+(parseInt(i/10))*62+'px;';
+				}
+			}
+
+			aBtn[0].onclick = function(){
+				for (var i = 0; i < 10; i++) {
+					setColor(i);
+					str+='<li style="'+cssText+'">'+i+'</li>';
+				}
+				oContent1.innerHTML = str;
+				str = '';
+			}
+
+			aBtn[1].onclick = function(){
+				for (var i = 0; i < 100; i++) {
+					setColor(i);
+					str+='<li style="'+cssText+'">'+i+'</li>';
+				}
+				oContent2.innerHTML = str;
+				str = '';
+			}
+		}
+	</script>
+</body>
+</html>
