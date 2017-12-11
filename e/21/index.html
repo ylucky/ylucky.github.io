@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.item{
+			position: relative;
+			min-height: 150px;
+		}
+		span{
+			width: 50px;
+			height: 50px;
+			background-color: #f30;
+			color:#fff;
+			text-align: center;
+			line-height: 50px;
+			position: absolute;
+		}
+		.effect{
+			position: fixed;
+			left: 50%;
+			top:50px;
+		}
+		.effect img{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h2>基础版</h2>
+		<button>自定生成v字型</button>
+		<div id="item1" class="item">
+		</div>
+		<h2>提高版</h2>
+		<button>按钮</button>
+		<div id="item2" class="item">
+		</div>
+	</div>
+
+	<div class="effect">
+		<span>效果图：</span>
+		自动生成V字型-只能用定位实现（基础版）
+		<img src="1.gif" alt="1">
+		<br>
+		自动生成V字型-只能用定位实现（提高版）上右下左
+		<img src="2.gif" alt="2">
+	</div>
+
+	<script>
+		window.onload = function(){
+			var aBtn = document.getElementsByTagName('button');
+			var oItem1 = document.getElementById('item1');
+			var oItem2 = document.getElementById('item2');
+			var str = '';
+			var len = 5;
+			var style = '';
+			var index = 0;
+			aBtn[0].onclick = function(){
+				for (var i = 0; i < len; i++) {
+					if(i<=parseInt(len/2)){
+						style="left:"+50*i+'px;top:'+50*i+'px;';
+					}else{
+						style="left:"+50*i+'px;top:'+50*(len-i-1)+'px;';
+					}
+					str+= '<span style='+style+'>'+i+'</span>';
+				}
+				oItem1.innerHTML = str;
+				str = '';
+			}
+			aBtn[1].onclick = function(){
+				if(index == 4){
+					index = 0;
+				}
+				for (var i = 0; i < len; i++) {
+					if(index == 0){
+						if(i<=parseInt(len/2)){
+							style="left:"+50*i+'px;top:'+50*(len-i-1)+'px;';
+						}else{
+							style="left:"+50*i+'px;top:'+50*i+'px;';
+						}
+					}else if(index ==1){
+						if(i<=parseInt(len/2)){
+							style="left:"+50*i+'px;top:'+50*i+'px;';
+						}else{
+							style="left:"+50*(len-i-1)+'px;top:'+50*i+'px;';
+						}
+					}else if(index ==2){
+						if(i<=parseInt(len/2)){
+							style="left:"+50*i+'px;top:'+50*i+'px;';
+						}else{
+							style="left:"+50*i+'px;top:'+50*(len-i-1)+'px;';
+						}
+					}else{
+						if(i<=parseInt(len/2)){
+							style="left:"+50*(parseInt(len/2)-i)+'px;top:'+50*i+'px;';
+						}else{
+							style="left:"+50*(i-parseInt(len/2))+'px;top:'+50*i+'px;';
+						}
+					}
+					str+= '<span style='+style+'>'+i+'</span>';
+				}
+				index++;
+				oItem2.innerHTML = str;
+				str = '';
+			}
+
+		}
+	</script>
+</body>
+</html>
