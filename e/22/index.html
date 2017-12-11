@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QQ列表展开收缩扩展</title>
+	<style>
+		#container{
+			width: 300px;
+			height: 500px;
+			overflow: hidden;
+		}
+		ul{
+			list-style-type: none;
+			background-color: #11EED1;
+			padding: 0px;
+			border:solid 1px #000;
+		}
+		ul h2{
+			font-size: 18px;
+			margin:0px;
+			padding: 5px 0px;
+		}
+		ul ul{
+			display: none;
+		}
+		ul ul li{
+			background-color: #fff;
+			border-bottom: solid 1px #ccc;
+		}
+		.current{
+			
+		}
+		.current h2{
+			background-color: yellow;
+		}
+		.current ul{
+			display: block;
+		}
+		.effect{
+			position: fixed;
+			left: 50%;
+			top:0px;
+		}
+		.effect img{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h2>QQ列表展开收缩扩展</h2>
+		<ul id="list">
+			<li><h2><i id="icon0">&gt;</i>我的好友</h2>
+				<ul>
+					<li>张三</li>
+					<li>李四</li>
+					<li>王小二</li>
+					<li>王小二</li>
+					<li>王小二</li>
+				</ul>
+			</li>
+			<li><h2><i id="icon1">&gt;</i>企业好友</h2>
+				<ul>
+					<li>张三</li>
+					<li>李四</li>
+					<li>王小二</li>
+					<li>王小二</li>
+				</ul>
+			</li>
+			<li><h2><i id="icon2">&gt;</i>黑名单</h2>
+				<ul>
+					<li>张三</li>
+					<li>李四</li>
+					<li>王小二</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>QQ列表展开收缩扩展</h3>
+		<img src="1.gif" alt="1">
+	</div>
+	<script>
+		window.onload = function(){
+			var aList = document.getElementById('list').children;
+			for (var i = 0; i < aList.length; i++) {
+				aList[i].index = i;
+				aList[i].off = false;
+				aList[i].onclick = function(){
+					for (var j = 0; j < aList.length; j++) {
+						document.getElementById('icon'+j).innerHTML = '&gt;';
+						aList[j].className = '';
+					}
+					if(this.off == true){			
+						this.className = '';				
+						this.off = false;					
+						document.getElementById('icon'+this.index).innerHTML = '&gt;';
+					}else{
+						this.className = 'current';	
+						for (var m = 0; m < aList.length; m++) {
+							aList[m].off = false;
+						}
+						this.off = true;					
+						document.getElementById('icon'+this.index).innerHTML = 'v';
+					}					
+				}
+			}
+		}
+	</script>
+</body>
+</html>
