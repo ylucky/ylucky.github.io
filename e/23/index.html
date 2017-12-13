@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>带缩略图的图片切换效果</title>
+	<style>
+	button,i{
+		outline: none;
+	}
+	#content{
+		max-width: 40%;
+		background-color: #A3AAB3;
+		text-align: center;
+	}
+	#big{
+		width: 500px;
+		margin:0 auto;
+		position: relative;
+	}
+	#big img{
+		display: inline-block;
+		width: 500px;
+		height: 350px;
+		margin-top: 10px;
+	}
+	button{
+		position: absolute;
+		top:50%;
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: #ECE983;
+		border:none;
+		font-size: 18px;
+		color:#fff;
+	}
+	button:hover{
+		background-color: #F4F213;	
+		cursor: pointer;	
+	}
+	.btn1{
+		left: 10px;
+	}
+	.btn2{
+		right: 10px;
+	}
+	i{
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background-color: #eee;
+		margin:5px;
+		cursor: pointer;
+		position: relative;
+	}
+	.cur{
+		background-color: yellow;
+	}
+	.smallImg{
+		width: 90px;
+		height: 60px;
+		padding:5px;
+		background-color: #ddd;
+		position: absolute;
+		left: -45px;
+		bottom:25px;
+	}
+	.smallImg img{
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+	}
+	.trangle{
+		position: absolute;
+		left:45px;
+		bottom:-10px;
+		border-top:solid 10px #ddd;
+		border-left:transparent 5px solid;
+		border-right:transparent 5px solid;
+	}
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:0px;
+	}
+	.effect img{
+		display: inline-block;
+		max-width: 500px;
+	}
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<h2>带缩略图的图片切换效果</h2>
+		<div id="content">
+			<div id="big">
+				<img id="bigImg" src="../../img/01.jpg" alt="01">
+				<button class="btn1">&lt;</button>
+				<button class="btn2">&gt;</button>
+			</div>
+			
+			<div id="icons">
+				<i class="cur"></i>
+				<i></i>
+				<i></i>
+			</div>
+			<!-- <div class="smallImg">
+				<img src="../../img/01.jpg" alt="01">
+				<span class="trangle"></span>
+			</div> -->
+		</div>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>带缩略图的图片切换效果</h3>
+		<img src="1.gif" alt="1">
+	</div>
+
+
+	<script>
+		window.onload = function(){
+			var oBigImg = document.getElementById('bigImg')
+			var arrIcons = document.getElementById('icons').getElementsByTagName('i');
+			var arrBtns = document.getElementById('big').getElementsByTagName('button');
+			var url = ['../../img/01.jpg','../../img/02.jpg','../../img/03.jpg'];
+			var index = 0;
+			var node = document.createElement('div');
+			node.className = 'smallImg';
+			for (var i = 0; i < arrIcons.length; i++) {
+				arrIcons[i].index = i;
+				arrIcons[i].onclick = function() {
+					for (var j = 0; j < arrIcons.length; j++) {
+						arrIcons[j].className = '';
+					}
+					oBigImg.src = url[this.index];
+					this.setAttribute('class','cur');
+					index = this.index;
+				}
+				arrIcons[i].onmouseover = function() {
+					node.innerHTML = '<img src="'+url[this.index]+'" alt="'+this.index+'"><span class="trangle"></span>';
+					this.appendChild(node);
+				}
+				arrIcons[i].onmouseout = function() {
+					this.removeChild(node);
+				}
+			}
+
+
+			arrBtns[0].onclick = function(){
+				for (let i = 0; i < arrIcons.length; i++) {
+					arrIcons[i].className = '';
+				}
+				if(index == 0){
+					index = arrIcons.length;
+				}
+				index--;
+				oBigImg.src = url[index];
+				arrIcons[index].setAttribute('class','cur');
+			}
+			arrBtns[1].onclick = function(){
+				for (let i = 0; i < arrIcons.length; i++) {
+					arrIcons[i].className = '';
+				}
+				if(index==arrIcons.length-1){
+					index = -1;
+				}
+				index++;
+				oBigImg.src = url[index];
+				arrIcons[index].setAttribute('class','cur');
+			}
+		}
+	</script>
+</body>
+</html>
