@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据类型与类型转换</title>
+	<style>
+		textarea{
+			resize: none;
+			width: 300px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<p>JS中的数据类型：数字、字符串、布尔、函数、对象(obj、[]、{}、null)、未定义</p>
+	<h2>1.找到合适的值</h2>
+<textarea name="" id="" cols="30" rows="10"  disabled>
+	var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+</textarea>
+
+<ul>
+	<li><h3>要求：</h3></li>
+	<li>1、找到arr里所有的数字：-98765, 34, -2, 0, 5</li>
+	<li>2、找到可以转成数字的：'100px', -98765, 34, -2, '300', '23.45元',  5 </li>
+	<li>3、把转成数字以后，最大值判断出来：300</li>
+	<li>4、把 NaN 所在的位置找出来：1 14 17  19</li>
+</ul>
+<div id="answer1">
+	
+</div>
+	
+	
+<h2>2.请输入QQ号码：</h2>
+<div id="number">
+	<input type="text" />
+	<input type="button" value="判断" />	
+</div>
+
+
+
+<ul>
+	<li><h3>要求：</h3></li>
+	<li>1、有没有输入<br /></li>
+	<li>2、输入的是不是数字<br /></li>
+	<li>3、不能有0在前面<br /></li>
+	<li>4、不能是小数<br /></li>
+	<li>5、输入的数字必须在5位以上、10位以内<br /></li>
+</ul>
+	<script>
+		window.onload=function(){
+			var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+			var maxNumber = arr[0];
+			var answer = document.getElementById('answer1');
+			for (let i = 0; i < arr.length; i++) {
+				if(typeof arr[i] == 'number'&&!isNaN(arr[i])){
+					answer.innerHTML+= "1.arr里所有的数字"+arr[i]+'<br/>';
+				}
+			}
+			for (let i = 0; i < arr.length; i++) {
+
+				if(parseInt(arr[i])){
+					answer.innerHTML+= "2.可以转成数字"+arr[i]+'<br>';//少0
+				}
+			}
+			for (let i = 0; i < arr.length; i++) {
+
+				for (var j = 0; j < arr.length; j++) {
+					if(Number(arr[i])<Number(arr[j])){
+						maxNumber = Number(arr[j]);
+					}
+				}
+			}
+			answer.innerHTML+= "3.maxNumber"+maxNumber+'<br/>';
+
+			for (let i = 0; i < arr.length; i++) {
+				if(Number.isNaN(arr[i])){
+					answer.innerHTML+="4.NaN所在的位置"+i+'<br/>';
+				}
+			}
+
+
+			var oNumber = document.getElementById('number');
+			var aInpt = oNumber.getElementsByTagName('input');
+			aInpt[1].onclick = function(){
+				var value = aInpt[0].value;
+				if(value==''){
+					alert("请输入QQ号码,不能为空！")
+					return false;
+				}
+				if(isNaN(value)){
+					alert("请不要输入数字以外的值！");
+					return false;
+				}
+				if(parseInt(value)!=parseFloat(value)){
+					alert("请不要输入小数！")
+					return false;
+				}
+				if(value.length<5||value.length>10){
+					alert("请输入5位以上、10位以内的数字");
+					return false;
+				}
+			} 
+		}
+	</script>
+</body>
+</html>
