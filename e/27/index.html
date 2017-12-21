@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>搜狐视频记录片列表展示</title>
+	<style>
+		.container{
+			background-color: #C5DCE4;
+			width:350px;
+			overflow: hidden;
+			padding: 5px;
+		}
+		#tabs{
+			overflow: hidden;
+			border-bottom: solid 1px #569DCB;
+			position: relative;
+		}
+		#tabs h3{
+			height: 50px;
+			line-height: 50px;
+			margin:5px 0px;
+		}
+		#title{
+			position: absolute;
+			right: 10px;
+			bottom: 0px;
+		}
+		#title span{
+			display: inline-block;
+			border-left:solid 1px #569DCB;
+			border-top:solid 1px #569DCB;
+			padding: 3px 5px;
+			margin-top: 16px;
+			float: left;
+			font-size: 12px;
+			cursor: pointer;
+		}
+		#title span:last-child{
+			border-right: solid 1px #569DCB;
+		}
+		ol{
+			list-style: none;
+			font-size: 12px;
+			padding: 0px;
+		}
+		ol i{
+			padding: 5px;
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			line-height: 15px;
+			text-align: center;
+			background-color: #8291D4;
+			color: #fff;
+			margin-right: 5px;
+			margin-left: 5px;
+		}
+		ol li{
+			border-bottom: dotted 1px #fff;
+			/* height: 40px; */
+			line-height: 40px;
+			cursor: pointer;
+			overflow: hidden;
+		}
+		a{
+			float: right;
+			font-size: 12px;
+			text-decoration: none;
+		}
+		.cur{
+			background-color: #fff;
+		}
+		.hover{
+			background-color: #fff;
+			height: 100px;
+			padding: 10px 0px;
+
+		}
+		.hover figure{
+			margin:0px;
+			display: inline-block;
+			float: left;
+		}
+		.hover i{
+			float: left;
+		}
+		.hover img{
+			display: inline-block;
+			width: 80px;
+			height: 80px;
+			float: left;
+			margin-right: 20px;
+			padding: 3px;
+			border:solid 1px #8291D4;
+		}
+		.hover figcaption{
+			width: 50%;
+			float: left;
+			line-height: 20px;
+		}
+		button{
+			display: block;
+			float: right;
+			background-color: #8291D4;
+			color:#fff;
+			border:none;
+		}
+		.effect{
+			position: fixed;
+			left: 50%;
+			top:0px;
+		}
+		.effect img{
+			display: inline-block;
+			max-width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<h3>搜狐视频记录片列表展示</h3>
+	<div class="container">
+		<div id="tabs">
+			<h3>观看排行榜</h3>
+			<div id="title">
+				<span class="cur">每日</span>
+				<span>每周</span>
+				<span>全部</span>
+			</div>
+		</div>	
+		<div id="content">
+				<section>
+					<ol>
+						<!-- <li class="hover">
+							<i>1</i>
+							<figure>
+								<img src="../../img/people.jpeg" alt="people">
+								<figcaption>中央经济工作会议20日在北京闭幕。<br><button>▷播放</button></figcaption>
+							</figure>
+						</li> -->
+						<li><i>1</i>1习近平定调2018中国经济，要干这些大事</li>
+						<li><i>2</i>习近平新时代中国特色社会主义经济思想引发热议</li>
+						<li><i>3</i>牢牢把握高质量发展这个根本要求</li>
+						<li><i>4</i>开放透明 同中国合作大有可为  新时代新气象新作为</li>
+						<li><i>5</i>雄安新区将重点发展高端高新产业 打造科技新城</li>
+						<li><i>6</i>2018高考大纲稳中微调 细微变化体现选才导向</li>
+						<li><i>7</i>11月全国社会消费品零售总额3.41万亿元,同比增10.2%</li>
+						<li><i>8</i>商务部：中国从未、也永远不会实行“经济侵略”</li>
+						<li><i>9</i>三部门:安全生产责任保险每死一人按不低于30万赔偿</li>
+						<li><i>10</i>最高领导人3年前的提法，今年底悄然变化</li>
+					</ol>
+					<a href="">更多&gt;&gt;</a>
+				</section>
+				<section style="display: none;">
+					<ol>
+						<li><i>1</i>2习近平定调2018中国经济，要干这些大事</li>
+						<li><i>2</i>习近平新时代中国特色社会主义经济思想引发热议</li>
+						<li><i>3</i>牢牢把握高质量发展这个根本要求</li>
+						<li><i>4</i>开放透明 同中国合作大有可为  新时代新气象新作为</li>
+						<li><i>5</i>雄安新区将重点发展高端高新产业 打造科技新城</li>
+						<li><i>6</i>2018高考大纲稳中微调 细微变化体现选才导向</li>
+						<li><i>7</i>11月全国社会消费品零售总额3.41万亿元,同比增10.2%</li>
+						<li><i>8</i>商务部：中国从未、也永远不会实行“经济侵略”</li>
+						<li><i>9</i>三部门:安全生产责任保险每死一人按不低于30万赔偿</li>
+						<li><i>10</i>最高领导人3年前的提法，今年底悄然变化</li>
+					</ol>
+					<a href="">更多&gt;&gt;</a>
+				</section>
+				<section style="display: none;">
+					<ol>
+						<li><i>1</i>3习近平定调2018中国经济，要干这些大事</li>
+						<li><i>2</i>习近平新时代中国特色社会主义经济思想引发热议</li>
+						<li><i>3</i>牢牢把握高质量发展这个根本要求</li>
+						<li><i>4</i>开放透明 同中国合作大有可为  新时代新气象新作为</li>
+						<li><i>5</i>雄安新区将重点发展高端高新产业 打造科技新城</li>
+						<li><i>6</i>2018高考大纲稳中微调 细微变化体现选才导向</li>
+						<li><i>7</i>11月全国社会消费品零售总额3.41万亿元,同比增10.2%</li>
+						<li><i>8</i>商务部：中国从未、也永远不会实行“经济侵略”</li>
+						<li><i>9</i>三部门:安全生产责任保险每死一人按不低于30万赔偿</li>
+						<li><i>10</i>最高领导人3年前的提法，今年底悄然变化</li>
+					</ol>
+					<a href="">更多&gt;&gt;</a>
+				</section>					
+				</div>		
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>搜狐视频记录片列表展示</h3>
+		<img src="1.gif" alt="1">
+	</div>
+	
+	<script>
+		window.onload = function(){
+			var oContent = document.getElementById('content');
+			var aSection = oContent.getElementsByTagName('section');
+			var oTitle = document.getElementById('title');
+			var aSpan = oTitle.getElementsByTagName('span');
+
+			for (var i = 0; i < aSpan.length; i++) {
+				aSpan[i].index = i;
+				aSpan[i].onmouseover = function(){
+					for (let i = 0; i < aSpan.length; i++) {
+						aSpan[i].className = '';
+						aSection[i].style.display = 'none';
+					}
+					this.className = 'cur';
+					aSection[this.index].style.display = 'block';
+				}
+			}
+			var aLi = aSection[0].getElementsByTagName('li');
+			var str = '<figure><img src="../../img/people.jpeg" alt="people"><figcaption>中央经济工作会议20日在北京闭幕。<br><button>▷播放</button></figcaption></figure>';
+			var old = null;
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					old = this.innerHTML;
+					this.className = 'hover';
+					this.innerHTML = '<i>'+(this.index+1)+'</i>'+str;
+				}
+				aLi[i].onmouseout = function(){
+					this.className = '';
+					this.innerHTML = old;
+				}
+			}
+		}
+		
+	</script>
+</body>
+</html>
