@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3画五角星</title>
+	<style>
+		ul{
+			list-style-type: none;
+		}
+		li{
+			float: left;
+			margin-right: 5px;
+		}
+		span{
+			display: inline-block;
+			width: 0px;
+			height: 0px;
+			color:red;
+			margin: 50px 0;
+			border-bottom: solid 70px #f30;
+			border-left: solid 100px transparent;
+			border-right: solid 100px transparent;
+			position: relative;
+			transform:rotate(-35deg);
+			-ms-transform: rotate(-35deg);
+            -moz-transform: rotate(-35deg);
+            -webkit-transform: rotate(-35deg);
+		}
+		span:before{
+			display: inline-block;
+			width: 0px;
+			height: 0px;
+			content: "";
+			color:red;
+			margin: 50px 0;
+			border-bottom: solid 70px #f30;
+			border-left: solid 100px transparent;
+			border-right: solid 100px transparent;
+			position: absolute;
+			top:-50px;
+			left:-100px;
+			transform:rotate(70deg);
+			-ms-transform: rotate(70deg);
+            -moz-transform: rotate(70deg);
+            -webkit-transform: rotate(70deg);
+		}
+		span:after{
+			width: 0px;
+			height: 0px;
+			content: "";
+			border-bottom: solid 70px #f30;
+			border-left: solid 30px transparent;
+			border-right: solid 30px transparent;
+			position: absolute;
+			left: 0px;
+			top:-43px;
+			transform:rotate(35deg);
+			-ms-transform: rotate(35deg);
+            -moz-transform: rotate(35deg);
+            -webkit-transform: rotate(35deg);
+		}
+
+
+		#star-five{
+		width: 0;
+		height: 0;
+		color: red;
+		margin: 50px 0;
+		position: relative;
+		display: block;
+		border-left: 100px solid transparent;
+		border-right: 100px solid transparent;
+		border-bottom: 70px solid red;
+		-moz-transfrom:rotate(-35deg);
+		-webkit-transform:rotate(-35deg);
+		-ms-transform:rotate(-35deg);
+		-o-transform:rotate(-35deg);
+		}
+		
+		#star-five:before{
+		width: 0;
+		height: 0;
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+		border-bottom: 80px solid red;
+		position: absolute;
+		top: -45px;
+		left: -65px;
+		color: white;
+		display: block;
+		content: "";
+		-moz-transform:rotate(-35deg);
+		-webkit-transform:rotate(-35deg);
+		-ms-transform:rotate(-35deg);
+		-o-transform:rotate(-35deg); 
+		}
+		#star-five:after{
+		width: 0;
+		height: 0;
+		display: block;
+		position: absolute;
+		color: red;
+		top: 3px;
+		left: -105px;
+		border-left: 100px solid transparent;
+		border-right: 100px solid transparent;
+		border-bottom: 70px solid red;
+		content: "";
+		-moz-transform:rotate(-70deg);
+		-webkit-transform:rotate(-70deg);
+		-ms-transform:rotate(-70deg);
+		-o-transform:rotate(-70deg);
+		} 
+
+	</style>
+</head>
+<body>
+	五角星效果：
+	<span></span>
+	<br><br><br><br><br><br>
+	<h3 id="star-five"></h3>
+</body>
+</html>

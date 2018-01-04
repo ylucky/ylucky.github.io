@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度文库评分</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	.stars span{
+		display: inline-block;
+		width: 32px;
+		height: 34px;
+		display: inline-block;
+		background: url(../../img/star-none.png) no-repeat center center;
+	}
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:0px;
+	}
+	.effect img{
+		display: inline-block;
+		max-width: 500px;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+			<h3>百度文库评分</h3>
+			<div class="stars">
+				<p><i class="glyphicon glyphicon-cog"></i>总体评价:</p>
+				<p id="star">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</p>
+				<small>小提示：点击星星就能打分</small>
+			</div>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>百度文库评分</h3>
+		<img src="01.gif" alt="百度文库评分">
+	</div>
+	<script>
+		window.onload = function(){
+			var aStar = document.getElementById('star');
+			var stars = aStar.getElementsByTagName('span');
+			var text = ['很差','较差','还行','一般','可以'];
+			var src = ['../../img/star-sad.png','../../img/star-none.png','../../img/star-full.png','../../img/star-half.png'];
+			for (var i = 0; i < stars.length; i++) {
+			 	stars[i].index = i;
+			 	/*stars[i].onclick = function(){
+
+			 	}*/
+			 	stars[i].onmouseover = function(){
+			 		if(this.index == '0'||this.index == '1'){
+			 			this.style.backgroundImage = "url("+src[0]+")";
+			 		}else{
+						this.style.backgroundImage = "url("+src[2]+")";
+			 		}
+			 	}
+			 	stars[i].onmouseout = function(){
+					//this.style.backgroundImage = "url("+src[1]+")";
+			 	}
+			 } 
+		}
+	</script>
+</body>
+</html>

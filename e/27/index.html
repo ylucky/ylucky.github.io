@@ -209,13 +209,14 @@
 			var aLi = aSection[0].getElementsByTagName('li');
 			var str = '<figure><img src="../../img/people.jpeg" alt="people"><figcaption>中央经济工作会议20日在北京闭幕。<br><button>▷播放</button></figcaption></figure>';
 			var old = null;
+			var timer = null;
 			for (var i = 0; i < aLi.length; i++) {
 				aLi[i].index = i;
-				aLi[i].onmouseover = function(){
+				timer = setInterval(function(aLi[i].onmouseover = function(){
 					old = this.innerHTML;
 					this.className = 'hover';
 					this.innerHTML = '<i>'+(this.index+1)+'</i>'+str;
-				}
+				}),100);
 				aLi[i].onmouseout = function(){
 					this.className = '';
 					this.innerHTML = old;
