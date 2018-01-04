@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	ul{
+		padding:0px;
+		max-width: 350px;
+		overflow: hidden;
+	}
+	li{
+		list-style-type: none;
+		height: 30px;
+		line-height: 30px;
+	}
+	li span,li input{
+		display: inline-block;
+		width: 100px;
+		text-align: center;
+	}
+	li:nth-child(even){
+		background-color: #E5FCEB;
+	}
+	li:hover{
+		background-color: #eee;
+	}
+	.disable{
+		background-color: #eee;
+		opacity: 0.4;
+		filter: alpha(opacity=40);
+	}
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:0px;
+	}
+	.effect img{
+		display: inline-block;
+		max-width: 500px;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3>百度音乐-全选操作</h3>
+		<ul>
+			<li>
+				<span><input type="checkbox"></span>
+				<span>勇气</span>
+				<span>梁静茹</span>
+			</li>
+			<li>
+				<span><input type="checkbox"></span>
+				<span>我爱你中国</span>
+				<span>梁博</span>
+			</li>
+			<li>
+				<span><input type="checkbox"></span>
+				<span>后来</span>
+				<span>刘若英</span>
+			</li>
+			<li>
+				<span><input type="checkbox"></span>
+				<span>小幸运</span>
+				<span>hobe</span>
+			</li>
+			<li>
+				<span><input type="checkbox"></span>
+				<span>认真的雪</span>
+				<span>薛之谦</span>
+			</li>
+		</ul>
+		<hr>
+		<div id="btns">
+			<label for="all"><input type="checkbox" id="all" >全选</label>	
+			<button class="disable"><i class="glyphicon glyphicon-heart"></i>收藏</button>
+			<button class="disable"><i class="glyphicon glyphicon-plus"></i>添加</button>
+			<button class="disable"><i class="glyphicon glyphicon-remove"></i>删除</button>		
+		</div>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>百度音乐-全选操作</h3>
+		<img src="02.gif" alt="百度音乐-全选操作">
+	</div>
+	<script>
+		window.onload = function(){
+			var lis = document.getElementsByTagName('ul')[0].getElementsByTagName('li');
+			var oBtns = document.getElementById('btns');
+			var aBtn = oBtns.getElementsByTagName('button');
+			var allBtn = document.getElementById('all');
+			var num = 0;
+			for (let i = 0; i < lis.length; i++) {
+				if(lis[i].getElementsByTagName('input')[0].checked){
+					lis[i].style.backgroundColor = '#ccc';
+				}
+				lis[i].index = i;
+				lis[i].onclick = function(){
+					num = 0;
+					for (var j = 0; j < lis.length; j++) {
+						if(lis[j].getElementsByTagName('input')[0].checked){
+							num++;
+						}
+					}
+					if(num == lis.length){
+						allBtn.checked = true;
+						btnAbled();
+					}
+					if(this.getElementsByTagName('input')[0].checked==false){
+						allBtn.checked = false;
+						btnDisabled();
+					}	
+				}
+			}
+
+			allBtn.onclick = function(){
+				if(this.checked){
+					for (let i = 0; i < lis.length; i++) {
+						lis[i].getElementsByTagName('input')[0].checked = true;
+					}
+					btnAbled();
+				}else{
+					for (let i = 0; i < lis.length; i++) {
+						lis[i].getElementsByTagName('input')[0].checked = false;
+					}
+					btnDisabled();
+				}
+			}
+
+
+			function btnDisabled(){
+				for (let i = 0; i < aBtn.length; i++) {
+					aBtn[i].className = 'disable';
+				}
+			}
+			function btnAbled(){
+				for (let i = 0; i < aBtn.length; i++) {
+					aBtn[i].className = '';
+				}
+			}
+		}
+	</script>
+</body>
+</html>
