@@ -116,6 +116,7 @@
 			}
 
 			allBtn.onclick = function(){
+				this.checked = !this.checked;
 				if(this.checked){
 					for (let i = 0; i < lis.length; i++) {
 						lis[i].getElementsByTagName('input')[0].checked = true;

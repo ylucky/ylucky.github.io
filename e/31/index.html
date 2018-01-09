@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>淘宝商品广告效果</title>
+	<style>
+	.container{
+		width: 500px;
+		height: 250px;
+		padding: 20px;
+		overflow: hidden;
+		position: relative;
+		border:solid 1px #f30;
+	}
+	ul{
+		padding: 0px;
+		list-style-type: none;
+	}
+	section a{
+		display: inline-block;
+		width: 100%;
+		height: auto;
+		text-align: center;
+		text-decoration: none;
+	}
+	.tabs{
+		position: absolute;
+		left: 0px;
+		top:0px;
+		width: 100%;
+		overflow: hidden;
+		z-index: 3;
+	}
+	.left{
+		float: left;
+		margin-left: 20px;
+	}
+	.right{
+		float: right;
+		margin-right: 20px;
+	}
+	section ul li{
+		width: 80px;
+		height: 50px;
+		line-height: 50px;
+		border:solid 1px #f30;
+		margin-left: 0px;
+		margin-bottom: 2px;
+	}
+	a{
+		color:#000;
+	}
+	.container img{
+		display: block;
+		width: 300px;
+		margin:0 auto;
+	}
+	.hover{
+		background-color: #f30;
+	}
+	.hover a{
+		color:#fff;
+	}
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:0px;
+	}
+	.effect img{
+		display: inline-block;
+		max-width: 500px;
+	}
+	</style>
+</head>
+<body>
+	<h3>淘宝商品广告效果</h3>
+	<div class="container">
+		<div class="tabs">
+			<section class="left">
+				<ul class="tab">
+					<li><a href="javascript:;">连衣裙</a></li>
+					<li><a href="javascript:;">雪纺</a></li>
+					<li><a href="javascript:;">T恤</a></li>
+					<li><a href="javascript:;">短裤</a></li>
+					<li><a href="javascript:;">针织衫</a></li>
+				</ul>
+			</section>
+			<section class="right">
+				<ul class="tab">
+					<li><a href="javascript:;">包包</a></li>
+					<li><a href="javascript:;">凉鞋</a></li>
+					<li><a href="javascript:;">单鞋</a></li>
+					<li><a href="javascript:;">太阳镜</a></li>
+					<li><a href="javascript:;">墨镜</a></li>
+				</ul>
+			</section>
+		</div>
+		<img id="img" src="../../img/01.jpg" alt="image">
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>淘宝商品广告效果</h3>
+		<img src="01.gif" alt="淘宝商品广告效果">
+	</div>
+	<script>
+		window.onload = function(){
+			/*var tab = document.getElementsByClassName('tab');
+			var img = document.getElementById('img');
+			for (var i = 0; i < tab.length; i++) {
+				for (var j = 0; j < tab[i].children.length; j++) {
+					tab[i].children[j].index = j;
+					tab[i].children[j].onmouseover = function(){
+						img.src = "../../img/0"+(this.index+1)+".jpg";
+					}
+				}
+			}*/
+
+			var lis = document.querySelectorAll('li');
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].index = i;
+				lis[i].onmouseover = function(){
+					this.className= "hover";
+					if(this.index<9){
+						img.src = "../../img/0"+(this.index+1)+".jpg";						
+					}else{
+						img.src = "../../img/"+(this.index+1)+".jpg";
+					}
+				}
+				lis[i].onmouseout = function(){
+					this.className = "";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

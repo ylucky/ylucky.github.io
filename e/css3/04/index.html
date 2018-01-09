@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS写一个转圈的球</title>
+	<style>
+		.circle{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border:solid 1px #ccc;
+			background-color: #fff;
+			animation: circle 1s infinite;
+		}
+
+		@keyframes circle{
+			0%{
+				transform:rotate(60deg);
+			}
+			25%{
+				transform:rotate(120deg);
+			}
+			50%{
+				transform:rotate(180deg);
+			}
+			75%{
+				transform:rotate(240deg);
+			}
+			100%{
+				transform:rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="circle"><div class="circle">圆</div></div>
+</body>
+</html>
