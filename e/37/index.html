@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查找、替换、删除</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	button{
+		outline:none;
+	}
+	.contain{
+		position: relative;
+		max-width: 600px;
+		background-color: #E5E5E5;
+		padding: 20px;
+		overflow: hidden;
+	}
+	textarea{
+		resize: none;
+		width: 400px;
+	}
+	ul{
+		padding:0px;
+		margin:0px;
+		list-style-type: none;
+		text-align: center;
+	}
+	li{
+		height: 30px;
+		line-height: 30px;
+		background-color: #eee;
+		margin-top: 5px;
+	}
+	.btns{
+		position: absolute;
+		right: 10px;
+		top:10px;
+	}
+	button{
+		background-color: #ccc;
+		color:#fff;
+		border:none;
+	}
+	.btns button{
+		padding: 10px 25px;		
+	}
+	.setting{
+		border:solid 5px #f30;
+		padding: 20px;
+		max-width: 500px;
+		position: relative;
+	}
+	.setting i{
+		position: absolute;
+		right: 20px;
+		top:5px;
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		font-size: 30px;
+		text-align: center;
+	}
+	.title{
+		height: 30px;
+		border-bottom: solid 2px #f30;
+		margin-bottom: 20px;
+	}
+	.title span{
+		display: inline-block;
+		width: 80px;
+		height: 28px;
+		line-height: 28px;	
+		text-align: center;
+	}
+	.item input{
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		margin-right: 3px;
+	}
+	.item button{
+		height: 30px;
+		line-height: 30px;
+	}
+	.cur{
+		background-color: #f30;
+		color:#fff;
+	}
+	.none{
+		display: none;
+	}
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:0px;
+	}
+	.effect img{
+		display: inline-block;
+		max-width: 800px;
+	}
+	</style>
+</head>
+<body>
+	<h3>查找、替换、删除</h3>
+	<div class="contain">
+		<textarea name="" id="text" cols="30" rows="10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum placeat, vero! Ducimus voluptatum odio, obcaecati non. Fuga ex magnam commodi repellat blanditiis, iusto inventore fugiat facilis, tenetur temporibus autem ab!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!</textarea>
+		<div class="btns">
+			<button id="btn">展开</button>
+			<ul id="list" class="none">
+				<li>查找</li>
+				<li>替换</li>
+			</ul>
+		</div>
+		<div id="setting" class="setting none">
+			<i class="glyphicon glyphicon-remove-circle"></i>
+			<div class="title">
+				<span class="cur">查找</span><span>替换</span>
+			</div>
+			<div class="item item1">
+				<input type="text"><button>查找</button>
+			</div>
+			<div class="item item2">
+				<input type="text"><input type="text"><button>替换</button>
+			</div>
+		</div>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>查找、替换、删除</h3>
+		<img src="01.gif" alt="查找、替换、删除">
+	</div>
+	<script>
+		window.onload = function() {
+			var btn = document.getElementById("btn");
+			var list = document.getElementById("list");
+			var aLi = list.getElementsByTagName('li');
+			var setting = document.getElementById('setting');
+
+			var show = false;
+			btn.onclick = function(){
+				show = !show;
+				if(show){
+					list.className="";					
+				}else{
+					list.className="none";
+				}
+			}
+
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					this.style.backgroundColor = "#f30";
+				}
+				aLi[i].onmouseout = function(){
+					this.style.backgroundColor = "#eee";
+				}
+				aLi[i].onclick = function(){
+					setting.style.display = "block";
+					list.style.display = "none";
+					show = true;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
