@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字搬运工</title>
+	<style>
+		.container{
+			margin-left:10%;
+			max-width: 800px; 
+		}
+		textarea{
+			resize: none;
+		}
+		.left{
+			float: left;
+			width: 40%;
+		}
+		.left textarea{
+			width: 100%;
+			height: 250px;
+		}
+		.mid{
+			width: 20%;
+			float: left;
+			text-align:center;
+		}
+		.mid img{
+			width: 80%;
+		}
+		.right{
+			float: right;
+			width: 40%;
+		}
+		.right section{
+			border:solid 1px #ccc;
+			background-color: #A2EAF5;
+			width: 100%;
+			height: 250px;
+			text-align: left;
+		}
+		button{
+			display: inline-block;
+			padding: 10px 15px;
+			background-color: #FC7A1A;
+			border:none;
+			color:#fff;
+		}
+		.none{
+			display: none;
+		}
+		.effect{
+			position: fixed;
+			left: 10%;
+			top:300px;
+		}
+		.effect img{
+			display: inline-block;
+			max-width: 800px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3>文字搬运工</h3>
+		<div class="left">
+			<textarea name="" id="text" cols="30" rows="10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum placeat, vero! Ducimus voluptatum odio, obcaecati non. Fuga ex magnam commodi repellat blanditiis, iusto inventore fugiat facilis, tenetur temporibus autem ab!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!</textarea>
+		</div>
+		<div class="mid">
+			<button>把文字右移</button>
+			<p>0/0</p>
+			<img class="none" src="../../img/timg.gif" alt="time">
+		</div>
+		<div class="right">
+			<section id="content"></section>
+		</div>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>文字搬运工</h3>
+		<img src="01.gif" alt="文字搬运工">
+	</div>
+	<script>
+		window.onload = function(){
+			var oText = document.getElementById('text');
+			var oBtn  = document.getElementsByTagName('button')[0];
+			var oP = document.getElementsByTagName('p')[0];
+			var oImg = document.getElementsByTagName('img')[0];
+			var oCent = document.getElementById('content');
+			var interval = null;
+			
+			oBtn.onclick = function(){
+				//初始化值
+				var num = 0;
+				var all = oText.value.length;
+				oCent.innerHTML = null;
+				//按钮禁用
+				this.disabled = true;
+				this.style.backgroundColor = "#ccc";
+				//显示加载图片
+				oImg.className = '';//显示loading
+				let cent = oText.value;
+
+				interval = setInterval(function(){
+					oCent.innerHTML += cent.charAt(0);//添加第一个
+					cent = cent.slice(1);//重新赋值
+					oText.value = cent;//删除第一个
+
+					if(num == all){
+						clearInterval(interval);
+						oImg.className = 'none';//隐藏loading
+						oBtn.style.backgroundColor = "#FC7A1A";
+						oBtn.disabled = false;
+					}
+					oP.innerHTML = num++ +"/"+all;
+				},10)
+			}
+
+		}
+	</script>
+</body>
+</html>
