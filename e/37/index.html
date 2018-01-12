@@ -15,9 +15,11 @@
 		padding: 20px;
 		overflow: hidden;
 	}
-	textarea{
-		resize: none;
+	#text{
 		width: 400px;
+		border:solid 1px #ddd;
+		background-color: #fff;
+		padding: 20px;
 	}
 	ul{
 		padding:0px;
@@ -30,6 +32,7 @@
 		line-height: 30px;
 		background-color: #eee;
 		margin-top: 5px;
+		cursor: pointer;
 	}
 	.btns{
 		position: absolute;
@@ -60,6 +63,7 @@
 		line-height: 30px;
 		font-size: 30px;
 		text-align: center;
+		cursor: pointer;
 	}
 	.title{
 		height: 30px;
@@ -72,6 +76,7 @@
 		height: 28px;
 		line-height: 28px;	
 		text-align: center;
+		cursor: pointer;
 	}
 	.item input{
 		display: inline-block;
@@ -82,6 +87,7 @@
 	.item button{
 		height: 30px;
 		line-height: 30px;
+		background-color: #2F2D2D;
 	}
 	.cur{
 		background-color: #f30;
@@ -104,7 +110,7 @@
 <body>
 	<h3>查找、替换、删除</h3>
 	<div class="contain">
-		<textarea name="" id="text" cols="30" rows="10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum placeat, vero! Ducimus voluptatum odio, obcaecati non. Fuga ex magnam commodi repellat blanditiis, iusto inventore fugiat facilis, tenetur temporibus autem ab!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!</textarea>
+		<p id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum placeat, vero! Ducimus voluptatum odio, obcaecati non. Fuga ex magnam commodi repellat blanditiis, iusto inventore fugiat facilis, tenetur temporibus autem ab!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!我是测试文字!</p>
 		<div class="btns">
 			<button id="btn">展开</button>
 			<ul id="list" class="none">
@@ -113,15 +119,15 @@
 			</ul>
 		</div>
 		<div id="setting" class="setting none">
-			<i class="glyphicon glyphicon-remove-circle"></i>
-			<div class="title">
+			<i id="close" class="glyphicon glyphicon-remove-circle"></i>
+			<div class="title" id="title">
 				<span class="cur">查找</span><span>替换</span>
 			</div>
-			<div class="item item1">
-				<input type="text"><button>查找</button>
+			<div class="item">
+				<input type="text"><button id="search">查找</button>
 			</div>
-			<div class="item item2">
-				<input type="text"><input type="text"><button>替换</button>
+			<div class="item none">
+				<input type="text"><input type="text"><button id="replace">替换</button>
 			</div>
 		</div>
 	</div>
@@ -132,18 +138,32 @@
 	</div>
 	<script>
 		window.onload = function() {
+			var text = document.getElementById("text");
 			var btn = document.getElementById("btn");
 			var list = document.getElementById("list");
 			var aLi = list.getElementsByTagName('li');
 			var setting = document.getElementById('setting');
+			var close = document.getElementById('close');
+			var title = document.getElementById('title');
+			var aSpan = title.getElementsByTagName('span');
+			var aItem = document.getElementsByClassName('item');
+			var search = document.getElementById('search');
+			var replace = document.getElementById('replace');
 
-			var show = false;
+			function init(){
+				for (let item of aSpan){
+					item.className = "";
+				}
+				for(let item of aItem){
+					item.className = "item none";
+				}
+			}
+
 			btn.onclick = function(){
-				show = !show;
-				if(show){
-					list.className="";					
+				if(list.className==""){
+					list.className="none";					
 				}else{
-					list.className="none";
+					list.className="";
 				}
 			}
 
@@ -156,10 +176,65 @@
 					this.style.backgroundColor = "#eee";
 				}
 				aLi[i].onclick = function(){
+					init();
 					setting.style.display = "block";
-					list.style.display = "none";
-					show = true;
+					list.className = "none";
+					aSpan[this.index].className = "cur";
+					aItem[this.index].className = "item";
 				}
+			}
+
+			for (let i = 0; i < aSpan.length; i++) {
+				aSpan[i].index = i;
+				aSpan[i].onclick = function(){
+					init();
+					this.className = "cur";
+					aItem[this.index].className = "item";
+				};
+			}
+
+			close.onclick = function(){
+				setting.style.display = "none";
+			}
+
+			//初始化验证
+			var item = null;
+			var itemValue = null;
+			var replaceValue = null;
+			function checkItem(element){
+				item = element.parentNode.children;
+				itemValue = item[0].value;
+				replaceValue = item[1].value;
+				if(itemValue==""){
+					alert("您还没有输入内容！");
+					return;
+				}
+			}
+
+			var content = text.innerHTML;
+			search.onclick = function(){
+				checkItem(this);
+				//循环查找元素
+				var pos = content.indexOf(itemValue);
+				var positions =new Array();
+				while(pos>-1){
+					positions.push(pos);
+					pos = content.indexOf(itemValue,pos+1);
+				}
+				if(positions.length==0){
+					alert("很抱歉没有找到该元素！");
+				}else{
+					//let result = content.replace(itemValue,'<em style="color:#f30;">'+itemValue+'</em>');
+					//text.innerHTML = result;
+					let result = content.split(itemValue);
+					text.innerHTML = result.join('<em style="background-color:orange;">'+itemValue+'</em>');
+				}
+			}
+
+			replace.onclick = function(){
+				checkItem(this);
+				let result = content.split(itemValue);
+				text.innerHTML = result.join('<em style="background-color:orange;">'+replaceValue+'</em>');
 			}
 		}
 	</script>
