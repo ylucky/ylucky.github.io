@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改文本框的值</title>
+<style>
+	.content p{
+		background-color: green;
+		color:#fff;
+		height: 30px;
+		line-height: 30px;
+		padding-left: 45px;
+	}
+	.content{
+		max-width: 30%;
+	}
+	#list li{
+		list-style-type: none;
+		position: relative;
+		height: 30px;
+		line-height: 30px;
+		border-bottom: solid 1px #ccc;
+	}
+	#list button{
+		margin-left: 20px;
+	}
+	#setting{
+		position: absolute;
+		left: 0px;
+		top:0px;
+		display: none;
+	}
+	input{
+		margin-right: 10px;
+	}
+	span{
+		display: inline-block;
+		padding: 5px 8px;
+		margin-right:10px;
+		background-color: #f30;
+		cursor: pointer;
+	}
+	.effect{
+		position: fixed;
+		left: 50%;
+		top:0px;
+	}
+	.effect img{
+		display: inline-block;
+	}
+</style>
+</head>
+<body>
+	<h2>修改文本框的值</h2>
+	<div class="content">
+		<p>分类名称</p>
+		<ul id="list">
+			<li>妙味远程课堂1<button>编辑</button></li>
+			<li>妙味远程课堂2<button>编辑</button></li>
+		</ul>
+		<div id="setting">
+			<input type="text"/><span>保存</span><span>取消</span>
+		</div>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<p>修改文本框的值</p>
+		<img src="01.gif" alt="1">
+	</div>
+
+	<script>
+		window.onload = function(){
+			var oList = document.getElementById('list');
+			var aLi = oList.getElementsByTagName("li");
+			var setting = document.getElementById("setting");
+			var oldContent = null;
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].getElementsByTagName('button')[0].onclick = function(){
+					//this.parentNode.style.position = "relative";
+					oldContent = this.parentNode.innerHTML;
+					this.parentNode.innerHTML = setting.innerHTML;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
