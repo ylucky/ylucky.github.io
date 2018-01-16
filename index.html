@@ -15,8 +15,15 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="less/index.css">
+    <style>
+      .content{
+        display: none;
+      }
+    </style>
   </head>
   <body>
+    <img class="loading" src="img/loading.gif" alt="loading">
+<div class="content">
     <div class="main container-fluid">
       <nav class="navbar navbar-default  navbar-fixed-top">
         <div class="container-fluid">
@@ -165,12 +172,21 @@
         <div id="to_top"></div>
       </section>
     </div>
-
+</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script>
+        document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.    
+        function loadingChange()     
+        {     
+            if(document.readyState == "complete"){//当页面加载状态为完全结束时进入     
+                 $(".loading").hide();//当页面加载完成后将loading页隐藏    
+                 $('.content').show();  
+            }     
+        }   
+
         window.onload = function(){
           var oTop = document.getElementById("to_top");
           window.onscroll = function(){
