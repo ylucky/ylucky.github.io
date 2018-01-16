@@ -17,17 +17,14 @@
 	#list li{
 		list-style-type: none;
 		position: relative;
-		height: 30px;
-		line-height: 30px;
+		height: 40px;
+		line-height: 40px;
 		border-bottom: solid 1px #ccc;
 	}
 	#list button{
 		margin-left: 20px;
 	}
-	#setting{
-		position: absolute;
-		left: 0px;
-		top:0px;
+	.none{
 		display: none;
 	}
 	input{
@@ -35,7 +32,7 @@
 	}
 	span{
 		display: inline-block;
-		padding: 5px 8px;
+		padding: 0px 8px;
 		margin-right:10px;
 		background-color: #f30;
 		cursor: pointer;
@@ -48,6 +45,16 @@
 	.effect img{
 		display: inline-block;
 	}
+	i{
+		display: inline-block;
+		width: 24px;
+		height: 21px;
+		display: inline-block;
+		background: url(../../../img/pencil.jpg) no-repeat left top;
+	}
+	.none{
+		display: none;
+	}
 </style>
 </head>
 <body>
@@ -55,12 +62,18 @@
 	<div class="content">
 		<p>分类名称</p>
 		<ul id="list">
-			<li>妙味远程课堂1<button>编辑</button></li>
-			<li>妙味远程课堂2<button>编辑</button></li>
+			<li><div class="show"><small>妙味远程课堂1</small><i></i></div>
+				<section class="none">
+					<input type="text"/><span>保存</span><span>取消</span>
+				</section>
+			</li>
+			<li><div class="show"><small>妙味远程课堂2</small><i></i></div>
+				<section class="none">
+					<input type="text"/><span>保存</span><span>取消</span>
+				</section>
+			</li>
 		</ul>
-		<div id="setting">
-			<input type="text"/><span>保存</span><span>取消</span>
-		</div>
+		
 	</div>
 	<div class="effect">
 		<h2>效果图：</h2>
@@ -70,16 +83,37 @@
 
 	<script>
 		window.onload = function(){
-			var oList = document.getElementById('list');
-			var aLi = oList.getElementsByTagName("li");
-			var setting = document.getElementById("setting");
-			var oldContent = null;
-			for (var i = 0; i < aLi.length; i++) {
-				aLi[i].index = i;
-				aLi[i].getElementsByTagName('button')[0].onclick = function(){
-					//this.parentNode.style.position = "relative";
-					oldContent = this.parentNode.innerHTML;
-					this.parentNode.innerHTML = setting.innerHTML;
+			var aShow = document.getElementsByClassName('show');
+			var aNone = document.getElementsByTagName('section');
+
+			for (let i = 0; i < aShow.length; i++) {
+				aShow[i].getElementsByTagName('i')[0].index = i;
+				aShow[i].getElementsByTagName('i')[0].onclick = function(){
+					aShow[this.index].className = "show none";
+					aNone[this.index].className = "";
+				}
+			}
+
+			for (let i = 0; i < aNone.length; i++) {
+				aNone[i].index = i;
+				
+				aNone[i].getElementsByTagName('span')[0].onclick = function(){
+					let index = this.parentNode.index;
+					let val = this.previousElementSibling.value;
+					if(val==""){
+						alert("值不能为空！")
+						return;
+					}
+					aNone[index].className = 'none';
+					aShow[index].className = "show";
+					aShow[index].getElementsByTagName('small')[0].innerHTML =val;
+				}
+
+				aNone[i].getElementsByTagName('span')[1].onclick = function(){
+					let index = this.parentNode.index;
+					aNone[index].className = 'none';
+					aShow[index].className = "show";
+
 				}
 			}
 		}
