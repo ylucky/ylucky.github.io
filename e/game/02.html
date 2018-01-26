@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js+canvas五子棋</title>
+</head>
+<body>
+	<canvas id="drawing" width="400" height="400">A drawing of something.</canvas>
+<script>
+	window.onload = function(){
+		var drawing = document.getElementById('drawing');
+
+		function line(isRow,value,x,y){
+			var length = parseInt(value/40);
+			for (var i = 0; i < length;i++) {
+				if(isRow){
+					context.moveTo(x,x+i*40);
+					context.lineTo(value+x,x+i*40);
+				}else{
+					context.moveTo(x+i*40,x);
+					context.lineTo(x+i*40,value+x);
+				}					
+			}
+		}
+
+		if(drawing.getContext){
+			var context = drawing.getContext('2d');
+			var num = 320;
+			//画框
+			context.strokeStyle="#ff0000";
+			context.strokeRect(20,20,num,num);
+
+			context.beginPath();
+			line(true,num,20,20);//画横线
+			line(false,num,20,20);//画竖线
+			context.stroke();
+
+
+			//画旗子
+
+			context.moveTo(180,180);
+			context.arc(180,180,5,0,2*Math.PI,false);
+			context.fill();
+
+
+		}
+	}
+</script>
+</body>
+</html>

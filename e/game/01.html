@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js+canvas时钟</title>
+<style>
+	.container{
+
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<canvas id="drawing" width="300" height="300">A drawing of something.</canvas>
+	</div>
+	<script>
+		window.onload = function(){
+			var drawing = document.getElementById('drawing');
+			if(drawing.getContext){
+				var context = drawing.getContext("2d");
+				//fillStyle strokeStyle
+				context.beginPath();
+				context.arc(100,100,99,0,2*Math.PI,false);
+
+				context.moveTo(194,100);
+				context.arc(100,100,94,0,2*Math.PI,false);
+
+				context.moveTo(100,100);
+				context.lineTo(100,15);
+
+				context.moveTo(100,100);
+				context.lineTo(35,100);
+
+				context.stroke(); 
+				context.font = "bold 14px April";
+				context.textAlign = "center";
+				context.textBaseline = "middle";
+				context.fillText(12,100,20);
+
+				//取得图像的数据URI
+				// save canvas image as data url (png format by default)
+				var imageURI = drawing.toDataURL("image/png");//注意拼写 data n.资料，材料
+				//显示图
+				var image = document.createElement("img");
+				image.src = imageURI;
+				//document.body.appendChild(image);  //会在页面显示画的图形
+			}
+		}
+	</script>
+</body>
+</html>
