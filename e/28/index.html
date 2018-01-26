@@ -6,20 +6,32 @@
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
 	<style>
 	*{margin:0;padding:0;}
-	.container{
-		position: relative;		
+	.contain{
+		max-width: 650px;
+		position: relative;	
+		padding: 3px;
+		margin:10px;
+		background-color: #eee;	
 	}
-	.container li{
+	.contain li.cur,.contain span.cur{
+		color: #f30;
+		background-color: #fff;
+	}
+	.contain li{
+		list-style-type: none;
 		width: 150px;
 		height: 100px;
 		background-color: #eee;
 		text-align: center;
+		cursor: pointer;
+		border-bottom: solid 1px #ccc;
 	}
-	.container li span.icon{
+	.contain li .glyphicon{
+		color:#f30;
+		margin-top: 20px;
 		font-size: 24px;
-		display: inline-block;
 	}
-	.container li h3{
+	.contain li h3{
 		font-size: 18px;
 	} 
 	.details{
@@ -42,12 +54,17 @@
 	.details span{
 		display: inline-block;
 		width: 33.3%;
+		height: 30px;
+		line-height: 30px;
 		float: left;
 		color: #fff;
 		background-color: #000;
 		opacity: 0.6;
 		filter: alpha(opacity=60);
 		border-right: solid 1px #fff;
+	}
+	.none{
+		display: none;
 	}
 	.effect{
 		position: fixed;
@@ -61,31 +78,56 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<h3>选择卡里套选择卡</h3>
+	<div class="contain">
 		<ul class="lists">
-			<li>
+			<li class="cur">
 				<span class="glyphicon glyphicon-heart"></span>
 				<h3>最热团购</h3>
 				<section class="details">
-					<img src="../../img/04.jpg" alt="01">
+					<img src="../../img/01.jpg" alt="01">
 					<div class="titles">
-						<span>标题1</span>
-						<span>标题2</span>
-						<span>标题3</span>
+						<span>1标题1</span>
+						<span>1标题2</span>
+						<span>1标题3</span>
 					</div>
 				</section>
 			</li>
 			<li>
 				<span class="icon glyphicon glyphicon-gift"></span>
 				<h3>高级特惠</h3>
+				<section class="details none">
+					<img src="../../img/01.jpg" alt="01">
+					<div class="titles">
+						<span>2标题1</span>
+						<span>2标题2</span>
+						<span>2标题3</span>
+					</div>
+				</section>
 			</li>
 			<li>
 				<span class="icon glyphicon glyphicon-thumbs-up"></span>
 				<h3>名品推荐</h3>
+				<section class="details none">
+					<img src="../../img/01.jpg" alt="01">
+					<div class="titles">
+						<span>3标题1</span>
+						<span>3标题2</span>
+						<span>3标题3</span>
+					</div>
+				</section>
 			</li>
 			<li>
 				<span class="glyphicon glyphicon-globe"></span>
 				<h3>缤纷活动</h3>
+				<section class="details none">
+					<img src="../../img/01.jpg" alt="01">
+					<div class="titles">
+						<span>4标题1</span>
+						<span>4标题2</span>
+						<span>4标题3</span>
+					</div>
+				</section>
 			</li>
 		</ul>
 	</div>
@@ -96,33 +138,38 @@
 	</div>
 	<script>
 		window.onload = function(){
-
 			var lists = document.getElementsByClassName('lists')[0];
 			var arrLi = lists.getElementsByTagName('li');
-			var node = document.createElement('div');
-			node.className = 'details';
-
 			var arrSrc = ["../../img/01.jpg","../../img/02.jpg","../../img/03.jpg"];
-			var imgSrc = document.getElementsByClassName('details')[0].getElementsByTagName('img')[0];
-			var titles = document.getElementsByClassName('titles')[0];
-			var titleSpan = titles.getElementsByTagName('span');
-			
-			for (var i = 0; i < arrLi.length; i++) {
+			var details = document.getElementsByClassName('details');
+			var num = 0;
+			for (let i = 0; i < arrLi.length; i++) {
 				arrLi[i].index = i;
-				arrLi[i].onmouseover = function(){
-					node.innerHTML = '<img src="../../img/0'+(this.index+1)+'.jpg" alt="01"><div class="titles"><span>标题1</span><span>标题2</span><span>标题3</span></div>';
-					this.appendChild(node);
-				}
-				arrLi[i].onmouseout = function(){
-					this.removeChild(node);
+				arrLi[i].onclick = function(){
+					num = this.index;
+					for (let i = 0; i < arrLi.length; i++) {
+						arrLi[i].className = "";
+						arrLi[i].getElementsByTagName('section')[0].className = "details none";
+					}
+					this.className = "cur";
+					details[this.index].className = "details";
+					//console.log("num",num);
 				}
 			}
 
-
-			for (var i = 0; i < titleSpan.length; i++) {
-				titleSpan[i].index = i;
-				titleSpan[i].onmouseover = function(){
-					imgSrc.src = arrSrc[this.index]
+			var titles  = document.getElementsByClassName('titles');
+			for (let i = 0; i < titles.length; i++) {
+				for (let j = 0; j < titles[i].getElementsByTagName('span').length; j++) {
+					titles[i].getElementsByTagName('span')[j].index = j;
+					titles[i].getElementsByTagName('span')[j].onclick = function(){
+						//console.log(this,this.index);
+						for (let m = 0; m < titles[i].getElementsByTagName('span').length; m++) {
+							titles[i].getElementsByTagName('span').className="";
+						}
+						titles[i].getElementsByTagName('span').className = 'cur';
+						let img = this.parentNode.parentNode.getElementsByTagName('img')[0];
+						img.src = arrSrc[this.index];
+					}
 				}
 			}
 
