@@ -75,18 +75,15 @@
     		//取出paint所有的item
     		var oPaint = document.getElementById(parent);
     		var oBox = getByClass(oPaint,box);//数组
-    		console.log(oBox.length);
     		//计算页面显示的列数（页面宽/item元素宽)
     		var oBoxW = oBox[0].offsetWidth;
     		var cols = Math.floor(document.documentElement.clientWidth/oBoxW);
-    		console.log(oBoxW,cols);
     		//设置main的宽
     		oPaint.style.cssText = 'width:'+oBoxW*cols+'px;margin:0 auto;';
     		var hArr = [];
     		for (var i = 0; i < oBox.length; i++) {
     			if(i<cols){
     				hArr.push(oBox[i].offsetHeight);
-    				console.log(hArr);
     			}else{
     				var minH = Math.min.apply(null,hArr);
     				var index = getMinhIndex(hArr,minH);
