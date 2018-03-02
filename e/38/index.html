@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排序</title>
+	<style>
+	.container{
+		background-color: #eee;
+		padding: 15px;
+		width: 80%;
+		height: 330px;
+		overflow: hidden;
+	}
+	.btns{
+		text-align: center;
+	}
+	button{
+		display: inline-block;
+		padding: 3px 15px;
+		margin-right: 10px;
+		background-color: #9987F6;
+		border:none;
+		color:#fff;
+		cursor: pointer;
+		outline: none;
+	}
+	.contents{
+		display: flex;
+		justify-content:center;
+		align-content:center;
+		flex-wrap:wrap;
+		text-align: center;
+	}
+	figure{
+		display: inline-block;
+	}
+	figure img{
+		width: 200px;
+		height: 100px;
+		display: inline-block;
+	}
+		.effect{
+			position: fixed;
+			left: 0px;
+			top:400px;
+		}
+		.effect img{
+			display: inline-block;
+			max-width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<h3>排序</h3>
+	<div class="container">
+		<div class="btns" id="btn">
+			<button>从大到小</button><button>打乱顺序</button>
+		</div>
+		<div class="contents" id="content">
+			<figure>
+				<figcaption><img src="../../img/1.jpg" alt=""></figcaption>
+				<span>01</span>
+			</figure>
+			<figure>
+				<figcaption><img src="../../img/2.jpg" alt=""></figcaption>
+				<span>02</span>
+			</figure>
+			<figure>
+				<figcaption><img src="../../img/3.jpg" alt=""></figcaption>
+				<span>03</span>
+			</figure>
+			<figure>
+				<figcaption><img src="../../img/4.jpg" alt=""></figcaption>
+				<span>04</span>
+			</figure>
+			<figure>
+				<figcaption><img src="../../img/5.jpg" alt=""></figcaption>
+				<span>05</span>
+			</figure>
+			<figure>
+				<figcaption><img src="../../img/6.jpg" alt=""></figcaption>
+				<span>06</span>
+			</figure>
+			<figure>
+				<figcaption><img src="../../img/7.jpg" alt=""></figcaption>
+				<span>07</span>
+			</figure>
+			<figure>
+				<figcaption><img src="../../img/8.jpg" alt=""></figcaption>
+				<span>08</span>
+			</figure>
+		</div>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>排序</h3>
+		<img src="01.png" alt="排序">
+	</div>
+	<script>
+		window.onload = function(){
+			var aBtn = document.getElementById('btn').getElementsByTagName('button');
+			var items = document.getElementsByTagName('figure');
+			var content = document.getElementById('content');
+			var arr = [];
+
+			for (let i = 0; i < aBtn.length; i++) {
+				aBtn[i].index = i;
+				aBtn[i].onclick = function(){
+					for (let i = items.length-1; i > 0; i--) {
+						arr.push(items[i]);
+					}
+					
+					content.innerHTML = arr.toString();
+				}
+			}
+
+
+
+
+		}
+	</script>
+</body>
+</html>

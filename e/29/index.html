@@ -10,7 +10,6 @@
 		width: 32px;
 		height: 34px;
 		display: inline-block;
-		background: url(../../img/star-none.png) no-repeat center center;
 	}
 	.effect{
 		position: fixed;
@@ -29,11 +28,11 @@
 			<div class="stars">
 				<p><i class="glyphicon glyphicon-cog"></i>总体评价:</p>
 				<p id="star">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
+					<img src="../../img/star-none.png" alt="">
+					<img src="../../img/star-none.png" alt="">
+					<img src="../../img/star-none.png" alt="">
+					<img src="../../img/star-none.png" alt="">
+					<img src="../../img/star-none.png" alt="">
 				</p>
 				<small>小提示：点击星星就能打分</small>
 			</div>
@@ -46,25 +45,74 @@
 	<script>
 		window.onload = function(){
 			var aStar = document.getElementById('star');
-			var stars = aStar.getElementsByTagName('span');
+			var stars = aStar.getElementsByTagName('img');
+			var small = document.getElementsByTagName('small')[0];
 			var text = ['很差','较差','还行','一般','可以'];
-			var src = ['../../img/star-sad.png','../../img/star-none.png','../../img/star-full.png','../../img/star-half.png'];
+			var imgSrc = ['../../img/star-sad.png','../../img/star-none.png','../../img/star-full.png','../../img/star-half.png'];
+			var num = null;
+			var oldImg = [];
+			var oldText = "";
+			
+			function Text(index,imgSrc){
+				console.log(index,imgSrc);
+				console.log(index.length,stars[index].src)
+				for(let i = 0; i <= index; i++) {
+					stars[i].src = imgSrc;
+				}
+				switch(index){
+					case 0:
+						small.innerHTML = text[0];
+						break;
+					case 1:
+						small.innerHTML = text[1];
+						break;
+					case 2:
+						small.innerHTML = text[2];
+						break;
+					case 3:
+						small.innerHTML = text[3];
+						break;
+					default:
+						small.innerHTML = text[4];
+				}
+			}
+
+
 			for (var i = 0; i < stars.length; i++) {
 			 	stars[i].index = i;
-			 	/*stars[i].onclick = function(){
-
-			 	}*/
+			 	stars[i].onclick = function(){
+	 		 		num = this.index;
+	 		 		for (let i = 0; i < stars.length; i++) {
+	 		 			stars[i].src = imgSrc[1];
+	 		 		}
+	 		 		if( num < 2 ){
+	 					Text(num, imgSrc[0]);
+	 				} else {
+	 					Text(num, imgSrc[2]);
+	 				}	
+	 				oldText = small.innerHTML;
+			 	}
 			 	stars[i].onmouseover = function(){
-			 		if(this.index == '0'||this.index == '1'){
-			 			this.style.backgroundImage = "url("+src[0]+")";
-			 		}else{
-						this.style.backgroundImage = "url("+src[2]+")";
+			 		num = this.index;
+			 		for (let i = 0; i < stars.length; i++) {
+			 			stars[i].src = imgSrc[1];
 			 		}
+			 		if( num < 2 ){
+						Text(num, imgSrc[0]);
+					} else {
+						Text(num, imgSrc[2]);
+					}			 		
 			 	}
 			 	stars[i].onmouseout = function(){
-					//this.style.backgroundImage = "url("+src[1]+")";
+					for (var i = 0; i < stars.length; i++) {
+						stars[i].src= oldImg[i];
+					}
+					small.innerHTML = oldText;
 			 	}
 			 } 
+
+			 
+
 		}
 	</script>
 </body>

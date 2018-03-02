@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的绘画</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    	*{margin:0;padding:0;}
+    	.paint{
+    		position: relative;
+    	}
+    	.paint .item{
+			float: left;
+			padding: 15px 0 0 15px;
+    	}
+    	.item a {
+    	    padding: 10px;
+    	    border: 1px solid #cccccc;
+    	    border-radius: 5px;
+    	    box-shadow: 0px 0px 6px #cccccc;
+    	}
+
+    	.item img {
+    		width: 150px;
+    		height: auto;
+    	}
+    </style>
+</head>
+<body>
+	<div class="paint">
+		<div id="paint">
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb1.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb2.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb3.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb4.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb5.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb6.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb7.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb8.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb9.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb10.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb11.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb12.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb13.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb14.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb15.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb16.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb17.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb18.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb19.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb20.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb21.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb22.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb23.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb24.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb25.jpg" alt=""></a></div>
+		  <div class="item"><a href="" class="thumbnail"><img src="img/paint/psb26.jpg" alt=""></a></div>
+		</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+    	window.onload = function() {
+    		waterfall('paint','item');
+    		/*window.onscroll = function(){
+    			if(checkScrollSlide){
+
+    			}
+    		}*/
+    	}
+
+    	function waterfall(parent,box){
+    		//取出paint所有的item
+    		var oPaint = document.getElementById(parent);
+    		var oBox = getByClass(oPaint,box);//数组
+    		console.log(oBox.length);
+    		//计算页面显示的列数（页面宽/item元素宽)
+    		var oBoxW = oBox[0].offsetWidth;
+    		var cols = Math.floor(document.documentElement.clientWidth/oBoxW);
+    		console.log(oBoxW,cols);
+    		//设置main的宽
+    		oPaint.style.cssText = 'width:'+oBoxW*cols+'px;margin:0 auto;';
+    		var hArr = [];
+    		for (var i = 0; i < oBox.length; i++) {
+    			if(i<cols){
+    				hArr.push(oBox[i].offsetHeight);
+    				console.log(hArr);
+    			}else{
+    				var minH = Math.min.apply(null,hArr);
+    				var index = getMinhIndex(hArr,minH);
+    				oBox[i].style.position = 'absolute';
+    				oBox[i].style.top = minH+'px';
+    				//oBox[i].style.left = oBoxW*index+'px';
+    				oBox[i].style.left = oBox[index].offsetLeft+'px';
+					hArr[index] += oBox[i].offsetHeight;
+    			}
+    		}
+    	}
+
+    	function getByClass(parent,clsName){
+    		//存取获取到的所有类
+    		var boxArr = [],
+    			oElements = parent.getElementsByTagName('*');
+
+    		for (var i = 0; i < oElements.length; i++) {
+    			if(oElements[i].className == clsName){
+					boxArr.push(oElements[i]);
+    			}
+    		}
+    		return boxArr;
+    	}
+
+
+    	function getMinhIndex(arr,value){
+    		for (var i = 0; i < arr.length; i++) {
+    			if(arr[i]==value){
+    				return i;
+    			}
+    		}
+    	}
+
+
+    	//检测是否具备滚动加载
+    	function checkScrollSlide(){
+    		var oParent = document.getElementById('paint');
+    		var oBox = getByClass(oParent,'item');
+    		var lastBoxH = oBox[oBox.length-1].offsetTop+Math.floor((oBox[oBox.length-1].offsetHeight)/2);
+    		var scrollTop = document.body.scrollTop||document.documentElement.scrollTop;//混杂||标准
+    		var height = document.body.clientHeight||document.documentElement.clientHeight;//混杂||标准
+    		return lastBoxH<(scrollTop+height)?true:false;
+    	}
+    </script>
+</body>
+</html>
