@@ -2,9 +2,116 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>延时消失的菜单</title>
+	<style>
+		.nav{
+			height: 50px;
+			line-height: 50px;
+			background-color: #6E6AC8;
+			color: #fff;
+			max-width: 500px;
+		}
+		.more{
+			color:#fff;
+			text-decoration:none;
+		}
+		span{
+			position: relative;
+			padding: 0px 25px;
+			margin:0px 3px;
+			cursor: pointer;
+			overflow: hidden;
+		}
+		.cur{
+			border-radius: 5%;
+			background-color: #A1AEBC;
+		}
+
+		ul{
+			display: none;
+			border:solid 1px #ddd;
+			margin:0px;
+			padding: 0px;
+			width: 360px;
+			position: absolute;
+			top:50px;
+			left: 0px;
+			list-style-type: none;
+			background-color: #B7BCF7;
+		}
+		li{
+			float: left;
+			margin:0px 3px;
+		}
+		li a{
+			padding-right: 6px;
+			border-right: solid 1px blue;
+		}
+		.effect{
+			position: fixed;
+			left: 50%;
+			top:0px;
+		}
+		.effect img{
+			display: inline-block;
+			max-width: 500px;
+		}
+	</style>
 </head>
 <body>
-	
+	<h3>延时消失的菜单</h3>
+	<div class="nav" id="nav">
+		<span class="cur">首页
+			<ul>
+				<li><a href="javascript:;">最近更新</a></li>
+				<li><a href="javascript:;">活动</a></li>
+				<li><a href="javascript:;">报名试听</a></li>
+				<li><a href="javascript:;">学习反馈</a></li>
+			</ul>
+		</span>
+		|<span>关于我们
+			<ul>
+				<li><a href="javascript:;">最近更新1</a></li>
+				<li><a href="javascript:;">活动1</a></li>
+				<li><a href="javascript:;">报名试听1</a></li>
+				<li><a href="javascript:;">学习反馈1</a></li>
+			</ul>
+		</span>
+		|<span>作品
+		<ul>
+			<li><a href="javascript:;">最近更新2</a></li>
+			<li><a href="javascript:;">活动1</a></li>
+			<li><a href="javascript:;">报名试听1</a></li>
+			<li><a href="javascript:;">学习反馈1</a></li>
+		</ul></span>
+		|<span>博客
+		<ul>
+			<li><a href="javascript:;">最近更新3</a></li>
+			<li><a href="javascript:;">活动1</a></li>
+			<li><a href="javascript:;">报名试听1</a></li>
+			<li><a href="javascript:;">学习反馈1</a></li>
+		</ul></span>
+		<a class="more" href="javascript:;">&gt;&gt;更多</a>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>延时消失的菜单</h3>
+		<img src="01.gif" alt="延时消失的菜单">
+	</div>
+	<script>
+		window.onload = function() {
+			var oNav = document.getElementById('nav');
+			var aElements = oNav.getElementsByTagName('span');
+			for (var i = 0; i < aElements.length; i++) {
+				aElements[i].index = i;
+				aElements[i].onmouseover = function(){
+					this.getElementsByTagName('ul')[0].style.display = 'block';
+				}
+				aElements[i].onmouseout = function(){
+					this.getElementsByTagName('ul')[0].style.display = 'none';
+				}
+			}
+		}
+	</script>
 </body>
 </html>

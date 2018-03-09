@@ -7,8 +7,7 @@
 	.container{
 		background-color: #eee;
 		padding: 15px;
-		width: 80%;
-		height: 330px;
+		width: 50%;
 		overflow: hidden;
 	}
 	.btns{
@@ -32,22 +31,22 @@
 		text-align: center;
 	}
 	figure{
-		display: inline-block;
+		align-items: center;
 	}
 	figure img{
-		width: 200px;
+		width: 100px;
 		height: 100px;
 		display: inline-block;
 	}
-		.effect{
-			position: fixed;
-			left: 0px;
-			top:400px;
-		}
-		.effect img{
-			display: inline-block;
-			max-width: 500px;
-		}
+	.effect{
+		position: fixed;
+		left: 55%;
+		top:10px;
+	}
+	.effect img{
+		display: inline-block;
+		max-width: 500px;
+	}
 	</style>
 </head>
 <body>
@@ -58,36 +57,36 @@
 		</div>
 		<div class="contents" id="content">
 			<figure>
-				<figcaption><img src="../../img/1.jpg" alt=""></figcaption>
-				<span>01</span>
+				<img src="../../img/1.jpg" alt="">
+				<p>01</p>
 			</figure>
 			<figure>
-				<figcaption><img src="../../img/2.jpg" alt=""></figcaption>
-				<span>02</span>
+				<img src="../../img/2.jpg" alt="">
+				<p>02</p>
 			</figure>
 			<figure>
-				<figcaption><img src="../../img/3.jpg" alt=""></figcaption>
-				<span>03</span>
+				<img src="../../img/3.jpg" alt="">
+				<p>03</p>
 			</figure>
 			<figure>
-				<figcaption><img src="../../img/4.jpg" alt=""></figcaption>
-				<span>04</span>
+				<img src="../../img/4.jpg" alt="">
+				<p>04</p>
 			</figure>
 			<figure>
-				<figcaption><img src="../../img/5.jpg" alt=""></figcaption>
-				<span>05</span>
+				<img src="../../img/5.jpg" alt="">
+				<p>05</p>
 			</figure>
 			<figure>
-				<figcaption><img src="../../img/6.jpg" alt=""></figcaption>
-				<span>06</span>
+				<img src="../../img/6.jpg" alt="">
+				<p>06</p>
 			</figure>
 			<figure>
-				<figcaption><img src="../../img/7.jpg" alt=""></figcaption>
-				<span>07</span>
+				<img src="../../img/7.jpg" alt="">
+				<p>07</p>
 			</figure>
 			<figure>
-				<figcaption><img src="../../img/8.jpg" alt=""></figcaption>
-				<span>08</span>
+				<img src="../../img/8.jpg" alt="">
+				<p>08</p>
 			</figure>
 		</div>
 	</div>
@@ -102,21 +101,38 @@
 			var items = document.getElementsByTagName('figure');
 			var content = document.getElementById('content');
 			var arr = [];
+			var big = true;
 
-			for (let i = 0; i < aBtn.length; i++) {
-				aBtn[i].index = i;
-				aBtn[i].onclick = function(){
-					for (let i = items.length-1; i > 0; i--) {
-						arr.push(items[i]);
-					}
-					
-					content.innerHTML = arr.toString();
+			for (let i = 0; i < items.length; i++) {
+				arr.push(items[i]);
+			}
+
+			aBtn[0].onclick = function(){
+				arr.reverse();
+				let str = '';
+				for (let i = 0; i < arr.length; i++) {
+					str += '<figure>'+arr[i].innerHTML+'</figure>';
 				}
+				content.innerHTML = str;
+				this.innerHTML = big?'从小到大':'从大到小';
+				big = !big;
 			}
 
 
-
-
+			aBtn[1].onclick = function(){
+				let arr2 = [];
+				for (let i = 0; i < items.length; i++) {
+					arr2.push(items[i]);
+				}
+				arr2.sort(function(a,b){
+					return Math.random()- 0.5;
+				});
+				let str = '';
+				for (let i = 0; i < arr.length; i++) {
+					str += '<figure>'+arr2[i].innerHTML+'</figure>';
+				}
+				content.innerHTML = str;
+			}
 		}
 	</script>
 </body>
