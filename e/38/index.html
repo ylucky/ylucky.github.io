@@ -103,14 +103,14 @@
 			var arr = [];
 			var big = true;
 
-			for (let i = 0; i < items.length; i++) {
+			for (var i = 0; i < items.length; i++) {
 				arr.push(items[i]);
 			}
 
 			aBtn[0].onclick = function(){
 				arr.reverse();
-				let str = '';
-				for (let i = 0; i < arr.length; i++) {
+				var str = '';
+				for (var i = 0; i < arr.length; i++) {
 					str += '<figure>'+arr[i].innerHTML+'</figure>';
 				}
 				content.innerHTML = str;
@@ -120,15 +120,15 @@
 
 
 			aBtn[1].onclick = function(){
-				let arr2 = [];
-				for (let i = 0; i < items.length; i++) {
+				var arr2 = [];
+				for (var i = 0; i < items.length; i++) {
 					arr2.push(items[i]);
 				}
 				arr2.sort(function(a,b){
-					return Math.random()- 0.5;
+					return Math.random()-0.5; //随机返回true 
 				});
-				let str = '';
-				for (let i = 0; i < arr.length; i++) {
+				var str = '';
+				for (var i = 0; i < arr.length; i++) {
 					str += '<figure>'+arr2[i].innerHTML+'</figure>';
 				}
 				content.innerHTML = str;

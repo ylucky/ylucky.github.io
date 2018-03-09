@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机图片滚动</title>
+	<style>
+	ul{
+		width:400px;
+	}
+	li{
+		list-style-type: none;
+		float: left;
+		margin-right: 10px;
+	}
+	ul img{
+		display: inline-block;
+		width:150px;
+		height: 150px;
+	}
+		.effect{
+			position: fixed;
+			left: 55%;
+			top:10px;
+		}
+		.effect img{
+			display: inline-block;
+			max-width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul>
+			<li><img src="../../img/1.jpg" alt=""></li>
+			<li><img src="../../img/2.jpg" alt=""></li>
+			<li><img src="../../img/3.jpg" alt=""></li>
+			<li><img src="../../img/4.jpg" alt=""></li>
+			<li><img src="../../img/5.jpg" alt=""></li>
+			<li><img src="../../img/6.jpg" alt=""></li>
+			<li><img src="../../img/7.jpg" alt=""></li>
+			<li><img src="../../img/8.jpg" alt=""></li>
+		</ul>
+	</div>
+	<div class="effect">
+		<h2>效果图：</h2>
+		<h3>随机图片滚动</h3>
+		<img src="01.gif" alt="随机图片滚动">
+	</div>
+	<script>
+		window.onload = function(){
+			var arrUrl = ['../../img/1.jpg','../../img/2.jpg','../../img/3.jpg','../../img/4.jpg','../../img/5.jpg','../../img/6.jpg','../../img/7.jpg','../../img/8.jpg','../../img/09.jpg','../../img/10.jpg'];
+			var lis = document.getElementsByTagName('li');
+			var arr = [];
+			/*arrUrl.sort(function(a,b){
+				return Math.random()-0.5;
+			})
+			console.log(arrUrl);
+*/
+			
+			setInterval(function(){
+				var num1 =Math.round(Math.random()*(arrUrl.length-1));
+				var num2 =Math.round(Math.random()*8);
+				arr = [];
+				for (var i = 0; i < lis.length; i++) {
+					let item = lis[i].getElementsByTagName('img')[0].src;
+					let start = item.indexOf('img/')+4;
+					let end = item.lastIndexOf('.');
+					if(num1 == item.substring(start,end)){
+						console.log("重复");
+					}else{
+						arr.push(item);
+					}
+				}
+				console.log(arr);
+				
+				lis[num2].getElementsByTagName('img')[0].src=arr[num1];
+
+			},1000)
+		}
+	</script>
+</body>
+</html>
