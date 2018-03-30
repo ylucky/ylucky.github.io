@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript基础班第1天作业</title>
+</head>
+<body>
+	<h2>JavaScript基础班第1天作业</h2>
+	<ul>
+		<li>1） 【难度★★】用JS计算下列算式，并将结果在控制台输出：<img src="img/001.png" alt="001"><p></p></li>
+		<li>2） 【难度★★】世界上表示气温有两种方法：摄氏度和华氏度。两者的关系是：<img src="img/002.png" alt="002">编写程序，让用户输入摄氏度，向用户提示出对应的华氏温度。<div class="entry"><input type="text" value=""><button>查询</button></div><p></p></li>
+		<li>3） 【难度★★★】用JS计算下列算式，并将结果在控制台输出：<img src="img/003.png" alt="003"><p></p></li>
+		<li>4） 【难度★★★】编写程序，提示用户输入六边形的边长，然后显示它的面积，计算六边形面积的公式是：<img src="img/004.png" alt="004"><div class="entry"><input type="text" value=""><button>查询</button></div><p></p></li>
+		<li>5） 【难度★★★★】如果今天是星期六，那么1000天后是星期几？用一条语句计算出来。<p></p></li>
+		<li>6） 【难度★★★★★】用户输入一个三位数，用程序计算三位数字的和。比如：
+用户输入155，就弹出11
+用户输入316，就弹出10
+用户输入989，就弹出26
+用户输入678，就弹出21<div class="entry"><input type="text" value=""><button>查询</button></div><p></p></li>
+
+	</ul>
+	<script>
+		window.onload =function()
+		{
+			var p = document.getElementsByTagName('p');
+			for (var i = p.length - 1; i >= 0; i--) {
+				p[i].index=i;
+			}
+
+			/*第一题*/
+			var sum =(123+45*78)/(34+543)-9*(324-34);
+			p[0].innerHTML = sum;
+			/*第二题*/
+			var temperature;
+			var entry = document.getElementsByClassName('entry')[0].getElementsByTagName('input')[0];
+			var btn = document.getElementsByClassName('entry')[0].getElementsByTagName('button')[0];
+			btn.onclick = function()
+			{
+				var value = entry.value;
+				if(value==null||value=="")
+				{
+					alert("请输入摄氏度");
+				}
+				else
+				{
+					p[1].innerHTML=(9/5)*parseFloat(value)+32;
+				}
+			}
+			/*第三题*/
+			var sum2 = Math.pow((23+Math.pow(5,7))/45,2);
+			console.log(sum2);
+			p[2].innerHTML=sum2;
+
+			/*第四题*/
+			var entry2 = document.getElementsByClassName('entry')[1].getElementsByTagName('input')[0];
+			var btn2 = document.getElementsByClassName('entry')[1].getElementsByTagName('button')[0];
+			btn2.onclick = function()
+			{
+				var value = entry2.value;
+				if(value==null||value=="")
+				{
+					alert("请输入边长");
+				}
+				else
+				{
+					p[3].innerHTML=3*Math.sqrt(3)/2*Math.pow(parseFloat(value),2);
+				}
+			}
+			/*第五题*/
+			var week = (6+1000)%7;//var xingqi = (6 + day) % 7;
+			p[4].innerHTML = week;
+
+			/*第六题*/
+			var entry3 = document.getElementsByClassName('entry')[2].getElementsByTagName('input')[0];
+			var btn3 = document.getElementsByClassName('entry')[2].getElementsByTagName('button')[0];
+			btn3.onclick = function()
+			{
+				var value = entry3.value;
+				if(value==null||value==""||value.length!=3)
+				{
+					alert("请输入3位数值");
+				}
+				else
+				{
+					var unit = value%10;
+					var decade = (value%100)/10;
+					var hundreds = value/100;
+					p[5].innerHTML=parseInt(unit)+parseInt(decade)+parseInt(hundreds);
+				}
+			} 
+		}
+	</script>
+</body>
+</html>

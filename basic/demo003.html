@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript基础班第3天作业</title>
+</head>
+<body>
+	<ul>
+		<li>题目1：报数游戏60以内7的安全数【能被7整除的数字，或者尾数是7的数字就踩雷】<p></p></li>
+		<li>题目2：找出100~999之内水仙花数【每个数位的立方和，等于它本身。比如153就是水仙花数。因为：
+13+53+33 = 153】<p></p></li>
+		<li>题目3：求1~100的和<p></p></li>
+		<li>题目4：求6的阶乘<p></p></li>
+		<li>题目5：48的因数[能够整除它的数字的个数]的个数。<p></p></li>
+		<li>题目6：100以内质数[大于1的自然数中，除了1和它本身以外不再有其他因数]<p></p></li>
+	</ul>
+	<script>
+		var p = document.getElementsByTagName('p');
+
+		/*第一题*/
+		var nums = [];
+		for (var i = 1; i <= 60; i++)
+		{
+			//i%7==0 被7整除
+			//i%10 获取个位数
+			if(i%7!==0&&i%10!==7)
+			{
+				if(nums.length%11==0)nums.push('<br>');
+				nums.push(i);
+			}
+		}
+		p[0].innerHTML = nums;
+
+		/*第二题*/
+		var arr = [];
+		for (var i = 100; i <= 999; i++) {
+			var baiwei = parseInt(i / 100);
+			var shiwei = parseInt(i % 100 / 10);
+			var gewei = i % 10;
+			if(Math.pow(baiwei,3)+Math.pow(shiwei,3)+Math.pow(gewei,3)==i){
+				arr.push(i);
+				console.log(i);
+			}
+		}
+		p[1].innerHTML = arr;
+
+		/*第三题*/
+		var sum = 0;
+		for (var i = 0; i <= 100; i++)
+		{
+			sum = sum+i;
+		}
+		p[2].innerHTML = sum;
+		/*第四题*/
+		var sum4 = 1;
+		for (var i = 1; i <= 6; i++)
+		{
+			sum4 = i*sum4;
+		}
+		p[3].innerHTML = sum4;
+		/*第五题*/
+		var number=48;
+		var num5=0;
+		for (var i = 0; i <=48; i++) {
+			if(number%i==0)
+			{
+				num5++;
+			}
+		}
+		p[4].innerHTML=num5;
+		/*第六题*/
+		var arr6=[];
+		function isPrime(n) {
+		    if (n <= 3) { return n > 1; }
+		    if (n % 2 == 0 || n % 3 == 0) { return false; }
+		 
+		    for (var  i = 5; i * i <= n; i += 6) {
+		        if (n % i == 0 || n % (i + 2) == 0) { return false; }
+		    }
+		    return true;
+		}
+
+		for (var i = 0; i <= 100; i++)
+		{
+			if(isPrime(i)) arr6.push(i);
+		}
+		p[5].innerHTML = arr6;
+	</script>
+</body>
+</html>

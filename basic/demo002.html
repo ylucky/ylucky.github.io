@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript基础班第2天作业</title>
+	<style>
+		.img img{
+			display: inline-block;
+			width: 200px;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="entry"><input type="text"></div>
+	<ul>
+		<li class="img">第1题：用户输入一个数字，然后判断这个数字能否被5、6整除，根据情况弹出下面4种警告框：<br><img src="img/00501.png" alt="001">
+		<img src="img/00502.png" alt="002">
+		<img src="img/00503.png" alt="003">
+		<img src="img/00504.png" alt="004"><button>查询</button></li>
+		<li>第2题：找出1~1000之中，所有能被5整除，或者被6整除的数字。在控制台输出。<p></p></li>
+		<li>第3题：用户输入一个数字，列出所有它能够整除的数字。<br><img src="img/006.png" alt="006"><button>查询</button><p></p></li>
+	</ul>
+
+	<script>
+		window.onload = function()
+		{
+			var entry = document.getElementsByTagName('input')[0];
+			var btns = document.getElementsByTagName("button");
+			var p = document.getElementsByTagName('p');
+
+			/*第一题*/
+			btns[0].onclick = function()
+			{
+				if(entry.value==""||entry.value==null)
+				{
+					alert("请输入数字！");
+					return;
+				}
+				var val = parseFloat(entry.value);
+				if(val%5==0&&val%6==0)
+				{
+					alert("这个数字能同时被5和6整除")
+				}
+				else if(val%5==0)
+				{
+					alert("这个数字能被5整除,不能被6整除")
+				}
+				else if(val%6==0)
+				{
+					alert("这个数字能被6整除,不能被5整除")
+				}
+				else
+				{
+					alert("这个数字不能被6整除,也不能被5整除")
+				}
+			}
+			/*第二题*/
+			var num = [];
+			for(var i=0;i<=1000;i++)
+			{
+				if(i%5==0||i%6==0)
+				{
+					if((num.length+1)%41==0){
+						num.push('<br>')
+					};
+					num.push(i);
+				}
+			}
+
+			p[0].innerHTML = num;
+
+			/*第三题*/
+			btns[1].onclick = function()
+			{
+				if(entry.value==""||entry.value==null)
+				{
+					alert("请输入数字！");
+					return;
+				}
+				var val = parseFloat(entry.value);
+
+				var arr = [];
+				for(var i = 1; i<val;i++)
+				{
+					if(val%i==0)
+					{
+						arr.push(i);
+					}
+				}
+				p[1].innerHTML = arr;
+
+			}
+		}
+	</script>
+</body>
+</html>
