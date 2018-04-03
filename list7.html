@@ -521,7 +521,566 @@
 			return 0;
 		}
 		/*实现从控制台输出1-10，使用goto语句，实现当输出完3之后跳出循环体。*/
-		
+	</pre>
+	<strong>11.函数</strong>
+	<p>自定义函数的一般形式：</p>
+	<img src="img/c20.jpg" alt="自定义函数的一般形式">
+	<ul>
+		<li>注意：1、[]包含的内容可以省略，数据类型说明省略，默认是int类型函数；参数省略表示该函数是无参函数，参数不省略表示该函数是有参函数；</li>
+		<li>2、函数名称遵循标识符命名规范；</li>
+		<li>3、自定义函数尽量放在main函数之前，如果要放在main函数后面的话，需要在main函数之前先声明自定义函数，声明格式为：[数据类型说明] 函数名称（[参数]）;</li>
+	</ul>
+	<small>c语言中，函数调用的一般形式为：函数名（[参数]）; </small>
+ <ul>
+ 	<li>注意：1.对无参函数调用的时候可以将【】包含的省略；</li>
+ 	<li>2.【】中可以是常熟，变量或其它构造类型数据及表达式，个参数之间用逗号分隔。</li>
+ </ul>
+ 	<pre>
+ 		#include <stdio.h>
+
+ 		/* 自定义整型函数 sayLove() */
+ 		int sayLove()
+ 		{
+ 		    //在这里输入输出语句printf，输出内容为I Love imooc 
+ 		    printf("%s\n", "I Love imooc");
+ 		    return 0;
+ 		}
+
+ 		/* 自定义整型函数 dividLine() */
+ 		int dividLine()
+ 		{
+ 		    printf("%s\n", "*************");
+ 		    return 0;
+ 		}
+
+ 		/* 主函数 */
+ 		int main()
+ 		{
+ 		    /* 调用所写函数 */
+ 		    dividLine();
+ 		    sayLove();
+ 		    dividLine();
+ 		    return 0;
+ 		}
+ 	</pre>
+ 	<h5>有参与无参</h5>
+ 	<img src="img/c21.jpg" alt="有参与无参">
+ 	<pre>#include <stdio.h>
+/* 考虑一下哪个输出该用无参函数哪个输出该用有参函数呢？ */
+
+int study()
+{
+    printf("小明在慕课网上学习");
+    return 0;
+}
+
+int studyNum(int num)
+{
+    printf("小明在慕课网上已经参与学习了%d门课程",num);
+    return 0;
+}
+
+int main()
+{
+    study();
+    studyNum(5);
+    return 0;
+}</pre>
+	<h5>形参与实参</h5>
+	<p>函数的参数分为形参和实参两种。形参是在定义函数名和函数体的时候使用的参数，目的是用来接收调用该函数时传入的参数。实参是调用时传递该函数的参数。形参只有在函数内部有效。</p>
+	<pre>
+		#include <stdio.h>
+		int getGirth(int a,int b,int c)
+		{
+		    if( (a+b)<=c || (a+c)<=b || (b+c)<=a )   //判断是否为三角形
+		    {
+		        printf("不构成三角形\n");
+		        return 0;                                
+		    }
+		    else
+		    {
+		      int cirf = a+b+c ;     //计算三角形周长
+		      return cirf;
+		    }
+		       
+		}
+
+		int main()
+		{
+		    /* 定义三角形三边长 */
+		    int a, b, c;
+		    a = 3;
+		    b = 4;
+		    c = 5;
+		    printf("三角形的周长是：%d\n", getGirth(a,b,c));  //调用周长函数
+		    return 0;
+		}
+	</pre>
+	<h5>函数的返回值</h5>
+	<small>没有返回值的函数，返回类型是void.注意：void函数中可以有执行代码块，但是不能有返回值，另void函数中如果有return语句，该语句只能起到结束函数运行的功能。其格式为：return;</small>
+	<pre>
+		#include <stdio.h>
+		/* Jone算出结果应该怎么写函数？ */
+		 int  joneResult(int x, int y, int z)
+		{
+		   int sum = x+y+z;
+		   return sum/3;          //这里是不是应该将sum返回呢？
+		}
+		/* Jack没有算出结果只说了一句话是不是应该用无返回值函数？ */
+		void jackResult(int x, int y, int z)
+		{
+		    printf("我算不出来\n");
+		}
+		int main()
+		{
+		    int a, b, c;
+		    a = 10;
+		    b = 20;
+		    c = 30;
+		    //Jone的返回值类型是什么？
+		    int  jR = joneResult(a, b, c); 
+		    printf("Jone运算结果是：%d\n", jR);
+		    printf("Jack运算结果是：");
+		    //Jack没有算出结果只说了句话，是不是直接调用函数就可以了？
+		    jackResult(a,b,c);
+		    return 0;
+		}
+	</pre>
+	<h5>递归函数（一）</h5>
+	<p>递归就是一个函数在它的函数体内调用它自身。</p>
+	<pre>
+		#include <stdio.h>
+		int factorial(int n)
+		{
+			int result;
+			if(n<0)
+			{
+				printf("输入错误！\n");
+				return 0;
+			}
+			else if(n==0||n==1)
+			{
+				result = 1;
+			}
+			else
+			{
+				result = factorial(n-1)*n;//调用自身
+			}
+			return result;
+		}
+
+		int main()
+		{
+			int n = 5;
+			printf("%d的阶乘=%d",n,factorial(5));
+			return 0;
+		}
+	</pre>
+	<pre>
+		#include <stdio.h>
+		/* 定义获取单词数量的函数 */
+		int getWordNumber(int n)
+		{   
+		    if(n == 1)
+		    {
+		        return 1;    //第一天只会1个单词
+		    }
+		    else{
+		        return getWordNumber(n-1)+n;       //到第天会的单词数量
+		        //第n天我们学会了n个单词加上之前我们学会的getWordNumber（n-1）个单词，正好学会了n+getWordNumber（n-1）个单词
+		    }
+		}
+		int main()
+		{
+		    int num = getWordNumber(10);     //获取会了的单词数量
+		    printf("小明第10天记了:%d个单词。\n", num);
+		    return 0;
+		}
+	</pre>
+	<h5>递归函数（二）</h5>
+	<img src="img/c22.jpg" alt="递归函数">
+	<ul>
+		<li>递归函数特点：1.每一级函数调用都有自己的变量，但是函数代码并不会得到复制，如计算5的阶乘时每递推一次变量都不同。</li>
+		<li>2.每次调用都会有一次返回，如计算5的阶乘时每递归一次都返回进行下一次。</li>
+		<li>3.递归函数中，位于递归调用前的语句和各级被调用函数具有相同的执行顺序。</li>
+		<li>4.递归函数中，位于递归调用后的语句的执行顺序是和各个被调用函数的顺序相反；</li>
+		<li>5.递归函数中必须有终止语句。</li>
+	</ul>
+	<p>递归：自我调用且有完成状态。</p>
+	<small>任务：猴子第一天摘下N个桃子，当时就吃了一半，还不过瘾，就又多吃了一个。第二天又将剩下的桃子吃掉一半，又多吃了一个。<br>以后每天都吃前一天剩下的一半零一个。到第10天在想吃的时候就剩一个桃子了,问第一天共摘下来多少个桃子？并反向打印每天所剩桃子数。</small>
+	<pre>
+		#include <stdio.h>
+		int getPeachNumber(int n)
+		{
+		    int num;    //定义所剩桃子数
+		    if(n==10)
+		    {
+		       return 1;     //递归结束条件
+		    } 
+		    else
+		    {
+		        num = (getPeachNumber(n+1)+1)*2;   //这里是不应该用递归呢？
+		/*getPeachNumber(2)=getPeachNumber(1)/2 - 1
+		推出
+		getPeachNumber(1)=（getPeachNumber(2)+1）*2
+		所以
+		num = (getPeachNumber(n+1)+1)*2*/
+		        printf("第%d天所剩桃子%d个\n", n, num); //天数，所剩桃子个数
+		    }
+		    return num;
+		}
+		int main()
+		{
+		    int num = getPeachNumber(1);
+		    printf("猴子第一天摘了:%d个桃子。\n", num);
+		    return 0;
+		}
+	</pre>
+	<small>递归函数练习：有5个人坐在一起，问第5个人多少岁？他说比第4个人大2岁。问第4个人岁数，他说比第3个人大2岁。<br>问第3个人，又说比第2人大两岁。问第2个人，说比第1个人大两岁。最后 问第1个人，他说是10岁。请问第5个人多大？</small>
+	<pre>
+		#include <stdio.h> 
+		/* 
+		 * 请使用递归函数完成本题
+		 * 小编已将正确代码放在左侧任务的“不知道怎么办”里
+		 * 小编希望各位童鞋独立完成哦~
+		 */
+		int ageNum(int num)
+		{
+		    int age;
+		    if(num==1)
+		    {
+		        age = 10;
+		    }
+		    else
+		    {
+		        age = ageNum(num-1)+2;
+		    }
+		    return age;
+		}
+
+		int main() 
+		{
+			printf("第5个人的年龄是%d岁", ageNum(5)); 
+			return 0;
+		}
+	</pre>
+	<h5>局部与全局</h5>
+	<p>局部变量也称为内部变量，作用域是复合语句范围内。全局变量也称为外部变量，作用域是整个源程序。</p>
+	<h5>变量存储类别</h5>
+	<p>c语言根据变量的生存周期来划分，可以分为静态存储方式和动态存储方式。C语言中存储类别又分为四类：自动（auto）、静态（static）、寄存器的（register）和外部的（extern）。</p>
+	<h5>内部函数与外部函数</h5>
+	<p>C语言中不能被其他源文件调用的函数称谓内部函数 ，内部函数由static关键字来定义，因此又被称谓静态函数，形式为：static [数据类型] 函数名（[参数]） 。在C语言中能被其他源文件调用的函数称谓外部函数 ，外部函数由extern关键字来定义，形式为：extern [数据类型] 函数名([参数]) </p>
+	<pre>
+		/*北京市出租车打车计费规则如下：
+
+1. 每公里单价计费2.3元
+
+2. 起步价13元(包含3公里)
+
+3. 晚上23点(含)至次日凌晨5点(不含)打车，每公里单价计费加收20%。
+
+4. 每次乘车加收1元钱的燃油附加税。
+
+小明每天上下班都要打车，公司和家的距离为12公里，上午上班时间为9点，下午下班时间为6点。
+
+请编写一个小程序计算小明每天打车的总费用。*/
+		#include <stdio.h>
+		float fees(float distance,int time)
+		{
+		    float fee;
+		    if(time<5||time>=23) 
+		    {
+		        fee = 13+(distance-3)*2.3*1.2;
+		    }
+		    else
+		    {
+		        fee = 13+(distance-3)*2.3;
+		    }
+		    return fee+1;
+		}
+		int main()
+		{
+		    printf("小明打车的总费用%f\n",fees(12,9)+fees(12,18));
+		    return 0;
+		}
+	</pre>
+	<strong>12.数组</strong>
+	<p>数组：在程序中是一块连续的，大小固定并且里面的数据类型一致的内存空间。声明数组：数据类型 数组名称【长度】。</p>
+	<ul>
+		<li>数组初始化：1.数据类型 数组名称[长度n] = {元素1,元素2…元素n};</li>
+		<li>2. 数据类型 数组名称[] = {元素1,元素2…元素n};</li>
+		<li>3. 数据类型 数组名称[长度n]; 数组名称[0] = 元素1; 数组名称[1] = 元素2; 数组名称[n-1] = 元素n;</li>
+	</ul>
+	<pre>
+		/*任务
+		替换指定数组中的最大元素。要求指定整数为数组arr2中的第一个元素arr2[0]。*/
+		#include <stdio.h>
+		void replaceMax(int arr[],int value)
+		{
+		    int max = arr[0];
+		    int index = 0;
+		    int i;
+		    for(i=1;i<5;i++)
+		    {
+		        if(arr[i]>max)
+		        {
+		            max=arr[i]; //将数组中较大的数赋值给max
+		            index = i;  //记录当前索引
+		        }                
+		    }  
+		    arr[index] = value;
+		}
+
+		int main()
+		{
+		    int arr1[] = {10,41,3,12,22};
+		    int arr2[] = {1,2,3,4,5};
+		    int i;
+		    replaceMax(arr1,arr2[0]); //将数组arr1和数组arr2的第一个元素传入函数中
+		    for(i=0;i<5;i++)
+		    {
+		        printf("%d ",arr1[i]);                
+		    }
+		    return 0;    
+		}
+	</pre>
+	<h5>冒泡排序:相邻元素两两比较，将较大的数字放在后面，直到将所有数字全部排序。</h5>
+	<pre>
+		/*小明班级有10人要参加比赛，进场时要按大小个升序排队，老师要用冒泡排序写一个小程序进行排序*/
+		#include <stdio.h>
+		int main()
+		{
+		    double arr[]={1.78, 1.77, 1.82, 1.79, 1.85, 1.75, 1.86, 1.77, 1.81, 1.80};
+		    int i,j;
+		    printf("\n************排队前*************\n");
+		    for(i=0;i<10;i++)
+		    {
+		        if(i != 9)   
+		            printf("%.2f, ", arr[i]);  //%.2f表示小数点后精确到两位
+		        else
+		            printf("%.2f", arr[i]);    //%.2f表示小数点后精确到两位
+		    }
+		    for(i=8; i>=0; i--)
+		    {
+		        for(j=0;j<=i;j++)
+		        {
+		            if(arr[j]>arr[j+1])      //当前面的数比后面的数大时
+		            {
+		                double temp;    //定义临时变量temp
+		                temp=arr[j];     //将前面的数赋值给temp
+		                arr[j]=arr[j+1]; //前后之数颠倒位置
+		                arr[j+1]=temp;  //将较大的数放在后面    
+		            }                 
+		        }                
+		    }
+		    printf("\n************排队后*************\n");
+		    for(i=0;i<10;i++)
+		    {
+		        if(i != 9)   
+		            printf("%.2f, ", arr[i]);  //%.2f表示小数点后精确到两位     
+		        else
+		            printf("%.2f", arr[i]);    //%.2f表示小数点后精确到两位
+		    }
+		    return 0;    
+		}
+	</pre>
+	<pre>
+		/*数组元素的查找功能*/
+		#include <stdio.h>
+		int getIndex(int arr[5],int value)
+		{
+		    int i;
+		    int index;
+		    for(i=0;i<5;i++)
+		    {
+		       /* 请完善数组查询功能 */
+		       if(arr[i]==value)
+		       {
+		        index = i;  
+		        break;
+		       }
+		       
+		    }
+		    return index;
+		}
+
+		int main()
+		{
+		    int arr[5]={3,12,9,8,6};
+		    int value = 8;
+		    int index = getIndex(arr, value);      //这里应该传什么参数呢？
+		    if(index!=-1)
+		    {
+		        printf("%d在数组中存在，下标为：%d\n",value,index);             
+		    }
+		    else
+		    {
+		        printf("%d在数组中不存在。\n",value);    
+		    }
+		    return 0;    
+		}
+	</pre>
+	<h5>字符串与数组</h5>
+	<p>数组定义字符串。1.char 字符串名称[长度] = "字符串值";2.char 字符串名称[长度] = {'字符1','字符2',...,'字符n','\0'};在输出字符串的时候要使用：printf(“%s”,字符数组名字);或者puts(字符数组名字);</p>
+	<pre>
+		#include <stdio.h>
+		/* 定义say函数 */
+		void say(char string[])       //数组参数应该怎么写呢？
+		{
+		    printf("%s\n",string);     //打印字符串
+		}
+
+		int main()
+		{
+		    //定义字符串数组
+		    char string[] = "我在慕课网上学习IT技能！";
+		    say(string);                 //调用say函数输出字符串
+		    return 0;
+		}
+	</pre>
+	<h5>字符串函数</h5>
+	<img src="img/c23.jpg" alt="字符串函数">
+	<p>注意：1.strlen()获取字符串的长度，在字符串长度中是不包括‘\0’而且汉字和字母的长度是不一样的。<br>2.strcmp()在比较的时候会把字符串先转换成ASCII码再进行比较,返回的结果为0表示s1和s2的ASCII码相等,返回结果为1表示s1比s2的ASCII码大,返回结果为-1表示s1比s2的ASCII码小。<br>3.strcpy()拷贝之后会覆盖原来字符串且不能对字符串常量进行拷贝<br>4、strcat在使用时s1与s2指的内存空间不能重叠，且s1要有足够的空间来容纳要复制的字符串</p>
+	<pre>
+		/*输出我爱，慕课网*/
+		#include <stdio.h>
+		#include <string.h>
+		int main()
+		{
+		    char s1[100]="";
+		    char s2[]="我爱,";
+		    char s3[]="慕课网";
+		    /*在以下补全代码*/
+		    strcpy(s1,s2);
+		    strcat(s1,s3);
+		    printf("%s\n",s1);
+		    return 0;    
+		}
+	</pre>
+	<h5>多维数组</h5>
+	<p>多维数组的初始化与一维数组的初始化类似也是分两种：</p>
+	<p>
+		1、数据类型 数组名称[常量表达式1][常量表达式2]...[常量表达式n] = {{值1,..,值n},{值1,..,值n},...,{值1,..,值n}};
+		2、数据类型 数组名称[常量表达式1][常量表达式2]...[常量表达式n]; 数组名称[下标1][下标2]...[下标n] = 值;
+	</p>
+	<small>二维数组定义的时候，可以不指定行的数量，但是必须指定列的数量。</small>
+	<pre>
+		#include <stdio.h>
+		int main()
+		{
+		    //使用第一种方式初始化方式声明并初始化二维数组arr1
+		    int arr1[2][2]={{10,20},{30,40}};
+		    //使用第二种方式初始化方式声明并初始化二维数组arr2
+		    int arr2[2][2];
+		    arr2[0][0]=10;    
+		    arr2[0][1]=20;    
+		    arr2[1][0]=30;    
+		    arr2[1][1]=40;
+		    return 0;    
+		}
+	</pre>
+	<h5>多维数组的遍历</h5>
+	<pre>/*现有三行三列的二维数组int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}};，编写程序实现计算对角线元素之和。*/
+		#include <stdio.h>
+		int main()
+		{
+		    int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+		    int i,j;
+		    int sum=0;
+		    int sum1=0;
+		    int sum2=0;
+		    for(i=0;i<3;i++)
+		    {
+		        for(j=0;j<3;j++)
+		        {
+		            if((i+j)%2==0)
+		            {
+		                sum+=arr[i][j];
+		            }
+		        }
+		    }
+		    printf("对角线元素之和是：%d\n",sum);
+		    return 0;    
+		}
+	</pre>
+	<pre>
+		/*在一个长度为10的整型数组里面，保存了班级10个学生的考试成绩。要求编写5个函数，分别实现计算考试的总分，最高分，最低分，平均分和考试成绩降序排序。*/
+		#include <stdio.h>
+int total(int arr[])
+{
+    int sum = 0;
+    int i;
+    for(i=0;i<10;i++)
+    {
+        sum+=arr[i];
+    }
+    return sum;
+}
+int average(int arr[])
+{
+    int all = total(arr);
+    int ave = all/10;
+    return ave;
+}
+int max(int arr[])
+{
+    int maxValue = arr[0];
+    int i = 0;
+    for(i=0;i<10;i++)
+    {
+        if(maxValue<arr[i])
+        {
+            maxValue = arr[i];
+        }
+    }
+    return maxValue;
+}
+int min(int arr[])
+{
+    int minValue = arr[0];
+    int i = 0;
+    for(i=0;i<10;i++)
+    {
+        if(arr[i]<minValue)
+        {
+            minValue = arr[i];
+        }
+    }
+    return minValue;
+}
+int sort(int arr[])
+{
+    int i,j;
+    int tmp;
+    for(i=0;i<10;i++)
+    {
+        for(j=0;j<9-i;j++)
+        {
+            if(arr[j]<arr[j+1])
+            {
+                tmp = arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=tmp;
+            }
+        }
+    }
+    printf("降序是：\n");
+    for(i=0;i<10;i++)
+    {
+        printf("%d\n",arr[i]);
+    }
+    return 0;
+}
+int main()
+{
+    int score[]={67,98,75,63,82,79,81,91,66,84};
+    printf("总分是%d\n",total(score));
+    printf("平均分是%d\n",average(score));
+    printf("最高分是%d\n",max(score));
+    printf("最低分是%d\n",min(score));
+    sort(score);
+    return 0;
+}
 	</pre>
 </body>
 </html>
