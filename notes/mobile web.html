@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动web</title>
+</head>
+<body>
+	<strong>1.1pixel像素基础</strong>
+	<p>iphone5-320px*568px-物理像素</p>
+	<ul>
+		<li><strong>px:</strong>css pixels 逻辑像素，浏览器使用的抽象单位</li>
+		<li><strong>dp,pt:</strong>device independent pixels 设备无关像素</li>
+		<li><strong>dpr:</strong>devicePixelRatio设备像素缩放比</li>
+	</ul>
+	<p>计算公式：1px = (dpr)²*dp <br>eg:640dp*1136dp = 320px*568px</p>
+	<ul>
+		<li>DPI:打印机每英寸可以喷的墨汁点（印刷行业）</li>
+		<li>PPI：屏幕每英寸的像素数量，即单位英寸内的像素密度。ppi越高约清晰。</li>
+	</ul>
+	<p>dpr>=2的都是retina屛（高清屏）。</p>
+
+	<strong>2.viewpoint</strong>
+	<p>一个PC页面在移动设备上整个页面都能看到。</p>
+	分类：
+	<ul>
+		<li>visual viewport【度量\视口】 =窗口缩放 scale 取值：window.innerWidth</li>
+		<li>layout vieport【布局】取值：document.body.clientWidth</li>
+	</ul>
+	<p>font-size [web]40px = [pc]12px 不规范</p>
+	<strong>3.viewport Meta标签</strong>
+	<p>&lt;meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"&gt;</p>
+	<ul>
+		<li>width:设备布局viewport的特定值（特定值：device-width）</li>
+		<li>initial-scale:设备页面的初始缩放</li>
+		<li>minimum-scale:最少缩放</li>
+		<li>maximun-scale:最大缩放</li>
+		<li>user-scalable:用户能否缩放</li>
+	</ul>
+	<p>移动最佳viewport:[布局viewport]=[设备宽度]=[度量viewport]</p>
+	<strong>4.设计移动web</strong>
+	<ul>
+		<li>方案一：根据设备的实际宽度来设计（常用）</li>
+		<li>方案二：1px=1dp。缩放0.5；根据设备的物理像素dp等于抽象像素px来设计。1像素边框和高清图片都不需要额外处理。</li>
+	</ul>
+	<strong>5.高效移动web布局-flexbox</strong>
+	<p>display:-webkit-flex;</p>
+	<p>flex:num;</p>
+	<pre>不定宽高的水平居中
+		(1.)
+		.justify{
+			position:absolute;
+			top:50%;
+			left:50%;
+			z-index:3;
+			-webkit-transform:translate(-50%,-50%);
+			border-radius:6px;
+			background:#fff;
+		}
+		(2.)
+		.parent{
+			justify-content:center; //子元素水平居中
+			align-items:center; //子元素垂直居中
+			display:-webkit-flex;
+		}
+	</pre>
+	<strong>6.响应式设计</strong>
+	<p>媒体查询 @media screen and(max-width:1024px){...}</p>
+	<ul>
+		<li>设计点一：百分比布局</li>
+		<li>设计点二：弹性图片 img{max-width:100%;}</li>
+		<li>设计点三：重新布局，现实与隐藏</li>
+	</ul>
+	<p>*相随单位：em:父节点的font-size;rem:html的font-size;为了解决rem在进行单位换算上的麻烦问题，给大家介绍个使用rem的小方法，设置html字体大小为font-size:62.5%;然后使用rem的时候就更好用了，比如1.2rem=12px,1.4rem=14px,1.6rem=16px.</p>
+	<p>*1像素边框-sacleY(0.5)</p>
+	<p>*文本溢出
+	1.单行文本：.inaline{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}2.多行文本溢出：-webkit-box-orient:vertical;-webkit-line-clamp:2;</p>
+</body>
+<strong>7.tap，touch事件，弹性滚动，下拉刷新，上拉加载</strong>
+	<p>zepto.js</p>
+</html>
