@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React项目搭建</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style>
+		span{
+			display: inline-block;
+			background-color: #f5f5f5;
+			padding: 3px 5px;
+			margin: 3px;
+		}
+	</style>
+</head>
+<body>
+	<p>项目背景：之前因为公司项目采用react技术，所以学习并使用了react技术。由于之前一直没有总结，所以资料都很零散，现在刚好有一个项目需要改用react技术，所以可以从头开始记录一下。一方面帮助小伙伴可以少走弯路，另一方面也能够对自己知识的巩固。</p>
+	<h2>一、搭建react项目环境[请参考官网安装好node.js，才可以用npm命令]</h2>
+	<ul>
+		<li>1. <span>npm init</span>，会自动生成 package.json 文件 <img src="imgs/001.jpg" alt="package"></li>
+		<li>2.执行下面命令，安装依赖
+			<ul>
+				<li>必须安装</li>
+				<li><span>npm install --save react</span> React用来构建用户界面的js库，属于View层</li>
+				<li><span>npm install --save react-dom</span>用来创建元素和组件，依赖于上面安装的react</li>
+				<li><span>npm install --save-dev webpack</span>用来压缩优化文件资源，即打包</li>
+				<li><span>npm install --save-dev webpack-dev-server</span>热加载.</li>
+ 				<li><span>npm install --save-dev babel-core</span>安装Babel, 可以把ES6转换为ES5</li>
+ 				<li><span>npm install --save-dev babel-loader</span>- webpack中需要用到的loader.</li>
+ 				<li><span>npm install --save babel-runtime</span> - Babel transform runtime 插件的依赖</li>
+ 				<li><span>npm install --save-dev babel-plugin-transform-runtime</span></li>
+ 				<li><span>npm install --save-dev babel-preset-es2015</span>es2015,es2016,es2017转码规则</li>
+ 				<li><span>npm install --save-dev babel-preset-react</span>转码规则</li>
+ 				<li><span>npm install --save-dev babel-preset-stage-2</span>ES7不同阶段语法提案的转码规则（共有4个阶段）</li>
+ 				<li>非必须</li>
+ 				<li><span>npm install --save-dev rimraf</span>移除组件 用法：<span>rimraf node_modules</span></li>
+			</ul>
+			<p>查看package.json文件</p>
+			<pre>
+				{
+				  "name": "Hello",
+				  "version": "1.0.0",
+				  "description": "",
+				  "main": "src/main.js",
+				  "directories": {
+				    "test": "test"
+				  },
+				  "scripts": {
+				    "start": "webpack-dev-server --hot --inline --colors --content-base ./build",
+				    "build": "webpack --progress --colors"
+				  },
+				  "author": "",
+				  "license": "ISC",
+				  "dependencies": {
+				    "babel-runtime": "^6.26.0",
+				    "react": "^16.3.1",
+				    "react-dom": "^16.3.1"
+				  },
+				  "devDependencies": {
+				    "babel-core": "^6.26.0",
+				    "babel-loader": "^7.1.4",
+				    "babel-plugin-transform-runtime": "^6.23.0",
+				    "babel-preset-es2015": "^6.24.1",
+				    "babel-preset-react": "^6.24.1",
+				    "babel-preset-stage-2": "^6.24.1",
+				    "webpack": "^2.6.1",
+				    "webpack-dev-server": "^3.1.3"
+				  }
+				}
+
+			</pre>
+		</li>
+		<li>
+			3.打开 package.json 然后添加下面的scripts:
+			<pre>
+				"scripts": {
+				 "start": "webpack-dev-server --hot --inline --colors --content-base ./build", //npm start 启动server
+				 "build": "webpack --progress --colors" //npm build 打包
+				}
+			</pre>
+		</li>
+		<li>4.新建webpack.config.js文件
+			<pre>
+				// const path = require('path')
+				module.exports = {
+				  entry: './src/main.js', // 入口
+				  output: {
+				    path: __dirname + '/build', // 打包的文件路径
+				    filename: 'bundle.js'// 打包的文件名
+				  },
+				  module: {
+				    rules: [{ // 打包规则
+				      test: /\.js$/,
+				      exclude: /node_modules/,
+				      loader: 'babel-loader',
+				      query: {
+				        plugins: ['transform-runtime'],
+				        presets: ['es2015', 'react', 'stage-2']
+				      }
+				    }, {
+				      test: /\.css$/,
+				      loader: 'style-loader!css-loader'
+				    }]
+				  }
+				}
+
+			</pre>
+		</li>
+	</ul>
+	<h2>二、编写React代码</h2>
+	<ul>
+		<li>1.编写index.html,并引入build.js
+			<pre>
+				< body>
+					< div id="app"></div>
+					< script src="bundle.js"></script>
+				< /body>
+			</pre>
+		</li>
+		<li>新建文件夹src,并新增文件App.js根组件，也是整个文件的入口</li>
+		<li>npm build[npm run build简写为npm build]打包，会在build下生成bundle.js
+			<pre>
+				坑：
+				npm run xx 报错！
+				1.如果采用了webpack4版本，会让你安装webpack-cli。如果安装报错：
+				The CLI moved into a separate package: webpack-cli。就是要你安装webpack-cli.
+				注意需要全局安装。如果运行 cnpm install -D webpack-cli 失败。
+				原因一：因为需要node@>=6.11.5。更新node版本即可。
+				【更新方法，1.下载gnvm2.使用命令where node找到node位置，然后把下载的gnvm.exe复制到这；3.打开控制台执行命令gnvm update latest，替换node.exe即可;】
+				原因二：替换了镜像的记得把，命令改成cnpm install xx 不然会包This socket is closed.错误。
+			</pre>
+		</li>
+		<li>npm start[npm run start简写为npm start]启动 打开设置的端口：http://localhost:4444/index.html</li>
+		<li>项目结构：<img src="imgs/002.jpg" alt="项目结构"></li>
+	</ul>
+</body>
+</html>
