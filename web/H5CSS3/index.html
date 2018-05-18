@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>春节贺卡</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- 利用视觉差
+	h5-结构 c3-样式 js-交互
+	切图-重构-前端-优化
+	 -->
+	<div id="music">
+		<img src="img/music_pointer.png" alt="">
+		<img id="play" class="play" src="img/music_disc.png" alt="">
+	</div>
+	<div class="page" id="page1">
+		<div class="bg"></div>
+		<div class="p1_lantern">点击屏幕<br>开启好运2018</div>
+		<div class="p1_imooc"></div>
+		<div class="p1_words">2018年慕课新年特献</div>
+	</div>
+	<div class="page" id="page2">
+		<div class="bg"></div>
+		<div class="p2_circle"></div>
+		<div class="p2_2018"></div>
+	</div>
+	<div class="page" id="page3">
+		<div class="bg"></div>
+		<div class="p3_logo"></div>
+		<div class="p3_title"></div>
+		<div class="p3_second"></div>
+		<div class="p3_first"></div>
+		<div class="p3_blessing"></div>
+	</div>
+	<audio id="audio" autoplay="true">
+		<source src="DanceToDeath.mp3" type="audio/mpeg" >
+	</audio>
+	<script>
+		window.onload = function(){
+			var music = document.getElementById('music');
+			var audio = document.getElementById('audio');
+			var play = document.getElementById('play');
+
+			var page1 = document.getElementById('page1'); 
+			var page2 = document.getElementById('page2'); 
+			var page3 = document.getElementById('page3'); 
+
+			//当音乐播放完停止的时候，自动停止光盘旋转的效果 
+			audio.addEventListener('ended',function(event){ 
+				play.setAttribute('class',''); 
+			},false); 
+			//点击音乐图标 控制音乐的播放效果 
+			music.addEventListener('touchstart',function(event){ 
+				if(audio.paused){ 
+					audio.play(); 
+					play.setAttribute('class','play'); 
+				}else{ 
+					audio.pause(); 
+					play.setAttribute('class',''); 
+				} 
+			},false); 
+			//点击页面 
+			page1.addEventListener('touchstart',function(event){ 
+				page1.style.display = 'none'; 
+				page2.style.display = 'block'; 
+				page3.style.display = 'block'; 
+				page3.style.top = '100%'; 
+				setTimeout(function(){ 
+					page2.setAttribute('class','page fadeOut'); 
+					page3.setAttribute('class','page fadeIn'); 
+				},5500) 
+			},false);
+		}
+	</script>
+</body>
+</html>

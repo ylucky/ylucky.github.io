@@ -9,7 +9,7 @@
 		span{float: left;text-align: right;width: 100px;display: inline-block;}
 		input{display: inline-block;width:250px;height: 30px;line-height: 30px;}
 		small{width: 100px;float: right;}
-		.note{display: none;color:#f30;}
+		.note{display:none;color:#f30;}
 		textarea{resize: none;float: left;}
 		button{clear: both;display: block;width: 100px;height: 35px;margin-left:100px;background: green;color: #fff;border:none;cursor: pointer;}
 	</style>
@@ -24,7 +24,29 @@
 		
 <script>
 	var btn = document.getElementById("btn");
-	var username = document.getElementById("username");
+	var inputs = document.getElementsByTagName('input');
+	var notes = document.getElementsByTagName('small');
+
+	for (var i = 0; i < inputs.length; i++) {
+		inputs[i].index = i;
+		inputs[i].onkeydown=function(){
+			console.log(this.index)
+			change(inputs[this.index],notes[this.index]);
+		};
+	}
+
+	btn.onclick = function(){
+		for (var i = 0; i < inputs.length; i++) {
+			inputs[i].index = i;
+			if(inputs[i].value.length<1){
+				notes[i].style.display = 'block';
+			}else{
+				notes[i].style.display = 'none';
+			}
+		}
+	}
+
+	/*var username = document.getElementById("username");
 	var password = document.getElementById("password");
 	var note1 = document.getElementById("note1");
 	var note2 = document.getElementById("note2");
@@ -39,7 +61,7 @@
 	btn.onclick = function(){
 		toogle(username,note1);
 		toogle(password,note2);
-	}
+	}*/
 
 	function toogle(element,note){
 		if(element.value.length<1){
@@ -50,6 +72,7 @@
 	}
 
 	function change(element,note){
+		console.log(element,note)
 		if(element.value.length>=0){
 			note.style.display = 'none';
 		}

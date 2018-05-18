@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>redux</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js"></script>
+</head>
+<body>
+	<div>Counter <span id="counter"></span></div>
+	<button id="inc">Increment</button>
+	<button id="dec">Decrement</button>
+	<script>
+		function reducer(state,action){
+			switch(action.type){
+				case 'INC':
+					return {...state,counter:state.counter+1};
+				case 'DEC':
+					return {...state,counter:state.counter-1};
+				default:
+					return state
+			}
+		}
+		const initialState={
+			counter:3
+		}
+		const store = Redux.createStore(reducer,initialState)
+
+		function updateView(){
+			document.querySelector('#counter').innerText = store.getState().counter;
+		}
+
+		store.subscribe(updateView);
+		updateView();
+
+
+		document.getElementById('inc').onclick=()=>store.dispatch({type:'INC'})
+		document.getElementById('dec').onclick=()=>store.dispatch({type:'DEC'})
+	</script>
+</body>
+</html>
