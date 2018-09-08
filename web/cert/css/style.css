@@ -63,7 +63,6 @@
 	border-top: none;
 	width: 100%;
 	overflow: hidden;
-	position: relative;
 }
 .body_head{
 	padding-top: 62px;
@@ -86,30 +85,28 @@
 	padding-bottom: 35px;
 }
 .body_foot .mid{
-	width: 154px;
-	height:154px;
-	line-height: 154px;
+	display: inline-block;
+	position: relative;
+	width: 10%;
+	height: 0;
+	padding-bottom: 10%;
 	text-align: center;
-	margin:0 auto;
 }
 .body_foot .mid img{
-	display: inline-block;
-	width: 100%;
-	height: 100%;
+    position:  absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 .body_foot .left,.body_foot .right{
-	width: 50%;	
-	position: absolute;		
+	width: 40%;	
+	text-align: center;
+	display: inline-block;		
 }
 .body_foot .left p,.body_foot .right p{
 	margin-top: 75px;
 	font-size: 	20px;	
-}
-.body_foot .left{
-	left: 0;
-}
-.body_foot .right{
-	right: 0;
 }
 .body_foot span{
 	font-size: 	14px;	
@@ -131,26 +128,6 @@
 }
 
 /*横屏*/
-/*@media screen and (orientation: portrait) {
-    .container {
-        -webkit-transform:rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
-         width: 100vh;
-         height: 100vh;
-         overflow: auto;
-    }
-    
-}
-@media screen and (orientation: landscape) {
-    .container {
-        -webkit-transform:rotate(0);
-        -moz-transform: rotate(0);
-        -ms-transform: rotate(0);
-        transform: rotate(0)
-    }
-}*/
 @media screen and (orientation:portrait) {
     body {
       transform-origin: 0 0;
