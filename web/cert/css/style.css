@@ -131,7 +131,7 @@
 }
 
 /*横屏*/
-@media screen and (orientation: portrait) {
+/*@media screen and (orientation: portrait) {
     .container {
         -webkit-transform:rotate(90deg);
         -moz-transform: rotate(90deg);
@@ -150,5 +150,10 @@
         -ms-transform: rotate(0);
         transform: rotate(0)
     }
+}*/
+@media screen and (orientation:portrait) {
+    body {
+      transform-origin: 0 0;
+      transform: rotateZ(90deg) translateY(-100%);
+    }
 }
-

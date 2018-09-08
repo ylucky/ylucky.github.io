@@ -47,3 +47,22 @@ console.log(evt);
                 alert('横屏状态！');  
             }    
         }, false); */
+
+
+(function () {   
+    function resize() {
+        var body = document.getElementsByTagName('body')[0];
+        var html = document.getElementsByTagName('html')[0];
+        var width = html.clientWidth;
+        var height =  html.clientHeight;
+        var cHeight = document.getElementById('container').scrollHeight;
+        console.log("cHeight",cHeight)
+        var max = width > height ? width : height;
+        var min = width > height ? height : cHeight;
+        body.style.width = max + "px";
+        body.style.height = min + "px";
+
+    }
+    resize();
+    window.addEventListener("resize", resize)
+})();
