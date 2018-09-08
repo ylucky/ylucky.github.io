@@ -1,0 +1,154 @@
+ html {
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  font-family: '微软雅黑',Arial,Helvetica,'microsoft yahei',sans-serif;
+}
+.cont_head{
+	background-color:#2d2d2d;
+	padding: 33px 33px 0px 33px;
+	text-align: center;
+	color:#d7d7d7;
+	text-transform: uppercase;
+}
+.head_cont{
+	background-color:#2d2d2d;
+	border:solid 10px #fff;
+	border-bottom: none;
+	width: 100%;
+	overflow: hidden;
+}
+.number{
+	text-align: right;
+	padding: 15px;
+	font-size: 14px;
+	font-size: 1.4rem;	
+}
+.head_title{
+	margin-top: 54px;
+	font-size: 20px;
+	font-size: 2rem;
+	color:#fff;
+}
+.head_title hr{
+	background-color: #fff;
+	width: 63px;
+	height:10px;
+	margin:24px auto;
+	border:none;
+}
+.head_cont h3{
+	font-weight: normal;
+	font-size: 40px;
+	font-size: 4rem;
+	letter-spacing: 25px;
+	letter-spacing: 0.5rem;
+}
+.head_cont p{
+	font-size: 24px;
+	font-size: 2.4rem;
+	letter-spacing: 16px;
+	letter-spacing: 0.6rem;
+	margin-top: 25px;
+	margin-bottom: 50px;
+}
+.cont_body{
+	background-color: #f2f2f2;
+	padding: 0px 33px 33px 33px;
+	text-align: center;
+	color:#65666a;
+}
+.body_cont{
+	border:solid 10px #fff;
+	border-top: none;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.body_head{
+	padding-top: 62px;
+}
+.body_head p{
+	font-size: 16px;
+	line-height: 25px;
+}
+.body_head h2{
+	font-size: 50px;
+	letter-spacing: 22px;
+	font-size: 5rem;
+	letter-spacing: 0rem;
+	margin-top: 50px;
+	margin-bottom: 45px;
+	text-transform: uppercase;
+}
+.body_foot{
+	padding-top: 45px;
+	padding-bottom: 35px;
+}
+.body_foot .mid{
+	width: 154px;
+	height:154px;
+	line-height: 154px;
+	text-align: center;
+	margin:0 auto;
+}
+.body_foot .mid img{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+.body_foot .left,.body_foot .right{
+	width: 50%;	
+	position: absolute;		
+}
+.body_foot .left p,.body_foot .right p{
+	margin-top: 75px;
+	font-size: 	20px;	
+}
+.body_foot .left{
+	left: 0;
+}
+.body_foot .right{
+	right: 0;
+}
+.body_foot span{
+	font-size: 	14px;	
+}
+@media only screen and (min-width: 481px){
+    html {
+        font-size: 94%!important; /* 15.04÷16=94% */
+    }
+}
+@media only screen and (min-width: 561px){
+    html {
+        font-size: 109%!important; /* 17.44÷16=109% */
+    }
+}
+@media only screen and (min-width: 641px){
+    html {
+        font-size: 125%!important; /* 20÷16=125% */
+    }
+}
+
+/*横屏*/
+@media screen and (orientation: portrait) {
+    .container {
+        -webkit-transform:rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+         width: 100vh;
+         height: 100vh;
+         overflow: auto;
+    }
+    
+}
+@media screen and (orientation: landscape) {
+    .container {
+        -webkit-transform:rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
