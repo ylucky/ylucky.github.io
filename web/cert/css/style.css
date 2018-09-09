@@ -4,6 +4,10 @@
   padding: 0;
   font-family: '微软雅黑',Arial,Helvetica,'microsoft yahei',sans-serif;
 }
+*{
+	margin: 0;
+	padding: 0;
+}
 .container{
 	overflow: hidden;
 }
@@ -23,7 +27,8 @@
 }
 .number{
 	text-align: right;
-	padding: 15px;
+	padding-top: 15px;
+	padding-right: 15px;
 	font-size: 14px;
 	font-size: 1.4rem;	
 }
@@ -133,11 +138,28 @@
 }
 /*竖屏*/
 @media screen and (orientation:portrait) {
+	.cont_head{
+		padding: 20px 20px 0px 20px;
+		padding: 2rem 2rem 0px 2rem;
+	}
+	.cont_body{
+		padding: 0px 20px 20px 20px;
+		padding: 0rem 2rem 2rem 2rem;
+	}
+	.number{
+		font-size: 12px;
+		font-size: 1.2rem;
+	}
     .head_title{
-		margin-top: 32px;
+		margin-top: 12px;
     }
     .head_title hr{
     	margin:15px auto;
+    	height: 4px;
+    }
+    .head_cont{
+    	border:solid 4px #fff;
+		border-bottom: none;
     }
     .head_cont h3{
     	font-size: 23px;
@@ -149,6 +171,10 @@
 		margin-top: 15px;
 		margin-bottom: 27px;
     }
+    .body_cont {
+	    border: solid 4px #fff;
+	    border-top: none;
+	}
     .body_head{
     	padding-top: 23px;
     }
