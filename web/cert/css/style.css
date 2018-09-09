@@ -1,9 +1,11 @@
  html {
-  height: 100%;
   font-size: 62.5%;
   margin: 0;
   padding: 0;
   font-family: '微软雅黑',Arial,Helvetica,'microsoft yahei',sans-serif;
+}
+.container{
+	overflow: hidden;
 }
 .cont_head{
 	background-color:#2d2d2d;
@@ -44,6 +46,7 @@
 	font-size: 4rem;
 	letter-spacing: 25px;
 	letter-spacing: 0.5rem;
+	margin:0px;
 }
 .head_cont p{
 	font-size: 24px;
@@ -84,30 +87,38 @@
 .body_foot{
 	padding-top: 45px;
 	padding-bottom: 35px;
+	display: flex;
 }
-.body_foot .mid{
+/* .body_foot .mid{
 	display: inline-block;
 	position: relative;
 	width: 10%;
 	height: 0;
 	padding-bottom: 10%;
 	text-align: center;
+} */
+
+.body_foot .mid{
+	width:156px;
 }
 .body_foot .mid img{
-    position:  absolute;
+    /* position:  absolute;
     top: 0;
-    left: 0;
+    left: 0; */
+    display: inline-block;
     width: 100%;
     height: 100%;
 }
 .body_foot .left,.body_foot .right{
-	width: 39%;	
+	flex:1;
+	/* width: 39%;	 */
 	text-align: center;
 	display: inline-block;		
 }
 .body_foot .left p,.body_foot .right p{
 	margin-top: 75px;
-	font-size: 	20px;	
+	font-size: 	20px;
+	margin-bottom: 0px;	
 }
 .body_foot span{
 	font-size: 	14px;	
@@ -129,9 +140,57 @@
 }
 
 /*横屏*/
+@media screen and (orientation:landscape) {
+}
+/*竖屏*/
 @media screen and (orientation:portrait) {
+    .head_title{
+		margin-top: 32px;
+    }
+    .head_title hr{
+    	margin:15px auto;
+    }
+    .head_cont h3{
+    	font-size: 23px;
+    	font-size: 2.3rem;
+    }
+    .head_cont p{
+    	font-size: 14px;
+    	font-size: 1.4rem;
+		margin-top: 15px;
+		margin-bottom: 27px;
+    }
+    .body_head{
+    	padding-top: 23px;
+    }
+    .body_head h2{
+    	font-size: 30px;
+    	font-size: 3rem;
+    	margin-top: 27px;
+    	margin-bottom: 27px;
+    }
+    .body_head p{
+    	font-size: 10px;
+    	line-height: 14px;
+    }
+    .body_foot{
+    	padding-top: 25px;
+    }
+    .body_foot .left p, .body_foot .right p{
+    	margin-top: 45px;
+    	font-size:14px;
+    }
+    .body_foot span{
+    	font-size: 12px;
+    }
+    .body_foot .mid{
+    	width:90px;
+    }
+}
+/*横屏*/
+/*@media screen and (orientation:portrait) {
     body {
       transform-origin: 0 0;
       transform: rotateZ(90deg) translateY(-100%);
     }
-}
+}*/
