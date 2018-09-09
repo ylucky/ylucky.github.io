@@ -49,20 +49,16 @@ console.log(evt);
         }, false); */
 
 
-/*(function () {   
+(function () {   
     function resize() {
         var body = document.getElementsByTagName('body')[0];
         var html = document.getElementsByTagName('html')[0];
         var width = html.clientWidth;
         var height =  html.clientHeight;
-        var cHeight = document.getElementById('container').scrollHeight;
-        console.log("cHeight",cHeight)
-        var max = width > height ? width : height;
-        var min = width > height ? height : cHeight;
-        body.style.width = max + "px";
-        body.style.height = min + "px";
+        var max = width > height ? height : width;
+        document.getElementById('container').style.width = max + "px";
 
     }
     resize();
     window.addEventListener("resize", resize)
-})();*/
+})();

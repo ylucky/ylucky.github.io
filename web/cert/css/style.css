@@ -14,7 +14,7 @@
 .cont_head{
 	width: 94%;
 	height: 25.5vw;
-	padding: 3% 3% 0 3%;
+	padding: 2% 3% 0 3%;
 	background-color:#2d2d2d;
 	text-align: center;
 	color:#d7d7d7;
@@ -60,9 +60,9 @@
 	margin-bottom: 4.3vw;
 }
 .cont_body{
-	height: 46vw;
+	height: 45.6vw;
 	background-color: #f2f2f2;
-	padding: 0 3% 3%  3%;
+	padding: 0 3% 2%  3%;
 	text-align: center;
 	color:#65666a;
 }
@@ -72,27 +72,31 @@
 	overflow: hidden;
 }
 .body_head{
-	padding-top:5vw;
+	height: 24vw;
+}
+.onep{
+	padding-top: 3.6vw;
 }
 .body_head p{
-	font-size: 1.8vw;
+	font-size: 1.6vw;
 }
 .body_head h2{
 	font-size: 4.6vw;
 	letter-spacing: 2vw;
-	margin-top: 4vw;/*26*/
-	margin-bottom: 4vw;
+	height: 10vw;
+	line-height: 10vw;
 	text-transform: uppercase;
 }
 .body_foot{
-	padding-top: 4.3vw;
-	padding-bottom: 3vw;
+	height: 16vw;
+	padding-top: 3vw;
+	padding-bottom: 2vw;
 	display: flex;
 }
 
 .body_foot .mid{
-	width:14vw;
-	height: 14vw;
+	width:13vw;
+	height: 13vw;
 }
 .body_foot .mid img{
     display: inline-block;
@@ -100,16 +104,18 @@
     height: 100%;
 }
 .body_foot .left,.body_foot .right{
+	height: 13vw;
 	flex:1;
 	text-align: center;
 	display: inline-block;		
 }
 .body_foot .left p,.body_foot .right p{
-	margin-top: 6vw;
+	margin-top: 5vw;
 	font-size: 	2vw;
 	margin-bottom: 0px;	
 }
 .body_foot span{
+	display: block;
 	font-size: 	1.4vw;	
 }
 @media only screen and (min-width: 481px){
@@ -140,9 +146,84 @@ html,body{
 }
 /*横屏*/
 @media screen and (orientation:landscape) {
-	body {
-	  /* transform-origin: 0 0;
-	  transform: rotateZ(90deg) translateY(-100%); */
+	.container{
+		margin:0 auto;
+	}
+	.cont_head{
+		height: 25.5vh;
+	}
+	.head_cont{
+		border:solid 1vh #fff;
+		border-bottom: none;
+	}
+	.number{
+		height: 5vh;
+		line-height: 5vh;
+		padding-right: 2vh;
+		font-size: 2vh;	
+	}
+	.head_title{
+		height: 7.8vh;
+		font-size: 2vh;/*12px*/
+	}
+	.head_title hr{
+		width: 6vh;
+		height:0.9vh;
+		margin-top: 2vh;
+	}
+	.head_cont h3{
+		height: 5.4vh;
+		font-size: 4vh;
+		letter-spacing: 2vh;
+	}
+	.onep{
+		padding-top: 3.6vh;
+	}
+	.head_cont p{
+		font-size: 2vh;/*14px*/
+		letter-spacing: 1vh;/*10px*/
+		margin-bottom: 4.3vh;
+	}
+	.cont_body{
+		height: 45.6vh;
+	}
+	.body_cont{
+		border:solid 1vh #fff;
+		border-top: none;
+	}
+	.body_head{
+		height: 24vh;
+	}
+	.body_head p{
+		font-size: 1.6vh;
+	}
+	.body_head h2{
+		height: 10vh;
+		line-height: 10vh;
+		font-size: 4.6vh;
+		letter-spacing: 2vh;
+		margin:0px;
+	}
+	.body_foot{
+		height: 16vh;
+		padding-top: 3vh;
+		padding-bottom: 2vh;
+	}
+
+	.body_foot .mid{
+		width:13vh;
+		height: 13vh;
+	}
+	.body_foot .left,.body_foot .right {
+		text-align: center;
+		height: 13vh;
+	}
+	.body_foot .left p,.body_foot .right p{
+		margin-top: 5vh;
+		font-size: 	2vh;
+	}
+	.body_foot span{
+		font-size: 	1.4vh;	
 	}
 }
 /*竖屏*/
