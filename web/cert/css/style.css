@@ -13,6 +13,7 @@
 }
 .cont_head{
 	width: 94%;
+	height: 25.5vw;
 	padding: 3% 3% 0 3%;
 	background-color:#2d2d2d;
 	text-align: center;
@@ -26,24 +27,28 @@
 	overflow: hidden;
 }
 .number{
+	height: 5vw;
+	line-height: 5vw;
 	text-align: right;
-	padding-top: 2vw;
 	padding-right: 2vw;
 	font-size: 2vw;	
 }
 .head_title{
-	margin-top: 2vw;
+	height: 7.8vw;
+	overflow: hidden;
 	font-size: 2vw;/*12px*/
 	color:#fff;
 }
 .head_title hr{
 	background-color: #fff;
 	width: 6vw;
-	height:1vw;
-	margin:2vw auto;
+	height:0.9vw;
+	margin:0 auto;
+	margin-top: 2vw;
 	border:none;
 }
 .head_cont h3{
+	height: 5.4vw;
 	font-weight: normal;
 	font-size: 4vw;
 	letter-spacing: 2vw;
@@ -52,10 +57,10 @@
 .head_cont p{
 	font-size: 2vw;/*14px*/
 	letter-spacing: 1vw;/*10px*/
-	margin-top: 2vw;
-	margin-bottom: 4vw;
+	margin-bottom: 4.3vw;
 }
 .cont_body{
+	height: 46vw;
 	background-color: #f2f2f2;
 	padding: 0 3% 3%  3%;
 	text-align: center;
@@ -67,7 +72,7 @@
 	overflow: hidden;
 }
 .body_head{
-	padding-top:10vw;
+	padding-top:5vw;
 }
 .body_head p{
 	font-size: 1.8vw;
@@ -80,7 +85,7 @@
 	text-transform: uppercase;
 }
 .body_foot{
-	padding-top: 5vw;
+	padding-top: 4.3vw;
 	padding-bottom: 3vw;
 	display: flex;
 }
@@ -100,7 +105,7 @@
 	display: inline-block;		
 }
 .body_foot .left p,.body_foot .right p{
-	margin-top: 7vw;
+	margin-top: 6vw;
 	font-size: 	2vw;
 	margin-bottom: 0px;	
 }
@@ -123,12 +128,27 @@
     }
 }
 
+html,body{
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+#content-wrap{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
 /*横屏*/
 @media screen and (orientation:landscape) {
+	body {
+	  /* transform-origin: 0 0;
+	  transform: rotateZ(90deg) translateY(-100%); */
+	}
 }
 /*竖屏*/
-/* @media screen and (orientation:portrait) {
-} */
+ @media screen and (orientation:portrait) {
+
+}
 /*横屏*/
 /*@media screen and (orientation:portrait) {
     body {
