@@ -150,81 +150,86 @@ html,body{
 		margin:0 auto;
 	}
 	.cont_head{
-		height: 31vh;
+		width: auto;
+		height: 34.6vh;
+		padding: 2.4vh 3.3vh 0 3.3vh;
 	}
 	.head_cont{
 		border:solid 1vh #fff;
 		border-bottom: none;
 	}
 	.number{
-		height: 5vh;
-		line-height: 5vh;
+		height: 6.5vh;
+		line-height: 6.5vh;
 		padding-right: 2vh;
 		font-size: 2vh;	
 	}
 	.head_title{
-		height: 7.8vh;
+		height: 7.2vh;
 		font-size: 2vh;/*12px*/
 	}
 	.head_title hr{
-		width: 6vh;
-		height:0.9vh;
-		margin-top: 2vh;
+		width: 7.7vh;
+		height:1vh;
+		margin-top: 2.8vh;
 	}
 	.head_cont h3{
-		height: 10vh;
-		line-height: 10vh;
-		font-size: 4vh;
-		letter-spacing: 2vh;
-	}
-	.onep{
-		padding-top: 4vh;
+		height: 10.6vh;
+		line-height: 10.6vh;
+		font-size: 4.8vh;
+		letter-spacing: 3.3vh;
 	}
 	.head_cont p{
-		font-size: 2vh;/*14px*/
-		letter-spacing: 1vh;/*10px*/
-		margin-bottom: 5vh;
+		font-size: 3.3vh;/*14px*/
+		letter-spacing: 1.4vh;/*10px*/
+		margin-bottom: 5.7vh;
 	}
 	.cont_body{
-		height: 57vh;
+		height: 60.6vh;
+		padding: 0 3.3vh 2.4vh 3.3vh;
 	}
 	.body_cont{
 		border:solid 1vh #fff;
 		border-top: none;
 	}
 	.body_head{
-		height: 29vh;
+		height: 32vh;
+	}	
+	.onep{
+		padding-top: 6.2vh;
 	}
 	.body_head p{
-		font-size: 1.6vh;
+		font-size: 2.4vh;
 	}
 	.body_head h2{
-		height: 15.4vh;
-		line-height: 15.4vh;
-		font-size: 4.6vh;
-		letter-spacing: 2vh;
+		height: 16.4vh;
+		line-height: 16.4vh;
+		font-size: 6.3vh;
+		letter-spacing: 3vh;
 		margin:0px;
 	}
 	.body_foot{
-		height: auto;
-		padding-top: 4.8vh;
-		padding-bottom: 4vh;
+		height: 28vh;
+		padding: 0;
+		overflow: hidden;
 	}
 
 	.body_foot .mid{
 		width:16.4vh;
 		height: 16.4vh;
+		margin-top: 5.3vh;
+		margin-bottom: 4.8vh;
 	}
 	.body_foot .left,.body_foot .right {
 		text-align: center;
 		height: 16.4vh;
 	}
 	.body_foot .left p,.body_foot .right p{
-		margin-top: 8vh;
-		font-size: 	2vh;
+		margin-top: 9vh;
+		font-size: 	3.3vh;
 	}
 	.body_foot span{
-		font-size: 	1.4vh;	
+		font-size: 	2.8vh;	
 	}
 }
 /*竖屏*/
