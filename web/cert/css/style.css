@@ -141,9 +141,15 @@
 
 /*横屏*/
 @media screen and (orientation:landscape) {
+	body{
+		background-color: #f30;
+	}
 }
 /*竖屏*/
 @media screen and (orientation:portrait) {
+	body{
+		background-color: blue;
+	}
     .head_title{
 		margin-top: 32px;
     }
