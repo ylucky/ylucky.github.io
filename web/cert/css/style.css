@@ -148,7 +148,6 @@ html,body{
 @media screen and (orientation:landscape) {
 	.container{
 		margin:0 auto;
-		zoom:1.3333;
 	}
 	.cont_head{
 		height: 25.5vh;
