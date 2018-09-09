@@ -49,7 +49,7 @@ console.log(evt);
         }, false); */
 
 
-(function () {   
+/*(function () {   
     function resize() {
         var body = document.getElementsByTagName('body')[0];
         var html = document.getElementsByTagName('html')[0];
@@ -65,4 +65,4 @@ console.log(evt);
     }
     resize();
     window.addEventListener("resize", resize)
-})();
+})();*/
