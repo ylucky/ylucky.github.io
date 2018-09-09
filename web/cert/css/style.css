@@ -150,7 +150,7 @@ html,body{
 		margin:0 auto;
 	}
 	.cont_head{
-		height: 25.5vh;
+		height: 31vh;
 	}
 	.head_cont{
 		border:solid 1vh #fff;
@@ -172,54 +172,55 @@ html,body{
 		margin-top: 2vh;
 	}
 	.head_cont h3{
-		height: 5.4vh;
+		height: 10vh;
+		line-height: 10vh;
 		font-size: 4vh;
 		letter-spacing: 2vh;
 	}
 	.onep{
-		padding-top: 3.6vh;
+		padding-top: 4vh;
 	}
 	.head_cont p{
 		font-size: 2vh;/*14px*/
 		letter-spacing: 1vh;/*10px*/
-		margin-bottom: 4.3vh;
+		margin-bottom: 5vh;
 	}
 	.cont_body{
-		height: 45.6vh;
+		height: 57vh;
 	}
 	.body_cont{
 		border:solid 1vh #fff;
 		border-top: none;
 	}
 	.body_head{
-		height: 24vh;
+		height: 29vh;
 	}
 	.body_head p{
 		font-size: 1.6vh;
 	}
 	.body_head h2{
-		height: 10vh;
-		line-height: 10vh;
+		height: 15.4vh;
+		line-height: 15.4vh;
 		font-size: 4.6vh;
 		letter-spacing: 2vh;
 		margin:0px;
 	}
 	.body_foot{
-		height: 16vh;
-		padding-top: 3vh;
-		padding-bottom: 2vh;
+		height: auto;
+		padding-top: 4.8vh;
+		padding-bottom: 4vh;
 	}
 
 	.body_foot .mid{
-		width:13vh;
-		height: 13vh;
+		width:16.4vh;
+		height: 16.4vh;
 	}
 	.body_foot .left,.body_foot .right {
 		text-align: center;
-		height: 13vh;
+		height: 16.4vh;
 	}
 	.body_foot .left p,.body_foot .right p{
-		margin-top: 5vh;
+		margin-top: 8vh;
 		font-size: 	2vh;
 	}
 	.body_foot span{
