@@ -89,29 +89,17 @@
 	padding-bottom: 35px;
 	display: flex;
 }
-/* .body_foot .mid{
-	display: inline-block;
-	position: relative;
-	width: 10%;
-	height: 0;
-	padding-bottom: 10%;
-	text-align: center;
-} */
 
 .body_foot .mid{
 	width:156px;
 }
 .body_foot .mid img{
-    /* position:  absolute;
-    top: 0;
-    left: 0; */
     display: inline-block;
     width: 100%;
     height: 100%;
 }
 .body_foot .left,.body_foot .right{
 	flex:1;
-	/* width: 39%;	 */
 	text-align: center;
 	display: inline-block;		
 }
@@ -141,15 +129,10 @@
 
 /*横屏*/
 @media screen and (orientation:landscape) {
-	body{
-		background-color: #f30;
-	}
+
 }
 /*竖屏*/
 @media screen and (orientation:portrait) {
-	body{
-		background-color: blue;
-	}
     .head_title{
 		margin-top: 32px;
     }
