@@ -1,0 +1,213 @@
+body {
+    margin: 0;
+    font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+a,button{
+    border:0;
+    outline:none;
+}
+.udap{
+	background: url(../img/intro-bg.jpg) no-repeat center center;
+	background-size: cover;
+}
+.udap nav{
+	padding-bottom: 15px;
+    padding-left: 50px;
+	overflow: hidden;
+}
+.udap nav a{
+	color:#fff;
+	text-decoration: none;
+}
+.udap nav a:hover{
+	color:#fff;
+}
+.udap-logo img{
+	display: block;
+    width: 42px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+}
+.udap-logo span{
+	line-height: 20px;
+    float: left;
+    font-size: 14px;
+}
+.udap-title{
+    color:#fff;
+	text-align: center;
+    padding: 50px 0px 100px 0px;
+}
+.udap-title h1{
+	text-align: center;
+	font-size: 48px;
+    margin: 0 0 1.5rem;
+}
+.udap-title p{
+	font-size: 18px;
+	margin: 0;
+}
+.udap-register{
+    max-width: 120px;
+    overflow: hidden;
+}
+.udap-register button{
+    background:#f7891e;
+    color:#fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+.udap-register button:hover{
+    color:#fff;
+    opacity: 0.8;
+    filter: opacity(80);
+}
+/* udap-token */
+.udap-token{
+    margin:50px 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+.udap-token .token-title{
+    text-align: center;
+}
+.udap-token .token-intro{
+    overflow: hidden;
+}
+
+.border-right{
+    border-left:none;
+}
+.udap-token .token-subtitle{
+    margin-bottom:30px;
+    text-align: center;
+}
+.udap-token .token-pics{
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+.udap-token .token-pic{
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+}
+.udap-token .token-list{
+
+}
+/* footer */
+footer{
+    height: 100px;
+    line-height: 100px;
+    color:#fff;
+    font-size: 14px;
+    background: #000;
+    text-align: center;
+}
+
+.case{
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+    background: #000 url(../img/bg/work.png) no-repeat right center;
+    background-size: 100% 100%;
+}
+.case h2{
+    font-family:PingFangSC-Semibold;
+    font-size:48px;
+    color:#b98c35;
+    letter-spacing:0.2px;
+    line-height:56px;
+    text-align:left;
+}
+.case h2 p{
+    font-size: 20px;
+    color:#fff;
+    line-height: 24px;
+    letter-spacing: 0.1;
+}
+.case ul{
+    list-style: none;
+    padding: 0;
+}
+.case li{
+    margin-top: 24px;
+}
+.case li h3{
+    font-family:PingFangSC-Semibold;
+    font-size:24px;
+    color:#ffffff;
+    letter-spacing:0.15px;
+    text-align:left;
+}
+.case li h3 img{
+    margin-right: 13px;
+}
+.case li p{
+    font-family:PingFangSC-Regular;
+    font-size:16px;
+    color:#888888;
+    letter-spacing:0;
+    line-height:26px;
+    text-align:left;
+    margin-bottom: 0;
+}
+.case li .list p{
+    font-family:PingFangSC-Regular;
+    font-size:16px;
+    color:#888888;
+    letter-spacing:0;
+    line-height:26px;
+    text-align:left;
+}
+.case li h4{
+    font-family:PingFangSC-Regular;
+    font-size:16px;
+    color:#ffffff;
+    letter-spacing:0.1px;
+    line-height:30px;
+    text-align:left;
+}
+.case header{
+    padding: 0 5%;
+    margin-bottom: 38px;
+    margin-top: 38px;
+}
+.social-right{
+    float: left;
+}
+.social-right li{
+    list-style: none;
+    display: inline-block;
+}
+.social-right li.Nmr{
+    margin-right: 13px;
+}
+.social-right a{
+    font-family:PingFangSC-Regular;
+    font-size:16px;
+    color:#b98c35;
+    text-align:left;
+}
+.social-right a:hover{
+  text-decoration: none;
+}
+.social-right a img{
+    margin-right: 13px;
+}
+@media (min-width: 768px){ 
+   .case header{
+       margin-bottom: 134px;
+   }
+   .social-right{
+       float: right;
+   } 
+}
