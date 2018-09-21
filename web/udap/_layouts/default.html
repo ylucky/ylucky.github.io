@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    {% include head.html %}
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    {% include nav.html %}
+    <!-- 移动端 -->
+    <div class="mobileMain">
+        {% include header.html %}
+        {% include about.html %}
+        {% include matters.html %}
+        {% include solution.html %}
+        {% include workmobile.html %}
+        {% include team.html %}
+        {% include advisor.html %}
+        {% include roadmap.html %}
+        {% include investors.html %}
+        {% include partners.html %}
+        {% include press.html %}
+        {% include footer.html %}
+    </div>
+    <!-- PC -->
+    <div class="pcMain">
+     <div class="swiper-container mainSwiper" id="mainSwiper">
+       <div class="swiper-wrapper">
+         <div class="swiper-slide swiper-no-swiping">{% include header.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include about.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include matters.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include solution.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include work.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include team.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include advisor.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include roadmap.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include investors.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include partners.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include press.html %}</div>
+         <div class="swiper-slide swiper-no-swiping">{% include footer.html %}</div>
+       </div>
+       <div class="swiper-pagination mainPagination" id="mainPagination"></div>
+       <div class="swiper-scrollbar"></div>
+     </div>   
+    </div>
+    {% include js.html %}
+    </body>
+</html>
