@@ -7,7 +7,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 html {
-    font-family: sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%
 }
@@ -1376,7 +1376,7 @@ html {
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
@@ -1489,7 +1489,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: inherit;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 500;
     line-height: 1.1;
     color: inherit
@@ -1978,7 +1978,14 @@ pre code {
         width: 1100px
     }
     .navbar .container {
-        width: 1200px
+        width: 1100px;
+        padding: 0;
+    }
+    .navbar-custom .navbar-brand {
+        padding: 15px 0;
+        margin-left: 0!important;
+        height: auto;
+        overflow: hidden;
     }
 }
 
@@ -5245,7 +5252,6 @@ textarea.input-group-sm>.input-group-btn>.btn {
     }
     .navbar-right {
         float: right !important;
-        margin-right: -15px
     }
     .navbar-right~.navbar-right {
         margin-right: 0
@@ -6980,7 +6986,7 @@ button.close {
     position: absolute;
     z-index: 1070;
     display: block;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
     font-weight: 400;
     line-height: 1.4;
@@ -7104,7 +7110,7 @@ button.close {
     display: none;
     max-width: 276px;
     padding: 1px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.42857143;
@@ -7835,7 +7841,7 @@ body {
     width: 100%;
     height: 100%;
     margin-top: -70px;
-    /* font-family: 'Nunito', sans-serif; */
+    font-family: Helvetica, Arial, sans-serif;
     color: #fff;
     background-color: #000000;
 }
@@ -7852,7 +7858,7 @@ h4,
 h5,
 h6 {
     margin: 0 0 35px;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -7889,13 +7895,14 @@ a:focus {
 .navbar-custom {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255, 255, 255, .3);
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     background-color: #000000;
 }
 
+
 .navbar-custom .navbar-brand {
-    height: 50px;
-    line-height: 50px;
+    /* height: 50px; 
+    line-height: 50px; */
     margin-left: 15px;
 }
 
@@ -7940,7 +7947,7 @@ a:focus {
     .navbar {
         padding: 20px 0;
         border-bottom: 0;
-        letter-spacing: 1px;
+        /* letter-spacing: 1px; */
         background: 0 0;
         -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
@@ -8032,7 +8039,7 @@ a:focus {
 
 .btn {
     text-transform: uppercase;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 400;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -8115,7 +8122,6 @@ body {
 .title {
     margin-top: 18px;
     margin-bottom: 18px;
-    /* font-family:PingFangSC-Semibold; */
     line-height: 56px;
     font-size:40px;
     color:#ffffff;
@@ -8128,7 +8134,6 @@ body {
     width:90px;
     height:1px;
     margin:0 auto;
-/*     margin-bottom: 67px; */
 }
 .bghr{
     height: 2px;
@@ -8313,7 +8318,7 @@ ul.social-buttons li a:hover {
 
 .timeline-done {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     /* padding-bottom: 30px; */
 }
 .timeline{
@@ -8463,28 +8468,145 @@ ul.social-buttons li a:hover {
     display: inline-block;
 }
 
-#inverstor img, 
-#news img{
-    max-height: 50px;
+#inverstor img{
     margin:0 auto;
-}
-#inverstor #inverstorimg3{
     display: inline-block;
+} 
+
+#inverstor .invertor_img1{
+    width: 60px;
+    height: 63px;
+}
+#inverstor .invertor_img2{
+    width: 174px;
+    height: 24px;
+}
+#inverstor .invertor_img3{
     width: 158px;
     height: 54px;
-    max-height: 100%!important;
 }
-#inverstor #inverstorimg12{
-    display: inline-block;
-    width: 142px;
-    height: 48px;
-    max-height: 100%!important;
+#inverstor .invertor_img4{
+    width: 72px;
+    height: 44px;
+}
+#inverstor .invertor_img5{
+    width: 199px;
+    height: 55px;
+}
+#inverstor .invertor_img6{
+    width: 174px;
+    height: 46px;
+}
+#inverstor .invertor_img7{
+    width: 185px;
+    height: 44px;
+}
+#inverstor .invertor_img8{
+    width: 143px;
+    height: 43px;
+}
+#inverstor .invertor_img10{
+    width: 116px;
+    height: 58px;
+}
+#inverstor .invertor_img11{
+    width: 126px;
+    height: 44px;
+}
+#inverstor .invertor_img12{
+    width: 131px;
+    height: 45px;
 }
 .inverstor .title,
 .press .title{
      text-align: center;
 }
 
+/*press*/
+#news img{
+    margin:0 auto;
+    display: inline-block;
+}
+#news .press_img1{
+    width: 218px;
+    height: 27px;
+}
+#news .press_img2{
+    width: 160px;
+    height: 39px;
+}
+#news .press_img3{
+    width: 171px;
+    height:42px;
+}
+#news .press_img4{
+    width: 171px;
+    height: 31px;
+}
+#news .press_img5{
+    width: 162px;
+    height: 47px;
+}
+#news .press_img6{
+    width: 130px;
+    height: 49px;
+}
+#news .press_img7{
+    width: 152px;
+    height: 47px;
+}
+#news .press_img8{
+    width: 180px;
+    height: 33px;
+}
+#news .press_img9{
+    width: 75px;
+    height: 39px;
+}
+#news .press_img10{
+    width: 148px;
+    height: 35px;
+}
+#news .press_img11{
+    width: 102px;
+    height: 49px;
+}
+#news .press_img12{
+    width: 152px;
+    height: 47px;
+}
+#news .press_img13{
+    width: 144px;
+    height: 35px;
+}
+#news .press_img14{
+    width: 130px;
+    height: 26px;
+}
+#news .press_img15{
+    width: 78px;
+    height: 45px;
+}
+#news .press_img16{
+    width: 143px;
+    height: 36px;
+}
+#news .press_img17{
+    width: 117px;
+    height: 37px;
+}
+#news .press_img18{
+    width: 117px;
+    height: 37px;
+}
+#news .press_img19{
+    width: 122px;
+    height: 35px;
+}
+#news .press_img20{
+    width: 126px;
+    height: 45px;
+}
 @media (min-width: 768px){ 
     #inverstor {
         height: 100%;
@@ -9143,8 +9265,8 @@ footer .social-buttons {
         margin-right: 0;
     }
     .navbar-custom .nav-midCont li a{
-        height: 50px;
-        line-height: 50px;
+        height: 70px;
+        line-height: 70px;
         padding: 0;
         font-size:12px;
         color:#ffffff;
@@ -9185,8 +9307,8 @@ footer .social-buttons {
     }
 
     .nav-rightCont li a{
-        height: 50px;
-        line-height: 50px;
+        height: 70px;
+        line-height: 70px;
         padding: 0;
         font-size:14px;
         color:#fff;
@@ -9200,13 +9322,18 @@ footer .social-buttons {
     @media (min-width: 768px){ 
 
         .navbar{
-            padding-top: 15px;
+            padding-top: 0;
             padding-bottom: 0px;
             overflow: hidden;
+            height: 70px;
+            line-height: 70px;
+            display: flex;
+            justify-content: center;
         }
         .navbar-header .page-scroll img {
             display: inline-block;
-            width: 195px;
+            /* width: 195px; */
+            width: 100%;
             height: 50px;
         }
         .navbar-custom .nav-midCont{
@@ -9229,7 +9356,8 @@ footer .social-buttons {
             color:#fff;
             background: none;
             border-bottom: solid 2px #fff;
-            height: 48px;
+            height: 70px;
+            line-height: 70px;
         }
         .nav-rightCont{
             padding: 0;
@@ -9522,7 +9650,6 @@ footer .social-buttons {
         border-top: none;
      }
      .heading-h1{
-        /* font-family: PingFangSC-Semibold; */
         font-size:48px;
         line-height: 69px;
         color:#ffffff;
@@ -9591,11 +9718,7 @@ footer .social-buttons {
      .matters .media-list li{
         margin-top: 0;
      }
-     /* .matters .mtitle{
-        height: 166px;
-     } */
      .matters .media-heading{
-        /* font-family:PingFangSC-Semibold; */
         font-size:28px;
         line-height: 40px;
         color:#ffffff;
@@ -9610,7 +9733,6 @@ footer .social-buttons {
         margin-bottom: 18px;
      }
     .matters p{
-        /* font-family:PingFangSC-Regular; */
         font-size:16px;
         line-height: 30px;
         color:#ffffff;
@@ -9635,14 +9757,12 @@ footer .social-buttons {
         display: block;
         height: 40px;
         line-height: 40px;
-        /* font-family:PingFangSC-Regular; */
         font-size:28px;
         color:#ffffff;
         letter-spacing:0;
         text-align:center;
      }
      .matters-lists h4{
-        /* font-family:PingFangSC-Semibold; */
         font-size:16px;
         line-height:30px;
         color:#ffffff;
@@ -9732,7 +9852,7 @@ footer .social-buttons {
     float: left;
     margin-left: 25px;
     margin-right: 22px;
-    font-size:14px;
+    font-size:12px;
     color:#ffffff;
     text-align:left;
 }
@@ -9875,7 +9995,7 @@ footer .social-buttons {
     margin-bottom: 0;
     line-height: 25px;
     float: left;
-    font-family:TRENDS;
+    font-family: Helvetica, Arial, sans-serif;
     font-size:18px;
     color:#ffffff;
     letter-spacing:3.09px;
@@ -9922,7 +10042,6 @@ footer h2 {
     font-weight: normal;
 }
 footer h2 a{
-    /* font-family:PingFangSC-Semibold; */
     font-size:36px;
     color:#ffffff;
     letter-spacing:0.23px;
@@ -9964,8 +10083,8 @@ footer p{
 }
 .ico-new{
     position: absolute;
-    left:143px;
-    top:2px;
+    left: 70px;
+    top: 10px;
     font-size: 12px;
     background: #D7B87A;
     color:#fff;
@@ -10044,7 +10163,6 @@ footer .social-logo li{
     height: 100%;
 }
 .work p{
-    /* font-family:PingFangSC-Regular; */
     font-size:16px;
     line-height:24px;
     color:#ffffff;
@@ -10086,12 +10204,12 @@ footer .social-logo li{
 }
 .work2r{
     position: absolute;
-    right: 90px;
-    top: 100px;
+    right: 0px;
+    top: 90px;
 } 
 .work2r img{
     display: inline-block;
-    max-width: 500px;
+    /* max-width: 500px; */
 }
 .swiperitem .work2cont{
     width: 518px;
@@ -10142,17 +10260,13 @@ footer .social-logo li{
 }
 
 @media (min-width: 768px){ 
-/*     .workimg{
-    display: inline-block;
-    max-width: 350px;
-} */
    .work2 .swiperitem{
        text-align: left;
    }
    .work1 .workr .workimg{
         display: inline-block;
-        width: 421px;
-        height: 474px;
+        /* max-width: 421px;
+        height: auto; */
    }
    .work1 .workl .workimg{
         display: inline-block;
@@ -10218,6 +10332,7 @@ footer .social-logo li{
 }
 #workSwiper .swiper-pagination .swiper-pagination-bullet{
     margin:21px 5px;
+    display: block;
 }
 
 #workSwiper .swiper-pagination-customs-active {
@@ -10232,12 +10347,19 @@ footer .social-logo li{
     height: 100vh;
 }
 #workSwiper .swiper-pagination{
-    right:0;
+    /* width: 1100px;
+    margin:0 auto;
+    display: flex;
+    align-items: flex-end; */
+    right: 5%;
 }
-.work1 .container-fluid,.work1 .workitem,
-.work2 .container-fluid,.work2 .workitem,
-.work3 .container-fluid,.work3 .workitem,
-.work4 .container-fluid,.work4 .workitem{
+.work1 .container,.work1 .workitem,
+.work2 .container,.work2 .workitem,
+.work3 .container,.work3 .workitem,
+.work4 .container,.work4 .workitem,
+#work .swiper-wrapper,
+#work .swiper-slide,
+#work .container-fluid{
     height: 100%; 
 }
 .work1 .container,
@@ -10287,12 +10409,14 @@ footer .social-logo li{
 .work2item,.workr{
     text-align: center;
 }
+.work1 .workr{
+    text-align: right;
+}
 .work2 .work2-r{
     text-align: left;
 }
 .work2 .work2-r h4{
     line-height: 50px;
-    /* font-family:PingFangSC-Semibold; */
     font-size:36px;
     color:#ffffff;
     text-align:center;
@@ -10302,14 +10426,12 @@ footer .social-logo li{
 }
 .work2 .work2-r p{
     max-width: 426px;
-    /* font-family:PingFangSC-Regular; */
     text-align:center;
 }
 .work2 .work2-r ul{
     padding-left: 20px;
 }
 .work2 .work2-r li{
-    /* font-family:PingFangSC-Regular; */
     font-size:16px;
     color:#ffffff;
     text-align:left;
@@ -10317,7 +10439,6 @@ footer .social-logo li{
     
 }
 .swiperitem h3{
-    /* font-family:PingFangSC-Semibold; */
     font-size:24px;
     color:#ffffff;
     letter-spacing: 0.1px;
@@ -10327,7 +10448,6 @@ footer .social-logo li{
 }
 
 .swiperitem p{
-    /* font-family:PingFangSC-Regular; */
     font-size:16px;
     color:#ffffff;
     margin-bottom: 5px;
@@ -10344,7 +10464,6 @@ footer .social-logo li{
 }
 .work4 h2{
     margin-top: 35px;
-    /* font-family:PingFangSC-Semibold; */
     font-size:36px;
     color:#ffffff;
     text-align:left;
@@ -10418,7 +10537,6 @@ footer .social-logo li{
     .work3r{
         width: 502px;
         height: 338px;
-        overflow: hidden;
         padding: 0;
         margin-left: 33px;
     } 
@@ -10630,4 +10748,11 @@ display: none;
 }
 #workMobile .heading-h1{
     font-size: 23px;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-custom .navbar-brand{
+        padding: 15px 0;
+    }
 }
