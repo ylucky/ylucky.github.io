@@ -1,6 +1,0 @@
-*.class
-*~
-.DS_Store
-.settings/
-_site/
-.pydevproject
