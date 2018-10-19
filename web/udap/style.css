@@ -9549,6 +9549,7 @@ footer .social-buttons {
     .intro .intro-body .brand-heading{
         font-size: 82px;
         margin-bottom: 15px;
+        margin-top: 15px;
    }
     .intro .intro-body hr{
         background:#ffffff;
@@ -9668,6 +9669,7 @@ footer .social-buttons {
     .intro .intro-body .brand-heading{
         font-size: 88px;
         margin-bottom: 23px;
+        margin-top: 0;
    }
    .intro .intro-cont{
     text-align: left;
